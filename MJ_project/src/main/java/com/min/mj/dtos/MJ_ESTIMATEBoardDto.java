@@ -4,91 +4,92 @@ public class MJ_ESTIMATEBoardDto {
 	
 //견적서 게시판
 	
-	private int SEQ    	   ;
-	private String ID      ;
-	private String REGDATE ;
-	private String TITLE   ;
-	private String CONTENT ;
-	private String IMSI    ;
-	private String REALFILE;
+	private int seq    	   ;
+	private String id      ;
+	private String regdate ;
+	private String title   ;
+	private String content ;
+	private String imsi    ;
+	private String realfile;
 	
 	public MJ_ESTIMATEBoardDto() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MJ_ESTIMATEBoardDto(int sEQ, String iD, String rEGDATE, String tITLE, String cONTENT, String iMSI,
-			String rEALFILE) {
+	public MJ_ESTIMATEBoardDto(int seq, String id, String regdate, String title, String content, String imsi,
+			String realfile) {
 		super();
-		SEQ = sEQ;
-		ID = iD;
-		REGDATE = rEGDATE;
-		TITLE = tITLE;
-		CONTENT = cONTENT;
-		IMSI = iMSI;
-		REALFILE = rEALFILE;
+		this.seq = seq;
+		this.id = id;
+		this.regdate = regdate;
+		this.title = title;
+		this.content = content;
+		this.imsi = imsi;
+		this.realfile = realfile;
 	}
 
-	public int getSEQ() {
-		return SEQ;
+	public int getSeq() {
+		return seq;
 	}
 
-	public void setSEQ(int sEQ) {
-		SEQ = sEQ;
+	public void setSeq(int seq) {
+		this.seq = seq;
 	}
 
-	public String getID() {
-		return ID;
+	public String getId() {
+		return id;
 	}
 
-	public void setID(String iD) {
-		ID = iD;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public String getREGDATE() {
-		return REGDATE;
+	public String getRegdate() {
+		return regdate;
 	}
 
-	public void setREGDATE(String rEGDATE) {
-		REGDATE = rEGDATE;
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
 	}
 
-	public String getTITLE() {
-		return TITLE;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTITLE(String tITLE) {
-		TITLE = tITLE;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getCONTENT() {
-		return CONTENT;
+	public String getContent() {
+		return content;
 	}
 
-	public void setCONTENT(String cONTENT) {
-		CONTENT = cONTENT;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
-	public String getIMSI() {
-		return IMSI;
+	public String getImsi() {
+		return imsi;
 	}
 
-	public void setIMSI(String iMSI) {
-		IMSI = iMSI;
+	public void setImsi(String imsi) {
+		this.imsi = imsi;
 	}
 
-	public String getREALFILE() {
-		return REALFILE;
+	public String getRealfile() {
+		return realfile;
 	}
 
-	public void setREALFILE(String rEALFILE) {
-		REALFILE = rEALFILE;
+	public void setRealfile(String realfile) {
+		this.realfile = realfile;
 	}
 
 	@Override
 	public String toString() {
-		return "MJ_ESTIMATEBoardDto [SEQ=" + SEQ + ", ID=" + ID + ", REGDATE=" + REGDATE + ", TITLE=" + TITLE
-				+ ", CONTENT=" + CONTENT + ", IMSI=" + IMSI + ", REALFILE=" + REALFILE + "]";
+		return "MJ_ESTIMATEBoardDto [seq=" + seq + ", id=" + id + ", regdate=" + regdate + ", title=" + title
+				+ ", content=" + content + ", imsi=" + imsi + ", realfile=" + realfile + "]";
 	}
+
 	
 	
 

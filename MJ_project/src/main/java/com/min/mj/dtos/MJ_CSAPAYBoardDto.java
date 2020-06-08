@@ -3,164 +3,166 @@ package com.min.mj.dtos;
 public class MJ_CSAPAYBoardDto {
 
 	//결제게시판
-	private String ID               ;
-	private int SEQ              ;
-	private String NICKNAME         ;
-	private String AUTH             ;
-	private String REGDATE          ;
-	private String PAYLIST          ;
-	private int AMOUNT           ;
-	private String PRODUCT          ;
-	private int APIKEY           ;
-	private String RETURL           ;
-	private String NOTRETURL        ;
-	private String RETAPPSCHEME     ;
-	private String AUTOEXECUTE      ;
-	private String PAYTIME			;
+	private String id               ;
+	private int seq              ;
+	private String nickname         ;
+	private String auth             ;
+	private String regdate          ;
+	private String paylist          ;
+	private int amount           ;
+	private String product          ;
+	private int apikey           ;
+	private String returl           ;
+	private String notreturl        ;
+	private String retappscheme     ;
+	private String autoexecute      ;
+	private String paytime			;
 	
 	public MJ_CSAPAYBoardDto() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MJ_CSAPAYBoardDto(String iD, int sEQ, String nICKNAME, String aUTH, String rEGDATE, String pAYLIST,
-			int aMOUNT, String pRODUCT, int aPIKEY, String rETURL, String nOTRETURL, String rETAPPSCHEME,
-			String aUTOEXECUTE, String pAYTIME) {
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public int getSeq() {
+		return seq;
+	}
+
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getAuth() {
+		return auth;
+	}
+
+	public void setAuth(String auth) {
+		this.auth = auth;
+	}
+
+	public String getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
+
+	public String getPaylist() {
+		return paylist;
+	}
+
+	public void setPaylist(String paylist) {
+		this.paylist = paylist;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public String getProduct() {
+		return product;
+	}
+
+	public void setProduct(String product) {
+		this.product = product;
+	}
+
+	public int getApikey() {
+		return apikey;
+	}
+
+	public void setApikey(int apikey) {
+		this.apikey = apikey;
+	}
+
+	public String getReturl() {
+		return returl;
+	}
+
+	public void setReturl(String returl) {
+		this.returl = returl;
+	}
+
+	public String getNotreturl() {
+		return notreturl;
+	}
+
+	public void setNotreturl(String notreturl) {
+		this.notreturl = notreturl;
+	}
+
+	public String getRetappscheme() {
+		return retappscheme;
+	}
+
+	public void setRetappscheme(String retappscheme) {
+		this.retappscheme = retappscheme;
+	}
+
+	public String getAutoexecute() {
+		return autoexecute;
+	}
+
+	public void setAutoexecute(String autoexecute) {
+		this.autoexecute = autoexecute;
+	}
+
+	public String getPaytime() {
+		return paytime;
+	}
+
+	public void setPaytime(String paytime) {
+		this.paytime = paytime;
+	}
+
+	public MJ_CSAPAYBoardDto(String id, int seq, String nickname, String auth, String regdate, String paylist,
+			int amount, String product, int apikey, String returl, String notreturl, String retappscheme,
+			String autoexecute, String paytime) {
 		super();
-		ID = iD;
-		SEQ = sEQ;
-		NICKNAME = nICKNAME;
-		AUTH = aUTH;
-		REGDATE = rEGDATE;
-		PAYLIST = pAYLIST;
-		AMOUNT = aMOUNT;
-		PRODUCT = pRODUCT;
-		APIKEY = aPIKEY;
-		RETURL = rETURL;
-		NOTRETURL = nOTRETURL;
-		RETAPPSCHEME = rETAPPSCHEME;
-		AUTOEXECUTE = aUTOEXECUTE;
-		PAYTIME = pAYTIME;
-	}
-
-	public String getID() {
-		return ID;
-	}
-
-	public void setID(String iD) {
-		ID = iD;
-	}
-
-	public int getSEQ() {
-		return SEQ;
-	}
-
-	public void setSEQ(int sEQ) {
-		SEQ = sEQ;
-	}
-
-	public String getNICKNAME() {
-		return NICKNAME;
-	}
-
-	public void setNICKNAME(String nICKNAME) {
-		NICKNAME = nICKNAME;
-	}
-
-	public String getAUTH() {
-		return AUTH;
-	}
-
-	public void setAUTH(String aUTH) {
-		AUTH = aUTH;
-	}
-
-	public String getREGDATE() {
-		return REGDATE;
-	}
-
-	public void setREGDATE(String rEGDATE) {
-		REGDATE = rEGDATE;
-	}
-
-	public String getPAYLIST() {
-		return PAYLIST;
-	}
-
-	public void setPAYLIST(String pAYLIST) {
-		PAYLIST = pAYLIST;
-	}
-
-	public int getAMOUNT() {
-		return AMOUNT;
-	}
-
-	public void setAMOUNT(int aMOUNT) {
-		AMOUNT = aMOUNT;
-	}
-
-	public String getPRODUCT() {
-		return PRODUCT;
-	}
-
-	public void setPRODUCT(String pRODUCT) {
-		PRODUCT = pRODUCT;
-	}
-
-	public int getAPIKEY() {
-		return APIKEY;
-	}
-
-	public void setAPIKEY(int aPIKEY) {
-		APIKEY = aPIKEY;
-	}
-
-	public String getRETURL() {
-		return RETURL;
-	}
-
-	public void setRETURL(String rETURL) {
-		RETURL = rETURL;
-	}
-
-	public String getNOTRETURL() {
-		return NOTRETURL;
-	}
-
-	public void setNOTRETURL(String nOTRETURL) {
-		NOTRETURL = nOTRETURL;
-	}
-
-	public String getRETAPPSCHEME() {
-		return RETAPPSCHEME;
-	}
-
-	public void setRETAPPSCHEME(String rETAPPSCHEME) {
-		RETAPPSCHEME = rETAPPSCHEME;
-	}
-
-	public String getAUTOEXECUTE() {
-		return AUTOEXECUTE;
-	}
-
-	public void setAUTOEXECUTE(String aUTOEXECUTE) {
-		AUTOEXECUTE = aUTOEXECUTE;
-	}
-
-	public String getPAYTIME() {
-		return PAYTIME;
-	}
-
-	public void setPAYTIME(String pAYTIME) {
-		PAYTIME = pAYTIME;
+		this.id = id;
+		this.seq = seq;
+		this.nickname = nickname;
+		this.auth = auth;
+		this.regdate = regdate;
+		this.paylist = paylist;
+		this.amount = amount;
+		this.product = product;
+		this.apikey = apikey;
+		this.returl = returl;
+		this.notreturl = notreturl;
+		this.retappscheme = retappscheme;
+		this.autoexecute = autoexecute;
+		this.paytime = paytime;
 	}
 
 	@Override
 	public String toString() {
-		return "MJ_CSAPAYBoardDto [ID=" + ID + ", SEQ=" + SEQ + ", NICKNAME=" + NICKNAME + ", AUTH=" + AUTH
-				+ ", REGDATE=" + REGDATE + ", PAYLIST=" + PAYLIST + ", AMOUNT=" + AMOUNT + ", PRODUCT=" + PRODUCT
-				+ ", APIKEY=" + APIKEY + ", RETURL=" + RETURL + ", NOTRETURL=" + NOTRETURL + ", RETAPPSCHEME="
-				+ RETAPPSCHEME + ", AUTOEXECUTE=" + AUTOEXECUTE + ", PAYTIME=" + PAYTIME + "]";
+		return "MJ_CSAPAYBoardDto [id=" + id + ", seq=" + seq + ", nickname=" + nickname + ", auth=" + auth
+				+ ", regdate=" + regdate + ", paylist=" + paylist + ", amount=" + amount + ", product=" + product
+				+ ", apikey=" + apikey + ", returl=" + returl + ", notreturl=" + notreturl + ", retappscheme="
+				+ retappscheme + ", autoexecute=" + autoexecute + ", paytime=" + paytime + "]";
 	}
+
+	
 	
 	
 }
