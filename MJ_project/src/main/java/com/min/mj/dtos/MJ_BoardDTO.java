@@ -155,7 +155,4 @@ public class MJ_BoardDTO {
 	}
 	
 	
-	
-	
-	
 }
