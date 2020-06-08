@@ -30,12 +30,6 @@ FROM REGISTER
 WHERE AUTH='S';
 </select>
 
-
-<!--업체 탈퇴-->
-<delete id="s_getout" parameterType="java.lang.String">
-DELETE FROM REGISTER WHERE ID = #{id};
-</delete>
-
 <!-- 업체 회원탈퇴 -->
 <delete id="s_getout" parameterType="java.lang.String" >
 DELETE FROM REGISTER WHERE ID = #{id};
@@ -53,14 +47,6 @@ WHERE AUTH='C';
 DELETE FROM REGISTER WHERE ID = #{id};
 </delete>
 
-<insert id="c_insertBoard" parameterType="MemberDto">
-INSERT INTO C_INQUIRY
-(SEQ, REALFILE, ID, NICNAME, REGDATE, TITLE, CONTENT,AUTH, IMSI)
-VALUES(C_INQUIRY_SEQ.NEXTVAL,#{realfile},#{ID},#{NICNAME},SYSDATE,#{title},#{content},'C','C');
-</insert>
 
-<select id="c_allSelectBoard" parameterType="MemberDto">
-SELECT * FROM C_INQUIRY
-</select>
 
 </mapper>
