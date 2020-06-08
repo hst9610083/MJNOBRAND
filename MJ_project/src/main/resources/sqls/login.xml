@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.min.login">
+
+<!-- 로그인 -->
+<select id="userlogin" parameterType="java.lang.String" resultType="MemberDto">
+	 SELECT PW, AUTH 
+        FROM SECURITY_LOGIN
+                WHERE ID = #{id}
+</select>
+
+<!-- 업체 회원가입-->
+<insert id="s_register" parameterType="MemberDto">
+INSERT INTO REGISTER
+(SEQ, ID, PW,  NAME,  ADDRESS, NICNAME, SELLERNUM,SELPICK, EMAIL,AUTH )
+ VALUES(S_REGISTER_SEQ.NEXTVAL,#{id},#{pw},#{address},#{nicname},#{sellernum},#{selpick},#{email},'S');
+</insert>
+
+<!-- 소비자 회원가입 -->
+<insert id="c_register" parameterType="MemberDto">
+INSERT INTO REGISTER
+(SEQ, ID, PW,  NAME,  ADDRESS, NICNAME, BIRTH,PHONNUM,AUTH )
+ VALUES(REGISTER_SEQ.NEXTVAL,#{id},#{pw},#{name},#{address},#{nicname},#{birth},#{phonnum},'C');
+</insert>
+
+<select id="s_info" parameterType="java.lang.String" >
+SELECT  ID, SEQ,   NAME,  ADDRESS, NICNAME,  SELLERNUM,SELPICK,AUTH
+FROM REGISTER
+WHERE AUTH='S';
+</select>
+
+<delete id="s_getout" parameterType="java.lang.String">
+DELETE FROM REGISTER WHERE ID = #{id};
+</delete>
+
+<select id="c_info" parameterType="java.lang.String">
+SELECT ID,  NAME,  ADDRESS, NICNAME, BIRTH,PHONNUM,AUTH
+FROM REGISTER 
+WHERE AUTH='C';
+</select>
+
+</mapper>
