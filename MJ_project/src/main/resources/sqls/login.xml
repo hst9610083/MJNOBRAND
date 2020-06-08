@@ -23,16 +23,19 @@ INSERT INTO REGISTER
  VALUES(REGISTER_SEQ.NEXTVAL,#{id},#{pw},#{name},#{address},#{nicname},#{birth},#{phonnum},'C');
 </insert>
 
+<!-- 업체 정보 조회-->
 <select id="s_info" parameterType="java.lang.String" >
 SELECT  ID, SEQ,   NAME,  ADDRESS, NICNAME,  SELLERNUM,SELPICK,AUTH
 FROM REGISTER
 WHERE AUTH='S';
 </select>
 
+<!--업체 탈퇴-->
 <delete id="s_getout" parameterType="java.lang.String">
 DELETE FROM REGISTER WHERE ID = #{id};
 </delete>
 
+<!-- 소비자 정보 조회-->
 <select id="c_info" parameterType="java.lang.String">
 SELECT ID,  NAME,  ADDRESS, NICNAME, BIRTH,PHONNUM,AUTH
 FROM REGISTER 
