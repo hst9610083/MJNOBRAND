@@ -21,7 +21,6 @@ public MJ_INQUIRYBoardDto() {
 
 public MJ_INQUIRYBoardDto(int seq, String id, String nicname, String regdate, String title, String content, String auth,
 		String realfile, String imsi) {
-	super();
 	this.seq = seq;
 	this.id = id;
 	this.nicname = nicname;
