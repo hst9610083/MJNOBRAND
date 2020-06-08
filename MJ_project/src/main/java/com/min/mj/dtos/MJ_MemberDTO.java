@@ -52,7 +52,6 @@ public class MJ_MemberDTO implements Serializable{
 	}
 
 
-
 	// 소비자 회원가입
 	public MJ_MemberDTO(String id, String pw, String name, String address, String nicname, String auth, String birth,
 			String phonnum) {
