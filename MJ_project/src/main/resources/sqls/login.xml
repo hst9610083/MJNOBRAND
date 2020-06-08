@@ -23,20 +23,38 @@ INSERT INTO REGISTER
  VALUES(REGISTER_SEQ.NEXTVAL,#{id},#{pw},#{name},#{address},#{nicname},#{birth},#{phonnum},'C');
 </insert>
 
-<select id="s_info" parameterType="java.lang.String" >
+<!-- 업체 정보 -->
+<select id="s_info" parameterType="MemberDto" resultType="MemberDto" >
 SELECT  ID, SEQ,   NAME,  ADDRESS, NICNAME,  SELLERNUM,SELPICK,AUTH
 FROM REGISTER
 WHERE AUTH='S';
 </select>
 
-<delete id="s_getout" parameterType="java.lang.String">
+<!-- 업체 회원탈퇴 -->
+<delete id="s_getout" parameterType="java.lang.String" >
 DELETE FROM REGISTER WHERE ID = #{id};
 </delete>
 
-<select id="c_info" parameterType="java.lang.String">
+<!-- 소비자 정보 -->
+<select id="c_info" parameterType="MemberDto" resultType="MemberDto" >
 SELECT ID,  NAME,  ADDRESS, NICNAME, BIRTH,PHONNUM,AUTH
 FROM REGISTER 
 WHERE AUTH='C';
+</select>
+
+<!-- 소비자 회원탈퇴 -->
+<delete id="c_getout" parameterType="java.lang.String">
+DELETE FROM REGISTER WHERE ID = #{id};
+</delete>
+
+<insert id="c_insertBoard" parameterType="MemberDto">
+INSERT INTO C_INQUIRY
+(SEQ, REALFILE, ID, NICNAME, REGDATE, TITLE, CONTENT,AUTH, IMSI)
+VALUES(C_INQUIRY_SEQ.NEXTVAL,#{realfile},#{ID},#{NICNAME},SYSDATE,#{title},#{content},'C','C');
+</insert>
+
+<select id="c_allSelectBoard" parameterType="MemberDto">
+SELECT * FROM C_INQUIRY
 </select>
 
 </mapper>
