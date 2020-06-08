@@ -3,7 +3,7 @@ package com.min.mj.dtos;
 public class MJ_BoardDTO {
 
 	
-	
+	//게시판
 	private String id           ;
 	private int seq             ;
 	private String nicname      ;
