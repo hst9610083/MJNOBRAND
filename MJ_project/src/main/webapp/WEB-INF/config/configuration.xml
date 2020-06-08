@@ -16,6 +16,7 @@
 
 	<mappers>
 		<mapper resource="/sqls/list.xml" />
+		<mapper resource="/sqls/Statement_pplBoard.xml"/>
 	</mappers>
 
 </configuration>
