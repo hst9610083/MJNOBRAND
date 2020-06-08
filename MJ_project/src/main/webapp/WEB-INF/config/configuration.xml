@@ -5,12 +5,17 @@
 		<typeAlias type="com.min.mj.dtos.MJ_BoardDTO"
 			alias="BDto" />
 		<typeAlias type="com.min.mj.dtos.PayListDto"
-			alias="PDto" />			
+			alias="PDto" />
+		<typeAlias type="com.min.mj.dtos.EstiDto"
+			alias="EDto" />
+			
+						
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="/sqls/Statement_pplBoard.xml"/>
 		<mapper resource="/sqls/Pay.xml"/>		
+		<mapper resource="/sqls/Esti.xml"/>		
 	</mappers>
 
 </configuration>
