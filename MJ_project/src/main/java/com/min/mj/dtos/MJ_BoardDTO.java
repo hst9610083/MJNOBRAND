@@ -3,7 +3,7 @@ package com.min.mj.dtos;
 public class MJ_BoardDTO {
 
 	
-	//게시판
+	//홍보게시판
 	private String id           ;
 	private int seq             ;
 	private String nicname      ;
@@ -18,7 +18,7 @@ public class MJ_BoardDTO {
 	private String realfile     ;
 	
 	public MJ_BoardDTO() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public MJ_BoardDTO(String id, int seq, String nicname, String title, String content, int readcount, String regdate,
