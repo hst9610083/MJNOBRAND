@@ -67,19 +67,7 @@ public class MJ_MemberDTO implements Serializable{
 	}
 
 
-	// 소비자 문의 게시판 (글입력)
-	public MJ_MemberDTO(int seq, String id, String realfile,String nicname, String auth, int regdate, String title, String content,
-			String imsi) {
-		this.seq = seq;
-		this.id = id;
-		this.realfile=realfile;
-		this.nicname = nicname;
-		this.auth = auth;
-		this.regdate = regdate;
-		this.title = title;
-		this.content = content;
-		this.imsi = imsi;
-	}
+
 	
 	
 	
