@@ -4,19 +4,13 @@
 	<typeAliases>
 		<typeAlias type="com.min.mj.dtos.MJ_BoardDTO"
 			alias="BDto" />
-		<typeAlias type="com.min.mj.dtos.MJ_CSAPAYBoardDto"
-			alias="CDto" />
-		<typeAlias type="com.min.mj.dtos.MJ_ESTIMATEBoardDto"
-			alias="EDto" />
-		<typeAlias type="com.min.mj.dtos.MJ_INQUIRYBoardDto"
-			alias="IDto" />
-		<typeAlias type="com.min.mj.dtos.MJ_MemberDTO"
-			alias="MDto" />			
+		<typeAlias type="com.min.mj.dtos.PayListDto"
+			alias="PDto" />			
 	</typeAliases>
 
 	<mappers>
-		<mapper resource="/sqls/list.xml" />
 		<mapper resource="/sqls/Statement_pplBoard.xml"/>
+		<mapper resource="/sqls/Pay.xml"/>		
 	</mappers>
 
 </configuration>
