@@ -24,7 +24,7 @@
 	<!-- 조회수 -->
 	
 	<!-- 수정 -->
-	<update id="pplUpdateBoard" parameterType="BDto">
+	<update id="pplModifyBoard" parameterType="BDto">
 	UPDATE SELLER_PPL_BOARD SER READCOUNT = READCOUNT+1
 	WHERE SEQ = #{seq}
 	</update>
@@ -61,4 +61,8 @@
                 WHERE RNUM BETWEEN #{start} AND #{last}
 	</select>
 	
+	<!-- 홍보게시판 전체글 갯수 -->
+	<select id="BoardListTotal" resultType="java.lang.Integer">
+	SELECT COUNT(*) FROM SELLER_PPL_BOARD WHERE DELFALG='N'
+	</select>
 </mapper>
