@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.min.Esti">
+ 
+ <!-- 견적서 리스트 전체보기(소비자) -->
+ <select id="Cesti_All" parameterType="java.util.Map" resultType="EDto">
+ SELECT SEQ ,ID ,TITLE,REGDATE 
+	FROM ESTIMATE_MAKE WHERE AUTH=#{AUTH}
+ </select>
+ 
+ <!-- 견적서 상세보기(소비자) -->
+ <select id="Cesti_Detail" parameterType="java.util.Map" resultType="EDto">
+ SELECT A.SEQ ,A.ID,TITLE,CONTENT ,A.REALFILE ,REGDATE 
+	FROM ESTIMATE_MAKE A LEFT JOIN "FILE" B
+ON (A.REALFILE=B.REALFILE)
+ </select>
+ 
+ <!-- 견적서 삭제하기(소비자) -->
+ <delete id="Cesti_Delete" parameterType="java.lang.String">
+ DELETE FROM ESTIMATE_MAKE WHERE SEQ =#{SEQ}	
+ </delete>
+ 
+ <!-- 견적서 리스트 전체보기(업체) -->
+ <select id="Sesti_All" parameterType="java.util.Map" resultType="EDto">
+ SELECT SEQ ,ID ,TITLE,REGDATE 
+ FROM ESTIMATE_MAKE WHERE AUTH=#{AUTH}
+ </select>
+ 
+ <!-- 견적서 상세보기(업체) -->
+ <select id="Sesti_Detail" parameterType="java.util.Map" resultType="EDto">
+ SELECT A.SEQ ,A.ID ,TITLE ,CONTENT,A.REALFILE ,REGDATE 
+	FROM ESTIMATE_MAKE A LEFT JOIN "FILE" B
+	ON A.REALFILE =B.REALFILE 		
+ </select>
+ 
+</mapper>
