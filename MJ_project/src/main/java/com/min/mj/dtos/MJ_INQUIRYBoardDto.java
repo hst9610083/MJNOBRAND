@@ -3,112 +3,135 @@ package com.min.mj.dtos;
 public class MJ_INQUIRYBoardDto {
 
 	//문의 게시판
-private int SEQ		;
-private String ID       ;
-private String NICNAME  ;
-private String REGDATE  ;
-private String TITLE    ;
-private String CONTENT  ;
-private String AUTH     ;
-private String REALFILE ;
-private String IMSI     ;
+private int seq		;
+private String id       ;
+private String nicname  ;
+private String regdate  ;
+private String title    ;
+private String content  ;
+private String auth     ;
+private String realfile ;
+private String imsi     ;
+
 	
 public MJ_INQUIRYBoardDto() {
 	// TODO Auto-generated constructor stub
 }
 
-public MJ_INQUIRYBoardDto(int sEQ, String iD, String nICNAME, String rEGDATE, String tITLE, String cONTENT, String aUTH,
-		String rEALFILE, String iMSI) {
+
+public MJ_INQUIRYBoardDto(int seq, String id, String nicname, String regdate, String title, String content, String auth,
+		String realfile, String imsi) {
 	super();
-	SEQ = sEQ;
-	ID = iD;
-	NICNAME = nICNAME;
-	REGDATE = rEGDATE;
-	TITLE = tITLE;
-	CONTENT = cONTENT;
-	AUTH = aUTH;
-	REALFILE = rEALFILE;
-	IMSI = iMSI;
+	this.seq = seq;
+	this.id = id;
+	this.nicname = nicname;
+	this.regdate = regdate;
+	this.title = title;
+	this.content = content;
+	this.auth = auth;
+	this.realfile = realfile;
+	this.imsi = imsi;
 }
 
-public int getSEQ() {
-	return SEQ;
+
+public int getSeq() {
+	return seq;
 }
 
-public void setSEQ(int sEQ) {
-	SEQ = sEQ;
+
+public void setSeq(int seq) {
+	this.seq = seq;
 }
 
-public String getID() {
-	return ID;
+
+public String getId() {
+	return id;
 }
 
-public void setID(String iD) {
-	ID = iD;
+
+public void setId(String id) {
+	this.id = id;
 }
 
-public String getNICNAME() {
-	return NICNAME;
+
+public String getNicname() {
+	return nicname;
 }
 
-public void setNICNAME(String nICNAME) {
-	NICNAME = nICNAME;
+
+public void setNicname(String nicname) {
+	this.nicname = nicname;
 }
 
-public String getREGDATE() {
-	return REGDATE;
+
+public String getRegdate() {
+	return regdate;
 }
 
-public void setREGDATE(String rEGDATE) {
-	REGDATE = rEGDATE;
+
+public void setRegdate(String regdate) {
+	this.regdate = regdate;
 }
 
-public String getTITLE() {
-	return TITLE;
+
+public String getTitle() {
+	return title;
 }
 
-public void setTITLE(String tITLE) {
-	TITLE = tITLE;
+
+public void setTitle(String title) {
+	this.title = title;
 }
 
-public String getCONTENT() {
-	return CONTENT;
+
+public String getContent() {
+	return content;
 }
 
-public void setCONTENT(String cONTENT) {
-	CONTENT = cONTENT;
+
+public void setContent(String content) {
+	this.content = content;
 }
 
-public String getAUTH() {
-	return AUTH;
+
+public String getAuth() {
+	return auth;
 }
 
-public void setAUTH(String aUTH) {
-	AUTH = aUTH;
+
+public void setAuth(String auth) {
+	this.auth = auth;
 }
 
-public String getREALFILE() {
-	return REALFILE;
+
+public String getRealfile() {
+	return realfile;
 }
 
-public void setREALFILE(String rEALFILE) {
-	REALFILE = rEALFILE;
+
+public void setRealfile(String realfile) {
+	this.realfile = realfile;
 }
 
-public String getIMSI() {
-	return IMSI;
+
+public String getImsi() {
+	return imsi;
 }
 
-public void setIMSI(String iMSI) {
-	IMSI = iMSI;
+
+public void setImsi(String imsi) {
+	this.imsi = imsi;
 }
+
 
 @Override
 public String toString() {
-	return "MJ_INQUIRYBoardDto [SEQ=" + SEQ + ", ID=" + ID + ", NICNAME=" + NICNAME + ", REGDATE=" + REGDATE
-			+ ", TITLE=" + TITLE + ", CONTENT=" + CONTENT + ", AUTH=" + AUTH + ", REALFILE=" + REALFILE + ", IMSI="
-			+ IMSI + "]";
+	return "MJ_INQUIRYBoardDto [seq=" + seq + ", id=" + id + ", nicname=" + nicname + ", regdate=" + regdate
+			+ ", title=" + title + ", content=" + content + ", auth=" + auth + ", realfile=" + realfile + ", imsi="
+			+ imsi + "]";
 }
+
+
 
 
 	
