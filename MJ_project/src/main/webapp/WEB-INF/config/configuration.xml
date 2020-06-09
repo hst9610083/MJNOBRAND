@@ -10,10 +10,6 @@
 			alias="EDto" />
 		<typeAlias type="com.min.mj.dtos.ChatDto"
 			alias="CDto" />
-			
-			
-			
-			
 		<typeAlias type="com.min.mj.dtos.RowNumDto" alias="RowNum"/>
 			
 						
