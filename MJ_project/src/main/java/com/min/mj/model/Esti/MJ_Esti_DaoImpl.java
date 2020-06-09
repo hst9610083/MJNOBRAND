@@ -20,33 +20,34 @@ public class MJ_Esti_DaoImpl implements IMj_Esti_Dao {
 	private final String NS="com.min.Esti.";
 	
 	@Override
-	public List<EstiDto> Cesti_All() {
+	public List<EstiDto> Cesti_All(String seq) {
 		log.info("Cesti_All 성공");
-		return null;
+		return session.selectList(NS+"Cesti_All",seq);
 	}
 
 	@Override
-	public EstiDto Cesti_Detail(String seq) {
+	public List<EstiDto> Cesti_Detail(String seq) {
 		log.info("Cesti_Detail 성공");
-		return null;
+		return session.selectList(NS+"Cesti_Detail",seq);
 	}
 
 	@Override
 	public boolean Cesti_Delete(String seq) {
 		log.info("Cesti_Delete 성공");
-		return false;
+		int n = session.delete(NS+"Cesti_Delete",seq);
+		return (n>0)?true:false;
 	}
 
 	@Override
-	public List<EstiDto> Sesti_All() {
+	public List<EstiDto> Sesti_All(String seq) {
 		log.info("Sesti_All 성공");
-		return null;
+		return session.selectList(NS+"Sesti_All",seq);
 	}
 
 	@Override
-	public EstiDto Sesti_Detail(String seq) {
+	public List<EstiDto> Sesti_Detail(String seq) {
 		log.info("Sesti_Detail 성공");
-		return null;
+		return session.selectList(NS+"Sesti_Detail",seq);
 	}
 
 }
