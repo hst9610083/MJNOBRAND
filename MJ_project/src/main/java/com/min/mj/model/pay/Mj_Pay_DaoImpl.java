@@ -1,4 +1,4 @@
-package com.min.mj.model.Pay;
+package com.min.mj.model.pay;
 
 import java.util.List;
 

@@ -1,13 +1,10 @@
-package com.min.mj.model.Pay;
+package com.min.mj.model.pay;
 
 import java.util.List;
 
 import com.min.mj.dtos.PayListDto;
 
-public interface IMj_Pay_Service {
-
+public interface IMj_Pay_Dao {
 	//결제내역보기
 	public List<PayListDto> PayList();
-	
-	
 }
