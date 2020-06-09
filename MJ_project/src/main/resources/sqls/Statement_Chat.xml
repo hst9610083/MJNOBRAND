@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.min.chat">
+
+<select id="selectAllContent" resultType="CDto">
+SELECT CHATSEQ, ID, CHATCONTENT, CHATTIME
+FROM CHAT WHERE AUTH=#{auth}
+ORDER BY CHATTIME 
+</select>
+
+<select id="selectAllConnecter" parameterType="java.lang.String" resultType="CDto">
+SELECT CHATSEQ, ID, CHATCONTENT, CHATTIME
+FROM CHAT
+WHERE ID=#{id} AND AUTH=#{auth}
+ORDER BY CHATTIME 
+</select>
+
+<insert id="chatWrite" parameterType="CDto">
+INSERT INTO CHAT
+(CHATSEQ, ID, CHATCONTENT, CHATTIME)
+VALUES(CHAT_CHATSEQ.NEXTVAL, #{id},#{chatcontent}, SYSDATE)
+</insert>
+<insert id="newChat" parameterType="CDto">
+INSERT INTO CHAT
+(CHATSEQ,ID, CHATCONTENT, CHATTIME)
+VALUES(CHAT_CHATSEQ.NEXTVAL,#{id}, '환영합니다. 채팅방을 개설합니다~', SYSDATE)
+</insert>
+</mapper>

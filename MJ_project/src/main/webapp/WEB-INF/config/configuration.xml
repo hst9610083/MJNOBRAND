@@ -8,6 +8,8 @@
 			alias="PDto" />
 		<typeAlias type="com.min.mj.dtos.EstiDto"
 			alias="EDto" />
+		<typeAlias type="com.min.mj.dtos.ChatDto"
+			alias="CDto" />
 			
 			
 			
@@ -21,6 +23,7 @@
 		<mapper resource="/sqls/Statement_pplBoard.xml"/>
 		<mapper resource="/sqls/Pay.xml"/>		
 		<mapper resource="/sqls/Esti.xml"/>		
+		<mapper resource="/sqls/Statement_Chat.xml" />
 	</mappers>
 
 </configuration>

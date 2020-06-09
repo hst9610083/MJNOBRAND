@@ -5,7 +5,7 @@
 <!-- 결제 내역 조회 -->
 <select id="PayList" parameterMap="java.lang.String" resultType="PDto">
 SELECT ID,SEQ ,NICKNAME ,REGDATE ,PAYLIST ,AMOUNT ,PRODUCT
-	FROM C_S_PAY WHERE ID =#{ID}
+	FROM C_S_PAY WHERE ID =#{id}
 </select>
 
  </mapper>
