@@ -10,12 +10,14 @@ private String title   ;
 private String content ;
 private String imsi    ;
 private String realfile;
+private String auth;
 
 public EstiDto() {
 	// TODO Auto-generated constructor stub
 }
 
-public EstiDto(int seq, String id, String regdate, String title, String content, String imsi, String realfile) {
+public EstiDto(int seq, String id, String regdate, String title, String content, String imsi, String realfile,
+		String auth) {
 	super();
 	this.seq = seq;
 	this.id = id;
@@ -24,6 +26,7 @@ public EstiDto(int seq, String id, String regdate, String title, String content,
 	this.content = content;
 	this.imsi = imsi;
 	this.realfile = realfile;
+	this.auth = auth;
 }
 
 public int getSeq() {
@@ -82,10 +85,18 @@ public void setRealfile(String realfile) {
 	this.realfile = realfile;
 }
 
+public String getAuth() {
+	return auth;
+}
+
+public void setAuth(String auth) {
+	this.auth = auth;
+}
+
 @Override
 public String toString() {
 	return "EstiDto [seq=" + seq + ", id=" + id + ", regdate=" + regdate + ", title=" + title + ", content=" + content
-			+ ", imsi=" + imsi + ", realfile=" + realfile + "]";
+			+ ", imsi=" + imsi + ", realfile=" + realfile + ", auth=" + auth + "]";
 }
 
 

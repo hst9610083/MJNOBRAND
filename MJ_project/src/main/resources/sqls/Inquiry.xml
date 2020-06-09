@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.min.inquiry">
+ 
+<!--  문의글 임시보관함 리스트 전체보기-->  
+<select id="Mimsi_All" parameterType="java.lang.String" resultType="IDto">
+SELECT SEQ ,ID ,NICNAME ,TITLE ,REGDATE
+ FROM C_INQUIRY WHERE IMSI =#{imsi}
+</select> 
+
+<!--  문의글 임시보관함 상세보기-->
+<select id="Mimsi_Detail" parameterType="java.lang.String" resultType="IDto">
+SELECT SEQ,ID,NICNAME ,TITLE,CONTENT ,REALFILE 
+ FROM C_INQUIRY
+</select>
+
+<!--문의글 임시 보관함 수정하기-->
+<update id="Mimsi_modify" parameterType="java.lang.String"  >
+UPDATE C_INQUIRY SET TITLE=#{title},CONTENT=#{content},REALFILE=#{realfile} WHERE SEQ=#{seq} AND IMSI=#{imsi}
+
+</update>
+
+<!--문의글 임시 보관함 삭제하기-->
+<delete id="MiImsi_Delete" parameterType="java.lang.String" >
+DELETE FROM C_INQUIRY WHERE SEQ=#{seq} AND IMSI=#{imsi}
+
+</delete>
+
+
+<!--보관함 리스트 전체보기     -->
+<select id="Mstore_All" parameterType="java.lang.String" resultType="IDto">
+SELECT SEQ ,ID ,NICNAME ,TITLE ,REGDATE 
+ FROM C_INQUIRY WHERE IMSI =#{imsi}
+</select>
+
+
+<!--보관함 상세보기            -->
+<select id="Mstore_Detail" parameterType="java.lang.String" resultType="IDto">
+SELECT SEQ,ID,NICNAME ,TITLE,CONTENT ,REALFILE 
+ FROM C_INQUIRY 
+</select>
+
+<!--보관함 수정하기            -->
+<update id="Mstore_modify" parameterType="java.lang.String">
+UPDATE C_INQUIRY SET TITLE=#{title},CONTENT=#{content},REALFILE=#{realfile} WHERE SEQ=#{seq} AND IMSI=#{imsi}
+</update>
+
+
+<!--보관함 삭제하기  -->
+<delete id="Mstore_Delete" parameterType="java.lang.String">  
+  DELETE FROM C_INQUIRY WHERE SEQ='SEQ' AND IMSI=#{imsi} 
+</delete>
+  
+</mapper>

@@ -26,14 +26,14 @@ public class ChatController {
 	@RequestMapping(value="/chatRoom_A.do", method = RequestMethod.GET)
 	public String chatRoom_A() {
 		
-		System.out.println("※※※※※※※※※※※※※※값은 들어옶니다. 전달과정에서 오류※※※※※※※※※※※※");
+		System.out.println("※※※※※※※※※※※※※※값은 들어옵니다. 전달과정에서 오류※※※※※※※※※※※※");
 		return "ChatRoom_A";
 	}
 	// /chatRoom_A.do
-	@RequestMapping(value="/broadsocket.do", method = RequestMethod.GET)
+	@RequestMapping(value="/Broadsocket.do", method = RequestMethod.GET)
 	public String broadsocket() {
 		
-		System.out.println("※※※※※※※※※※※※※※값은 들어옶니다. 전달과정에서 오류※※※※※※※※※※※※");
+		System.out.println("※※※※※※※※※※※※※※값은 들어옵니다. 전달과정에서 오류※※※※※※※※※※※※");
 		return "Broadsocket";
 	}
 	

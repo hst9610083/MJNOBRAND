@@ -20,9 +20,9 @@ public class MJ_Esti_DaoImpl implements IMj_Esti_Dao {
 	private final String NS="com.min.Esti.";
 	
 	@Override
-	public List<EstiDto> Cesti_All(String seq) {
+	public List<EstiDto> Cesti_All() {
 		log.info("Cesti_All 성공");
-		return session.selectList(NS+"Cesti_All",seq);
+		return session.selectList(NS+"Cesti_All");
 	}
 
 	@Override
@@ -39,9 +39,9 @@ public class MJ_Esti_DaoImpl implements IMj_Esti_Dao {
 	}
 
 	@Override
-	public List<EstiDto> Sesti_All(String seq) {
+	public List<EstiDto> Sesti_All() {
 		log.info("Sesti_All 성공");
-		return session.selectList(NS+"Sesti_All",seq);
+		return session.selectList(NS+"Sesti_All");
 	}
 
 	@Override

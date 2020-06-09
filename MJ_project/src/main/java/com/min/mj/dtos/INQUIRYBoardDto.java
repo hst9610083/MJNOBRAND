@@ -1,6 +1,6 @@
 package com.min.mj.dtos;
 
-public class MJ_INQUIRYBoardDto {
+public class INQUIRYBoardDto {
 
 	//문의 게시판
 private int seq		;
@@ -14,12 +14,12 @@ private String realfile ;
 private String imsi     ;
 
 	
-public MJ_INQUIRYBoardDto() {
+public INQUIRYBoardDto() {
 	// TODO Auto-generated constructor stub
 }
 
 
-public MJ_INQUIRYBoardDto(int seq, String id, String nicname, String regdate, String title, String content, String auth,
+public INQUIRYBoardDto(int seq, String id, String nicname, String regdate, String title, String content, String auth,
 		String realfile, String imsi) {
 	this.seq = seq;
 	this.id = id;

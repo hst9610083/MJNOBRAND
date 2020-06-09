@@ -210,15 +210,4 @@ public class MJ_MemberDTO implements Serializable{
 	}
 	
 	
-
-
-
-	
-	
-	
-	
-	
-
-	
-
 }
