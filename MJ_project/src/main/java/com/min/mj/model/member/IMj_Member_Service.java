@@ -54,6 +54,12 @@ public interface IMj_Member_Service {
 	 */
 	public boolean c_getout(String id);
 
+	
+	//회원 정보 수정
+	public boolean C_modify(String id);
+	
+	//업체 정보 수정
+	public boolean S_modify(String id);
 
 }
 

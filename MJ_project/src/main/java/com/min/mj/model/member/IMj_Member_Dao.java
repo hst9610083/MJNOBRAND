@@ -52,4 +52,12 @@ public interface IMj_Member_Dao {
 	 * @return 소비자 탈퇴 (관리자 모드)
 	 */
 	public boolean c_getout(String id);
+	
+	//회원 정보 수정
+	public boolean C_modify(String id);
+	
+	//업체 정보 수정
+	public boolean S_modify(String id);
+	
+	
 }

@@ -51,4 +51,16 @@ public class Mj_Member_ServiceImpl implements IMj_Member_Service {
 		return dao.c_getout(id);
 	}
 
+	@Override
+	public boolean C_modify(String id) {
+	
+		return dao.C_modify(id);
+	}
+
+	@Override
+	public boolean S_modify(String id) {
+		
+		return dao.S_modify(id);
+	}
+
 }
