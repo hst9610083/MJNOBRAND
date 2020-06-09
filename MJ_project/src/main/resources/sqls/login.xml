@@ -36,10 +36,6 @@ WHERE AUTH='S';
 DELETE FROM REGISTER WHERE ID = #{id};
 </delete>
 
-<!-- 업체 회원탈퇴 -->
-<delete id="s_getout" parameterType="java.lang.String" >
-DELETE FROM REGISTER WHERE ID = #{id};
-</delete>
 
 <!-- 소비자 정보 조회-->
 <select id="c_info" parameterType="MemberDto" resultType="MemberDto" >
