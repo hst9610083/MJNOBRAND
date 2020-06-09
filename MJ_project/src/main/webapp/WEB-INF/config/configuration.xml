@@ -9,8 +9,10 @@
 			alias="EDto" />
 		<typeAlias type="com.min.mj.dtos.ChatDto"
 			alias="CDto" />
-		<typeAlias type="com.min.mj.dtos.RowNumDto" alias="RowNum"/>
-			
+		<typeAlias type="com.min.mj.dtos.RowNumDto" 
+		    alias="RowNum"/>
+		<typeAlias type="com.min.mj.dtos.INQUIRYBoardDto" 
+		    alias="IDto"/>	
 						
 	</typeAliases>
 
@@ -19,6 +21,7 @@
 		<mapper resource="/sqls/Pay.xml"/>		
 		<mapper resource="/sqls/Esti.xml"/>		
 		<mapper resource="/sqls/Statement_Chat.xml" />
+		<mapper resource="/sqls/Inquiry.xml"/>
 	</mappers>
 
 </configuration>
