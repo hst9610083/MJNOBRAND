@@ -68,4 +68,16 @@ public class Mj_Member_DaoImpl implements IMj_Member_Dao {
 		return (n>0)?true:false;
 	}
 
+	@Override
+	public boolean C_modify(String id) {
+		int n = session.update(NS+"C_modify", id);
+		return (n>0)?true:false;
+	}
+
+	@Override
+	public boolean S_modify(String id) {
+		int n =session.update(NS+"S_modify", id);
+		return (n>0)?true:false;
+	}
+
 }

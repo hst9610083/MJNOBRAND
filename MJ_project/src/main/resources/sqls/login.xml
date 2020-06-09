@@ -63,4 +63,18 @@ VALUES(C_INQUIRY_SEQ.NEXTVAL,#{realfile},#{ID},#{NICNAME},SYSDATE,#{title},#{con
 SELECT * FROM C_INQUIRY
 </select>
 
+<!-- 소비자 회원정보 수정 -->
+<update id="C_modify" parameterType="MemberDto">
+UPDATE REGISTER SET PW=#{pw},ADDRESS=#{address},PHONNUM=#{phonnum},NAME=#{name} WHERE ID=#{id}
+
+</update>
+
+
+
+<!-- 업체 회원정보 수정 -->
+<update id="S_modify" parameterType="MemberDto">
+UPDATE S_REGISTER SET PW=#{pw},ADDRESS=#{address} WHERE ID=#{id}
+</update>
+
+
 </mapper>
