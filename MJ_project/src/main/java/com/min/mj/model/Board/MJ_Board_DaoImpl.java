@@ -24,7 +24,7 @@ public class MJ_Board_DaoImpl implements IMj_Board_Dao {
 	@Override
 	public List<MJ_BoardDTO> pplSelectBoard() {
 		log.info("홍보게시판 전체 리스트 : pplSelectBoard");
-		return sqlSession.selectList(NS+ "pplSelectBoard");
+		return sqlSession.selectList(NS+"pplSelectBoard");
 	}
 
 	@Override
@@ -72,7 +72,7 @@ public class MJ_Board_DaoImpl implements IMj_Board_Dao {
 	@Override
 	public List<MJ_BoardDTO> BoardListRow(RowNumDto dto) {
 		log.info("홍보게시팡 페이징처리 : pplPaging");
-		return sqlSession.selectList(NS+"pplPaging",dto);
+		return sqlSession.selectList(NS+"BoardListRow",dto);
 	}
 
 	@Override
