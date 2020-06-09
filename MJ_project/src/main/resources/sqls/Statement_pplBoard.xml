@@ -22,7 +22,10 @@
 	</select>
 	
 	<!-- 조회수 -->
-	
+	<update id="pplReadcountBoard" parameterType="java.lang.String">
+	UPDATE SELLER_PPL_BOARD SER READCOUNT = READCOUNT+1
+	WHERE SEQ = #{seq}
+	</update>
 	<!-- 수정 -->
 	<update id="pplModifyBoard" parameterType="BDto">
 	UPDATE SELLER_PPL_BOARD SET TITLE = #{title}, CONTENT=#{content}, REGDATE = SYSDATE

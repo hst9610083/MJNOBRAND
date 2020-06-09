@@ -23,12 +23,12 @@ public class P_BoardController {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	private IMj_Board_Service service;
+	IMj_Board_Service service;
 	
 	
 	
 	// 홍보게시판 전체글 리스트
-	@RequestMapping(value="/pBoardList.do", method = RequestMethod.GET)
+	@RequestMapping(value="pBoardList.do", method = RequestMethod.GET)
 	public String pBoardList(Model model) {
 		log.info("Welcome /BoardList.do : \t {}", new Date());
 		

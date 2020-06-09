@@ -41,7 +41,7 @@ public class MJ_Board_ServiceImpl implements IMj_Board_Service {
 	@Override
 	public boolean pplReadcountBoard(String seq) {
 		
-		return false;
+		return dao.pplReadcountBoard(seq);
 	}
 
 	@Override

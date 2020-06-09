@@ -2,8 +2,11 @@ package com.min.mj.model.member;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.min.mj.dtos.MJ_MemberDTO;
 
+@Service
 public class Mj_Member_ServiceImpl implements IMj_Member_Service {
 
 	@Override

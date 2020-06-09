@@ -44,7 +44,7 @@ public class MJ_Board_DaoImpl implements IMj_Board_Dao {
 	@Override
 	public boolean pplReadcountBoard(String seq) {
 		log.info("홍보게시판 조회수 : pplReadcountBoard");
-		int n = sqlSession.update(NS+"");
+		int n = sqlSession.update(NS+"pplReadcountBoard",seq);
 		return false;
 	}
 
