@@ -9,6 +9,11 @@
 		<typeAlias type="com.min.mj.dtos.EstiDto"
 			alias="EDto" />
 			
+			
+			
+			
+		<typeAlias type="com.min.mj.dtos.RowNumDto" alias="RowNum"/>
+			
 						
 	</typeAliases>
 

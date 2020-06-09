@@ -22,11 +22,6 @@ public class BoardController {
 	
 	
 	
-	/**
-	 * 홍보게시판 
-	 */
-	
-	
 	
 	/**
 	 * 소비자마이페이지
