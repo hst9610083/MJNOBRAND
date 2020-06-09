@@ -17,16 +17,17 @@ public class MJ_Esti_ServiceImpl implements IMj_Esti_Service {
 	private Logger log = LoggerFactory.getLogger(getClass());
 	
 	@Override
-	public List<EstiDto> Cesti_All() {
+	public List<EstiDto> Cesti_All(String seq) {
 		log.info("Cesti_All 성공");
-		return dao.Cesti_All();
+		return dao.Cesti_All(seq);
 	}
 
 	@Override
-	public EstiDto Cesti_Detail(String seq) {
+	public List<EstiDto> Cesti_Detail(String seq) {
 		log.info("Cesti_Detail 성공");
 		return dao.Cesti_Detail(seq);
 	}
+	
 
 	@Override
 	public boolean Cesti_Delete(String seq) {
@@ -35,15 +36,17 @@ public class MJ_Esti_ServiceImpl implements IMj_Esti_Service {
 	}
 
 	@Override
-	public List<EstiDto> Sesti_All() {
+	public List<EstiDto> Sesti_All(String seq) {
 		log.info("Sesti_All 성공");
-		return dao.Sesti_All();
+		return dao.Sesti_All(seq);
 	}
 
 	@Override
-	public EstiDto Sesti_Detail(String seq) {
+	public List<EstiDto> Sesti_Detail(String seq) {
 		log.info("Sesti_Detail 성공");
 		return dao.Sesti_Detail(seq);
 	}
+
+	
 
 }
