@@ -3,16 +3,11 @@
 <mapper namespace="com.min.pplboard">
 	
 	<!-- 전체글 조회 -->
-	<select id="pplSelectBoard" resultType="BDto">
-		SELECT ID, SEQ, NICNAME, TITLE, CONTENT, READCOUNT, REGDATE
+	<select id="pplSelectBoard" resultType="BDto" parameterType="BDto">
+		SELECT *
  		FROM SELLER_PPL_BOARD
 	</select>
 	
-	<!-- 글쓰기  -->
-	<insert id="pplWriteBoard" parameterType="BDto">
-		INSERT INTO SELLER_PPL_BOARD(SEQ,ID, NICNAME, TITLE, CONTENT, READCOUNT, REGDATE, DELFLAG) 
-                        VALUES(SELLER_PPL_BOARD_SEQ.NEXTVAL, #{id}, #{nicname}, #{title}, #{content}, #{readcount}, SYSDATE, 'N')
-	</insert>
 
 	<!-- 상세글 보기 -->
 	<select id="pplgetOnBoard" parameterType="java.lang.String" resultType="BDto">
@@ -20,12 +15,17 @@
          FROM SELLER_PPL_BOARD
               WHERE SEQ = #{seq}
 	</select>
+
+
+
+	<!-- 글쓰기  -->
+	<insert id="pplWriteBoard" parameterType="BDto">
+		INSERT INTO SELLER_PPL_BOARD(SEQ,ID, NICNAME, TITLE, CONTENT, READCOUNT, REGDATE, DELFLAG) 
+                        VALUES(SELLER_PPL_BOARD_SEQ.NEXTVAL, #{id}, #{nicname}, #{title}, #{content}, '0', SYSDATE, 'N')
+	</insert>
+
 	
-	<!-- 조회수 -->
-	<update id="pplReadcountBoard" parameterType="java.lang.String">
-	UPDATE SELLER_PPL_BOARD SER READCOUNT = READCOUNT+1
-	WHERE SEQ = #{seq}
-	</update>
+
 	<!-- 수정 -->
 	<update id="pplModifyBoard" parameterType="BDto">
 	UPDATE SELLER_PPL_BOARD SET TITLE = #{title}, CONTENT=#{content}, REGDATE = SYSDATE
@@ -42,7 +42,7 @@
 	WHERE DELFLAG = 'Y'
 	SEQ IN 
 	<foreach collection="seq_" item="seq" open="(" separator="," close=")">
-	#{seq}
+	#{seq_}
 	</foreach>
 	</update>
 	

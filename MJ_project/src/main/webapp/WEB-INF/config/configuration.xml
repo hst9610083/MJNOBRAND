@@ -2,8 +2,7 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.min.mj.dtos.MJ_BoardDTO"
-			alias="BDto" />
+		<typeAlias type="com.min.mj.dtos.MJ_BoardDTO" alias="BDto" />
 		<typeAlias type="com.min.mj.dtos.PayListDto"
 			alias="PDto" />
 		<typeAlias type="com.min.mj.dtos.EstiDto"
@@ -16,7 +15,7 @@
 	</typeAliases>
 
 	<mappers>
-		<mapper resource="/sqls/Statement_pplBoard.xml"/>
+		<mapper resource="/sqls/StatementPPLBoard.xml"/>
 		<mapper resource="/sqls/Pay.xml"/>		
 		<mapper resource="/sqls/Esti.xml"/>		
 		<mapper resource="/sqls/Statement_Chat.xml" />
