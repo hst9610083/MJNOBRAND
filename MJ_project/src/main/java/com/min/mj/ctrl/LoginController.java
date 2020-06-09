@@ -33,7 +33,7 @@ public class LoginController {
 			model.addAttribute("msg","로그아웃 성공");
 		}
 		
-		return "login";
+		return "loginPage";
 	}
 	
 	// 로그인 후 홈페이지 가는 매핑
