@@ -13,6 +13,8 @@
 		    alias="RowNum"/>
 		<typeAlias type="com.min.mj.dtos.INQUIRYBoardDto" 
 		    alias="IDto"/>	
+		<typeAlias type="com.min.mj.dtos.MJ_MemberDTO"
+			alias="MemberDto"/>
 						
 	</typeAliases>
 
