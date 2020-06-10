@@ -26,3 +26,4 @@ public class Mj_Pay_DaoImpl implements IMj_Pay_Dao {
 	}
 
 }
+//
