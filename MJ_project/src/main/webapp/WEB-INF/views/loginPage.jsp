@@ -20,7 +20,8 @@ ${user}
 <input type="submit" value="제출">
 </form>
 
-<a href="./JoinUp.do">회원가입</a>
+<a href="./S_JoinUp.do">업체 회원가입</a>
+<a href="./C_JoinUp.do">소비자 회원가입</a>
 
 </body>
 </html>
