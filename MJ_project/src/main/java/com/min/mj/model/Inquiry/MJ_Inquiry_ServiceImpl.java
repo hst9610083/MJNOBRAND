@@ -13,7 +13,7 @@ import com.min.mj.dtos.INQUIRYBoardDto;
 public class MJ_Inquiry_ServiceImpl implements IMj_Inquiry_Service {
 
 	@Autowired
-	private IMj_Inquiry_Service dao;
+	private IMj_Inquiry_Dao dao;
 	
 	private Logger log = LoggerFactory.getLogger(getClass());
 	

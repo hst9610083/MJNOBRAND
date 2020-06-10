@@ -14,7 +14,7 @@ public class MJ_Esti_ServiceImpl implements IMj_Esti_Service {
 
 	
 	@Autowired
-	private IMj_Esti_Service dao;
+	private IMj_Esti_Dao dao;
 	
 	private Logger log = LoggerFactory.getLogger(getClass());
 	

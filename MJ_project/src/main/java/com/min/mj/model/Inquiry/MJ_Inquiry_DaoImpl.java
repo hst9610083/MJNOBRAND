@@ -28,7 +28,7 @@ public class MJ_Inquiry_DaoImpl implements IMj_Inquiry_Dao{
 	@Override
 	public List<INQUIRYBoardDto> Mimsi_Detail(String seq) {
 		log.info("Mimsi_Detail 성공");
-		return session.selectList(NS+"Mimsi_Detail");
+		return session.selectList(NS+"Mimsi_Detail",seq);
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class MJ_Inquiry_DaoImpl implements IMj_Inquiry_Dao{
 	@Override
 	public List<INQUIRYBoardDto> Mstore_Detail(String seq) {
 		log.info("Mstore_Detail 성공");
-		return session.selectList(NS+"Mstore_Detail");
+		return session.selectList(NS+"Mstore_Detail",seq);
 	}
 
 	@Override
