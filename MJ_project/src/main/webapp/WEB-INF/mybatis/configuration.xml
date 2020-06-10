@@ -3,18 +3,12 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.min.mj.dtos.MJ_BoardDTO" alias="BDto" />
-		<typeAlias type="com.min.mj.dtos.PayListDto"
-			alias="PDto" />
-		<typeAlias type="com.min.mj.dtos.EstiDto"
-			alias="EDto" />
-		<typeAlias type="com.min.mj.dtos.ChatDto"
-			alias="CDto" />
-		<typeAlias type="com.min.mj.dtos.RowNumDto" 
-		    alias="RowNum"/>
-		<typeAlias type="com.min.mj.dtos.INQUIRYBoardDto" 
-		    alias="IDto"/>	
-		<typeAlias type="com.min.mj.dtos.MJ_MemberDTO"
-			alias="MemberDto"/>
+		<typeAlias type="com.min.mj.dtos.PayListDto" alias="PDto" />
+		<typeAlias type="com.min.mj.dtos.EstiDto" alias="EDto" />
+		<typeAlias type="com.min.mj.dtos.ChatDto" alias="CDto" />
+		<typeAlias type="com.min.mj.dtos.RowNumDto" alias="RowNum"/>
+		<typeAlias type="com.min.mj.dtos.INQUIRYBoardDto" alias="IDto"/>	
+		<typeAlias type="com.min.mj.dtos.MJ_MemberDTO" alias="MemberDto"/>
 
 	</typeAliases>
 
