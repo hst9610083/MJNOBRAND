@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- 유의점 : (servlet-context.xml에서 설정한 bean)디스패쳐서블릿에서 사용하는 bean이랑 시큐리티에서 
+		사용하는 bean과는 다름으로 다시 설정해줘야함 -->
+	<context:component-scan
+		base-package="com.min.mj" />
+	<mvc:annotation-driven />
+
+
+	<!-- auto-config : 서비스들을 사용하겠다.(true) -->
+	<!-- use-expressions : 보안 메소드를 사용하겠다라는 뜻 -->
+	<security:http auto-config="true" use-expressions="true">
+		<!-- 접근 권한이 없는 사람이 접근시 403이 아닌이쪾주소로 보내겠다 -->
+		<security:access-denied-handler
+			error-page="/AuthError.do" />
+
+		<!-- pattern은 매핑url /access : 접근제한 통제하는 기능 -->
+		<!-- intercept-url을 설정할때는 순서 중요함!! / url에 따라 접근자들을 관리하는 기능 -->
+		<security:intercept-url pattern="/loginPage.do"
+			access="permitAll" />
+		<security:intercept-url pattern="/admin/**"
+			access="hasRole('Admin')" />
+		<security:intercept-url pattern="/**"
+			access="permitAll" />
+
+		<!-- login-processing-url : 로그인 폼과 시큐리티를 매핑하는 주소 -->
+		<!-- login-page : 로그인 화면으로 가는 주소 -->
+		<!-- default-target-url : 로그인 성공시 갈 주소 -->
+		<!-- username-parameter : 아이디 input name 값 설정 -->
+		<!-- password-parameter : 비밀번호 input name 값 설정 -->
+		<!-- always-use-default-target : 항상 default target쪽으로 가게 한다 -->
+		<security:form-login
+			login-processing-url="/logingo.do" 
+			login-page="/loginPage.do"
+			default-target-url="/result.do" 
+			username-parameter="id"
+			password-parameter="password"
+			authentication-failure-url="/loginPage.do?error"
+			always-use-default-target='true' />
+
+		<!-- invalidate-session : 로그아웃 시 sesison을 초기화 해준다. -->
+		<!-- logout-url : 시큐리티 로그아웃 조소 매핑 -->
+		<!-- logout-success-url : 로그아웃 성공시 갈 주소 -->
+		<security:logout invalidate-session="true"
+			logout-url="/logout.do" logout-success-url="/loginPage.do?logout"
+			delete-cookies="JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE" />
+
+		<!-- token-validity-seconds : 사용자의 쿠키 유지시간 -->
+		<security:remember-me key="nobrand"
+			token-validity-seconds="2419200" remember-me-parameter="remember-me" />
+
+
+		<!-- csrf 보안 향상을 위한 csrf 기능을 사용하지 않겠다. -->
+		<security:csrf disabled="true" />
+
+		<!-- invalid-session-url / expired-url : 만료된 혹은 자동로그아웃된 유저가 홈페이지에 들어왔을 
+			때 보내는 주소 -->
+		<!-- max-sessions : 한번에 로그인 가능한 최대 세션 수 -->
+		<security:session-management
+			invalid-session-url="/loginPage.do">
+			<security:concurrency-control
+				max-sessions="1" expired-url="/loginPage.do" />
+		</security:session-management>
+
+	</security:http>
+
+	<!-- UserDetailsService를 상속받아 코스튬한 컨트롤러 bean 생성 -->
+	<bean id="securityController"
+		class="com.min.mj.ctrl.SecurityController" />
+
+	<!-- 비밀번호 암호화 클래스 bean 생성 -->
+	<bean id="passwordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
+	<!-- 시큐리티 돌 때 이클래스를 사용하겠다 -->
+	<security:authentication-manager>
+		<security:authentication-provider
+			user-service-ref="securityController">
+			<security:password-encoder
+				ref="passwordEncoder" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+
+</beans>
