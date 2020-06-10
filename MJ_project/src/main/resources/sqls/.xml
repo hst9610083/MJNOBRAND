@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.min.pplboard">
+	
+	<!-- 전체글 조회 -->
+	<select id="pplSelectBoard" resultType="BDto" parameterType="BDto">
+		SELECT *
+ 		FROM SELLER_PPL_BOARD
+	</select>
+	
+
+	<!-- 상세글 보기 -->
+	<select id="pplgetOnBoard" parameterType="java.lang.String" resultType="BDto">
+	SELECT SEQ, ID, NICNAME,  TITLE, NVL(CONTENT,' ') CONTENT, READCOUNT, REGDATE 
+         FROM SELLER_PPL_BOARD
+              WHERE SEQ = #{seq}
+	</select>
+
+
+
+	<!-- 글쓰기  -->
+	<insert id="pplWriteBoard" parameterType="BDto">
+		INSERT INTO SELLER_PPL_BOARD(SEQ,ID, NICNAME, TITLE, CONTENT, READCOUNT, REGDATE, DELFLAG) 
+                        VALUES(SELLER_PPL_BOARD_SEQ.NEXTVAL, #{id}, #{nicname}, #{title}, #{content}, '0', SYSDATE, 'N')
+	</insert>
+
+	
+
+	<!-- 수정 -->
+	<update id="pplModifyBoard" parameterType="BDto">
+	UPDATE SELLER_PPL_BOARD SET TITLE = #{title}, CONTENT=#{content}, REGDATE = SYSDATE
+                     WHERE SEQ = #{seq}
+	</update>
+	
+	<!-- 삭제 -->
+	<update id="pplDelBoard" parameterType="java.lang.String">
+	UPDATE SELLER_PPL_BOARD SET DELFLAG = 'Y' WHERE SEQ= #{seq}
+	</update>
+	
+	<update id="pplMultiDel" parameterType="java.util.Map">
+	UPDATE SELLER_PPL_BOARD SET DELFLAG = 'N' 
+	WHERE DELFLAG = 'Y'
+	SEQ IN 
+	<foreach collection="seq_" item="seq" open="(" separator="," close=")">
+	#{seq_}
+	</foreach>
+	</update>
+	
+	<select id="BoardListRow" parameterType="RowNum" resultType="BDto">
+	SELECT SEQ, ID, TITLE,CONTENT
+                READCOUNT, DELFLAG, REGDATE
+        FROM
+        (
+        SELECT ROWNUM RNUM,SEQ, ID, TITLE,CONTENT,
+                READCOUNT, DELFLAG, REGDATE
+        FROM
+        (
+        SELECT SEQ, ID, TITLE,CONTENT,
+                READCOUNT, DELFLAG, REGDATE FROM SELLER_PPL_BOARD
+                WHERE DELFLAG ='Y'
+                ORDER BY READCOUNT DESC
+                )
+                )
+                WHERE RNUM BETWEEN #{start} AND #{last}
+	</select>
+	
+	<!-- 홍보게시판 전체글 갯수 -->
+	<select id="BoardListTotal" resultType="java.lang.Integer">
+	SELECT COUNT(*) FROM SELLER_PPL_BOARD WHERE DELFALG='N'
+	</select>
+</mapper>

@@ -30,10 +30,12 @@ FROM REGISTER
 WHERE AUTH='S';
 </select>
 
-<!-- 업체 회원탈퇴 -->
-<delete id="s_getout" parameterType="java.lang.String" >
+<!--업체 탈퇴-->
+<delete id="s_getout" parameterType="java.lang.String">
 DELETE FROM REGISTER WHERE ID = #{id};
 </delete>
+
+
 
 <!-- 소비자 정보 조회-->
 <select id="c_info" parameterType="MemberDto" resultType="MemberDto" >
@@ -47,6 +49,20 @@ WHERE AUTH='C';
 DELETE FROM REGISTER WHERE ID = #{id};
 </delete>
 
+
+
+<!-- 소비자 회원정보 수정 -->
+<update id="C_modify" parameterType="MemberDto">
+UPDATE REGISTER SET PW=#{pw},ADDRESS=#{address},PHONNUM=#{phonnum},NAME=#{name} WHERE ID=#{id}
+
+</update>
+
+
+
+<!-- 업체 회원정보 수정 -->
+<update id="S_modify" parameterType="MemberDto">
+UPDATE S_REGISTER SET PW=#{pw},ADDRESS=#{address} WHERE ID=#{id}
+</update>
 
 
 </mapper>
