@@ -29,4 +29,14 @@ public class InquiryController {
 		return "iBoardList";
 		
 	};
+	//임시 문의글 게시판 상세보기
+	@RequestMapping(value="/iBoardListDetail.do",method = RequestMethod.GET)
+	public String iBoardListDetail(Model model,String seq) {
+		
+		List<INQUIRYBoardDto> lists = service.Mimsi_Detail(seq);
+		model.addAttribute("lists",lists);
+		return "iBoardListDetail";
+		
+	}
+	
 }
