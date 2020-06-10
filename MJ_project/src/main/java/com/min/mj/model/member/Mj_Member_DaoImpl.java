@@ -1,27 +1,20 @@
 package com.min.mj.model.member;
 
 
-
-import com.min.mj.dtos.MJ_MemberDTO;
-
-
-
-
 import java.util.List;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
-import com.min.mj.dtos.MJ_MemberDTO;
 
 
 @Repository
 
 public class Mj_Member_DaoImpl implements IMj_Member_Dao {
 	
+
 
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	private final String NS="com.min.login.";
