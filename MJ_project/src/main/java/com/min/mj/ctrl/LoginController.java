@@ -19,7 +19,14 @@ public class LoginController {
 	@Autowired
 	IMj_Member_Service service;
 	// 로그인 페이지로 가는 매핑
+	
 	@RequestMapping(value= "/loginPage.do", method = RequestMethod.GET)
+	public String loginin() {
+		System.out.println("*******");
+		return "loginPage";
+	}
+	
+	
 	public String login(@RequestParam(value = "error", required = false)String error,
 			@RequestParam(value = "logout",required = false)String logout, Model model, Authentication user) {
 		
@@ -37,14 +44,14 @@ public class LoginController {
 	}
 	
 	// 로그인 후 홈페이지 가는 매핑
-	@RequestMapping(value = "/home.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/result.do", method = RequestMethod.GET)
 	public String maingo(Model model, Authentication user) {
 		if(user != null) {
 			UserDetails userD = (UserDetails)user.getPrincipal();
 		
 			model.addAttribute("user",userD.toString());
 		}
-		return "home";
+		return "logingo";
 		
 	}
 	@RequestMapping(value = "/JoinUp", method = RequestMethod.GET)

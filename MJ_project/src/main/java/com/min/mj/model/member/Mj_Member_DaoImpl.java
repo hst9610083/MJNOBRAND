@@ -22,11 +22,11 @@ public class Mj_Member_DaoImpl implements IMj_Member_Dao {
 	private final String NS="com.min.login.";
 	
 	
-	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
 	private SqlSessionTemplate session;
-	
+	private PasswordEncoder passwordEncoder;
+
 		
 	
 	
