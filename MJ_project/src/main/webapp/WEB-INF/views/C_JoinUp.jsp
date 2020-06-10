@@ -4,19 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>소비자 회원가입</title>
 </head>
 <body>
-<form action="./singUpSc.do" method="post">
-사업자 등록증 이미지 : <input type="text" name="selpick"><br>
+<form action="./singUpSc_c.do" method="post">
 아이디 : <input type="text" name="id"><br>
 비밀번호 :<input type="text" name="pw"><br>
 이름 : <input type="text" name="name"><br>
 주소 : <input type="text" name="address"><br>
 별명 : <input type="text" name="nicname"><br>
-사업자 번호 :<input type="text" name="sellernum"><br>
-이메일 : <input type="text" name="email"><br>
-종류? : <input type="text" name="email"><br>
+생년월일 :<input type="text" name="sellernum"><br>
+핸드폰번호 : <input type="text" name="email"><br>
 <input type="submit" value="회원가입">
 </form>
 </body>
