@@ -36,3 +36,5 @@ WHERE AUTH='S' AND A.SEQ={seq}
  </select>
  
 </mapper>
+
+
