@@ -1,4 +1,3 @@
-
 package com.min.mj.ctrl;
 
 import org.springframework.beans.factory.annotation.Autowired;
