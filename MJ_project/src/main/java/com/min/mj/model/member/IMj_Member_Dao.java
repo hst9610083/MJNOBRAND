@@ -1,4 +1,11 @@
 package com.min.mj.model.member;
+
+
+
+
+import com.min.mj.dtos.MJ_MemberDTO;
+	
+
 import java.util.List;
 import com.min.mj.dtos.MJ_MemberDTO;
 

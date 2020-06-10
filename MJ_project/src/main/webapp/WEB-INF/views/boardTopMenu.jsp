@@ -28,13 +28,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="./BoardList.do">
+      <a class="navbar-brand" href="./pBoardList.do">
       <img style="width:30px; height:30px;" src="./img/naver.png">
       </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-      <li><a href="./BoardList.do">게시판</a></li>
+      <li><a href="./pBoardList.do">게시판</a></li>
       <c:if test="${fn:trim(mem.auth) eq 'U'}">
       	<li><a href="./writeForm.do">글작성</a></li>
       </c:if>
@@ -44,7 +44,8 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="./userInfo.do"><span class="glyphicon glyphicon-user"></span> 
-        	${mem.name}님 환영합니다.(${mem.auth eq 'U'?'일반':'관리자'})</a></li>
+        	${mem.name}님 환영합니다.(${mem.auth eq 'U'?'일반':'관리자'})
+        	</a></li>
         <li><a href="./logout.do"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a></li>
       </ul>
     </div>

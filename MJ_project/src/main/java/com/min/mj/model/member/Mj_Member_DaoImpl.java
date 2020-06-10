@@ -1,6 +1,6 @@
 package com.min.mj.model.member;
 
-import com.min.mj.dtos.MJ_MemberDTO;
+
 import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 
 public class Mj_Member_DaoImpl implements IMj_Member_Dao {
-	
 	
 
 
