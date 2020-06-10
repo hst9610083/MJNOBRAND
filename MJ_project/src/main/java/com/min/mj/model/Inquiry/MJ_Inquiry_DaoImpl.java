@@ -6,9 +6,11 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.min.mj.dtos.INQUIRYBoardDto;
 
+@Repository
 public class MJ_Inquiry_DaoImpl implements IMj_Inquiry_Dao{
 
 	@Autowired
