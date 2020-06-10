@@ -8,3 +8,4 @@ public interface IMj_Pay_Dao {
 	//결제내역보기
 	public List<PayListDto> PayList();
 }
+//

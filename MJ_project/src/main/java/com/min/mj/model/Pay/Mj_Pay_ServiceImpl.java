@@ -24,3 +24,4 @@ public class Mj_Pay_ServiceImpl implements IMj_Pay_Service {
 	}
 
 }
+//
