@@ -13,7 +13,7 @@ import com.min.mj.dtos.PayListDto;
 public class Mj_Pay_ServiceImpl implements IMj_Pay_Service {
 
 	@Autowired
-	private IMj_Pay_Service dao;
+	private IMj_Pay_Dao dao;
 	
 	private Logger log = LoggerFactory.getLogger(getClass());
 	

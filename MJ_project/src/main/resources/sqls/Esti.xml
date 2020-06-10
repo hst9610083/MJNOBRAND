@@ -10,9 +10,10 @@
  
  <!-- 견적서 상세보기(소비자) -->
  <select id="Cesti_Detail" parameterType="java.lang.String" resultType="EDto">
- SELECT A.SEQ ,A.ID,TITLE,CONTENT ,A.REALFILE ,REGDATE 
-	FROM ESTIMATE_MAKE A LEFT JOIN "FILE" B
-ON (A.REALFILE=B.REALFILE)
+SELECT A.SEQ ,A.ID,TITLE,CONTENT ,B.REALFILE ,REGDATE 
+ FROM ESTIMATE_MAKE A LEFT JOIN "FILE" B
+ ON (A.REALFILE=B.REALFILE)
+WHERE AUTH='C' AND A.SEQ={seq} 
  </select>
  
  <!-- 견적서 삭제하기(소비자) -->
@@ -28,9 +29,10 @@ ON (A.REALFILE=B.REALFILE)
  
  <!-- 견적서 상세보기(업체) -->
  <select id="Sesti_Detail" parameterType="java.lang.String" resultType="EDto">
- SELECT A.SEQ ,A.ID ,TITLE ,CONTENT,A.REALFILE ,REGDATE 
-	FROM ESTIMATE_MAKE A LEFT JOIN "FILE" B
-	ON A.REALFILE =B.REALFILE 		
+SELECT A.SEQ ,A.ID,TITLE,CONTENT ,B.REALFILE ,REGDATE 
+ FROM ESTIMATE_MAKE A LEFT JOIN "FILE" B
+ ON (A.REALFILE=B.REALFILE)
+WHERE AUTH='S' AND A.SEQ={seq} 	
  </select>
  
 </mapper>

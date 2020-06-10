@@ -22,7 +22,7 @@ public class InquiryController {
 	
 	//임시 문의글 게시판 전체리스트
 	@RequestMapping(value="/iBoardList.do",method = RequestMethod.GET)
-	public String iBoardList(Model model,INQUIRYBoardDto dto) {
+	public String iBoardList(Model model) {
 		
 		List<INQUIRYBoardDto> lists=service.Mimsi_All();
 		model.addAttribute("lists",lists);
