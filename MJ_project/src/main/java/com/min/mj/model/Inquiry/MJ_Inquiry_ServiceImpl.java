@@ -49,7 +49,7 @@ public class MJ_Inquiry_ServiceImpl implements IMj_Inquiry_Service {
 	}
 
 	@Override
-	public List<INQUIRYBoardDto> Mstore_Detail(String seq) {
+	public INQUIRYBoardDto Mstore_Detail(String seq) {
 		log.info("Mstore_Detail 성공");
 		return dao.Mstore_Detail(seq);
 	}

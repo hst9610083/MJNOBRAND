@@ -22,7 +22,7 @@ public interface IMj_Inquiry_Dao {
 	public List<INQUIRYBoardDto> Mstore_All();
 	
 	//보관함 상세보기
-	public List<INQUIRYBoardDto> Mstore_Detail(String seq);
+	public INQUIRYBoardDto Mstore_Detail(String seq);
 	
 	//보관함 수정하기
 	public boolean Mstore_modify(INQUIRYBoardDto dto);
