@@ -16,7 +16,7 @@ public interface IMj_Inquiry_Dao {
 
 	
 	//문의글 임시 보관함 수정하기
-	public boolean Mimsi_modify(String seq);
+	public boolean Mimsi_modify(INQUIRYBoardDto dto);
 	
 	//문의글 임시 보관함 삭제하기
 	public boolean MiImsi_Delete(String seq);
@@ -28,7 +28,7 @@ public interface IMj_Inquiry_Dao {
 	public INQUIRYBoardDto Mstore_Detail(String seq);
 	
 	//보관함 수정하기
-	public boolean Mstore_modify(String seq);
+	public boolean Mstore_modify(INQUIRYBoardDto dto);
 	
 	//보관함 삭제하기
 	public boolean Mstore_Delete(String seq);

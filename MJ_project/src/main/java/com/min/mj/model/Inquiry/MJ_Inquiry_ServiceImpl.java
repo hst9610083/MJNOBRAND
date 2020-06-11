@@ -32,9 +32,9 @@ public class MJ_Inquiry_ServiceImpl implements IMj_Inquiry_Service {
 	}
 
 	@Override
-	public boolean Mimsi_modify(String seq) {
+	public boolean Mimsi_modify(INQUIRYBoardDto dto) {
 		log.info("Mimsi_modify 성공");
-		return dao.Mimsi_modify(seq);
+		return dao.Mimsi_modify(dto);
 	}
 
 	@Override
@@ -56,9 +56,9 @@ public class MJ_Inquiry_ServiceImpl implements IMj_Inquiry_Service {
 	}
 
 	@Override
-	public boolean Mstore_modify(String seq) {
+	public boolean Mstore_modify(INQUIRYBoardDto dto) {
 		log.info("Mstore_modify 성공");
-		return dao.Mstore_modify(seq);
+		return dao.Mstore_modify(dto);
 	}
 
 	@Override
