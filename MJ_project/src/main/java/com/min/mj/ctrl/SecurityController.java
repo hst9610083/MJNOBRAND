@@ -17,15 +17,16 @@ public class SecurityController implements UserDetailsService{
 
 	@Autowired
 	private IMj_Member_Service service;
-	
+		@Override
 		public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-			
+			System.out.println(username+">>username");
 			MJ_MemberDTO dto = service.userlogin(username);
-			
+			System.out.println(dto+">>dto");
+
 			Collection<SimpleGrantedAuthority> roles= new ArrayList<SimpleGrantedAuthority>();
 			roles.add(new SimpleGrantedAuthority(dto.getAuth()));
-			
 			UserDetails user = new User(username, dto.getPw(), roles);
+			System.out.println(user+">>user");
 			return user;
 			
 		}
