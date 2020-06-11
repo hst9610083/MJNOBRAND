@@ -17,6 +17,7 @@ import com.min.mj.dtos.INQUIRYBoardDto;
 import com.min.mj.model.Inquiry.IMj_Inquiry_Service;
 
 
+
 @Controller
 public class InquiryController {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
@@ -31,14 +32,11 @@ public class InquiryController {
 		List<INQUIRYBoardDto> lists=service.Mimsi_All();
 		model.addAttribute("lists",lists);
 		return "iBoardList";
+		
 
 		
-	};
-	
-	
-	//임시 문의글 게시판 상세보기
-
-	
+	}
+		
 	
 	// 임시 문의글 게시판 상세보기
 
@@ -46,6 +44,7 @@ public class InquiryController {
 	public String iBoardListDetail(Model model,String seq) {
 		
 		INQUIRYBoardDto Dlists = service.Mimsi_Detail(seq);
+		
 		model.addAttribute("Dlists",Dlists);
 		return "iBoardListDetail";
 	}

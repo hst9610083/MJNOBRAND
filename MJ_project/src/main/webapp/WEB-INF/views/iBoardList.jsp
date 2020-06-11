@@ -24,7 +24,7 @@
 				</tr>
 				<c:forEach items="${lists}" var="dto">
 					<tr>
-						<td><a href="iBoardListDetail.do"> ${dto.seq}</a></td>
+						<td><a href="iBoardListDetail.do">${dto.seq}</a></td>
 						<td>${dto.nicname}</td>
 						<td>${dto.title}</td>
 						<td>${dto.regdate}</td>					
