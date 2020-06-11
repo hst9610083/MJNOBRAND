@@ -26,10 +26,8 @@
 	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	</bean>
+	
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
+	
 </beans>
-	
-	
-<!-- <tx:annotation-driven -->
-<!-- 		transaction-manager="transactionManager" />	 -->
-
-

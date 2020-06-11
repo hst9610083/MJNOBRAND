@@ -1,14 +1,7 @@
 package com.min.mj.model.member;
 
-
-
-
 import com.min.mj.dtos.MJ_MemberDTO;
-	
-
 import java.util.List;
-import com.min.mj.dtos.MJ_MemberDTO;
-
 public interface IMj_Member_Dao {
 	/**
 	 * 업체 회원가입(s_register)
@@ -45,24 +38,16 @@ public interface IMj_Member_Dao {
 	public List<MJ_MemberDTO> c_info();
 	
 	/**
-	 * 업체 회원 탈퇴
+	 * 회원 탈퇴
 	 * @param id
 	 * @return 업체 탈퇴 (관리자 모드)
 	 */
 	public boolean s_getout(String id);
+
 	
-	/**
-	 * 소비자 회원 탈퇴
-	 * @param id
-	 * @return 소비자 탈퇴 (관리자 모드)
-	 */
-	public boolean c_getout(String id);
 	
 	//회원 정보 수정
-	public boolean C_modify(String id);
-	
-	//업체 정보 수정
-	public boolean S_modify(String id);
+	public boolean s_modify(String id);
 
 	
 	

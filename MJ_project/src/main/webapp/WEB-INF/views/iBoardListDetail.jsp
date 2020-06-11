@@ -10,9 +10,9 @@
 	<%@include file="/WEB-INF/views/boardTopMenu.jsp"%>
 
 		<div id="container">
-		<h1>문의글 임시보기 리스트</h1>
+		<h1>문의글 상세보기</h1>
 <!-- 		<input id="lists"> -->
-		<form action="./iBoardListDetail.do" method="get">
+		<form action="./iBoardListDetail.do" method="post">
 			<table class="table table-bordered">
 				<tr>
 <!-- 					<th><input type="checkbox" onclick="checkAll(this.checked)"></th> -->
@@ -24,7 +24,7 @@
 					<th>파일</th>
 					<th>날짜</th>
 				</tr>
-				<c:forEach items="${lists}" var="dto">
+				<c:forEach items="${Dlists}" var="dto">
 					<tr>
 						<td>${dto.seq}</td>
 						<td>${dto.id}</td>

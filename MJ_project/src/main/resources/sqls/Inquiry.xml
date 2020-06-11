@@ -11,10 +11,10 @@ SELECT SEQ ,ID ,NICNAME ,TITLE ,REGDATE
 <!--  문의글 임시보관함 상세보기-->
 
 <select id="Mimsi_Detail" parameterType="java.lang.String" resultType="IDto">
-SELECT A.SEQ,A.ID,A.NICNAME ,A.TITLE,A.CONTENT ,NVL(B.REALFILE,'') ,A.REGDATE 
+SELECT A.SEQ,A.ID,A.NICNAME ,A.TITLE,A.CONTENT ,A.REALFILE ,A.REGDATE 
  FROM C_INQUIRY A LEFT JOIN "FILE" B
 ON(A.REALFILE =B.REALFILE )
- WHERE A.SEQ=#{seq} AND A.IMSI='Y'
+ WHERE A.ID=#{a.seq,jdbcType=VARCHAR} AND A.IMSI='Y'
 </select>
 
 <!--문의글 임시 보관함 수정하기-->
@@ -36,10 +36,11 @@ SELECT SEQ ,ID ,NICNAME ,TITLE ,REGDATE
 
 <!--문의글 보관함 상세보기            -->
 <select id="Mstore_Detail" parameterType="java.lang.String" resultType="IDto">
-SELECT A.SEQ, A.ID, A.NICNAME ,A.TITLE,A.CONTENT ,B.REALFILE ,A.REGDATE 
+
+SELECT A.SEQ,A.ID,A.NICNAME ,A.TITLE,A.CONTENT ,A.REALFILE ,A.REGDATE 
  FROM C_INQUIRY A LEFT JOIN "FILE" B
 ON(A.REALFILE =B.REALFILE )
- WHERE A.SEQ=#{seq} AND A.IMSI='N'
+ WHERE A.SEQ={seq} AND A.IMSI='Y'
 </select>
 
 
@@ -89,8 +90,12 @@ SELECT A.SEQ,A.ID,TITLE,CONTENT ,A.REALFILE ,REGDATE
   FROM C_INQUIRY A LEFT JOIN "FILE" B
    ON (A.REALFILE =B.REALFILE ) WHERE AUTH='S'
  </select>
+ 
+ <!-- 임시문의글을 진짜 문의글로 바꾸기 -->
+ <update id="">
+ 
+ </update>
 
-<!--  -->
  <!-- 견적서 작성 -->
  <insert id="s_esimake" parameterType="EDto">
 INSERT INTO ESTIMATE_MAKE
