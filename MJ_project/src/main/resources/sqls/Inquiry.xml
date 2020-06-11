@@ -96,7 +96,6 @@ SELECT A.SEQ,A.ID,TITLE,CONTENT ,A.REALFILE ,REGDATE
  
  </update>
 
- 
  <!-- 견적서 작성 -->
  <insert id="s_esimake" parameterType="EDto">
 INSERT INTO ESTIMATE_MAKE
