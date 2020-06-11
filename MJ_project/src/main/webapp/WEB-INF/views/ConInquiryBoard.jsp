@@ -29,11 +29,11 @@
 				</tr>
 				<c:forEach items="${lists}" var="dto">
 					<tr>
-						<td><a href="ConInquiryBoardDetail.do"> ${dto.seq}</a></td>
+						<td> ${dto.seq}</td>
 						<td>${dto.id}</td>
 						<td>${dto.nicname}</td>
 						<td>${dto.regdate}</td>					
-						<td>${dto.title}</td>
+						<td><a href="ConInquiryBoardDetail.do?seq=${dto.seq}">${dto.title}</a></td>
 						<td>${dto.content}</td>
 						<td>${dto.auth}</td>
 						<td>${dto.realfile}</td>
