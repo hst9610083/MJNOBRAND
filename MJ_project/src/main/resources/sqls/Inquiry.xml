@@ -90,7 +90,7 @@ SELECT A.SEQ,A.ID,TITLE,CONTENT ,A.REALFILE ,REGDATE
    ON (A.REALFILE =B.REALFILE ) WHERE AUTH='S'
  </select>
 
-
+<!--  -->
  <!-- 견적서 작성 -->
  <insert id="s_esimake" parameterType="EDto">
 INSERT INTO ESTIMATE_MAKE
