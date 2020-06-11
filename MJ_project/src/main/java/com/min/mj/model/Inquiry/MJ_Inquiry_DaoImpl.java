@@ -29,7 +29,7 @@ public class MJ_Inquiry_DaoImpl implements IMj_Inquiry_Dao{
 	@Override
 	public INQUIRYBoardDto Mimsi_Detail(String seq) {
 		log.info("Mimsi_Detail 성공");
-		return session.selectOne(NS+"Mimsi_Detail",seq);
+		return session.selectOne(NS+"Mimsi_Detail", seq);
 	}
 
 	@Override
