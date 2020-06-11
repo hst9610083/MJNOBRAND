@@ -25,8 +25,9 @@ public class LoginController {
    @RequestMapping(value= "/loginPage.do", method = RequestMethod.GET)
    public String login(@RequestParam(value = "error", required = false)String error,
          @RequestParam(value = "logout",required = false)String logout, Model model, Authentication user) {
-      
-      if (user != null) {
+      System.out.println("44");
+	   
+	   if (user != null) {
          UserDetails userD = (UserDetails)user.getPrincipal();
       }
       if(error != null) {
@@ -35,15 +36,17 @@ public class LoginController {
       if(logout != null) {
          model.addAttribute("msg","로그아웃 성공");
       }
-      
-      return "loginPage";
+      System.out.println("loginPage.do1");
+
+      return "login";
    }
 
 
    // 로그인 후 홈페이지 가는 매핑
    @RequestMapping(value = "/result.do", method = RequestMethod.GET)
    public String maingo(Model model, Authentication user) {
-      if(user != null) {
+      System.out.println("result");
+	   if(user != null) {
          UserDetails userD = (UserDetails)user.getPrincipal();
       
          model.addAttribute("user",userD.toString());
@@ -62,20 +65,18 @@ public class LoginController {
    }
    
    // 회원가입 성공 매핑
-   @RequestMapping(value="/singUpSc_s.do",method = RequestMethod.POST)
+   @RequestMapping(value="/S_JoinUp.do",method = RequestMethod.POST)
    public String maingo_s(MJ_MemberDTO dto,Model model) {
       System.out.println("회원가입 정보"+ dto.toString());
       service.s_register(dto);
-      return "loginPage";
+      return "login";
    }
-   @RequestMapping(value="/singUpSc_c.do",method = RequestMethod.POST)
+   @RequestMapping(value="/C_JoinUp.do",method = RequestMethod.POST)
    public String maingo_c(MJ_MemberDTO dto,Model model) {
       System.out.println("회원가입 정보"+ dto.toString());
       service.c_register(dto);
-      return "loginPage";
+      return "login";
    }
-   
-   
    
    @RequestMapping(value = "/admin/adminPage.do", method= RequestMethod.GET)
    public String adminPage() {

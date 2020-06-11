@@ -13,7 +13,6 @@ import com.min.mj.dtos.MJ_MemberDTO;
 
 
 @Repository
-
 public class Mj_Member_DaoImpl implements IMj_Member_Dao {
 	
 
@@ -34,55 +33,51 @@ public class Mj_Member_DaoImpl implements IMj_Member_Dao {
 	
 	@Override
 	public boolean s_register(MJ_MemberDTO dto) {
+		System.out.println("DaoImpl>>"+dto+">>s_register");
 		String enPw = passwordEncoder.encode(dto.getPw());
 		dto.setPw(enPw);
-
-		return session.insert(NS+"signUp", dto) > 0 ? true : false;
+		int n= session.insert(NS+"s_register", dto);
+		return  (n > 0)? true : false;
 	}
 
 	@Override
 	public boolean c_register(MJ_MemberDTO dto) {
+		System.out.println("DaoImpl>>"+dto+">>c_register");
 		String enPw = passwordEncoder.encode(dto.getPw());
 		dto.setPw(enPw);
-		return session.insert(NS+"signUp", dto) > 0 ? true : false;
+		int n= session.insert(NS+"c_register", dto);
+		return  (n > 0)? true : false;
 	}
 
 	@Override
 	public MJ_MemberDTO userlogin(String id) {
+		System.out.println("DaoImpl>>"+id+">>userlogin");
 		return session.selectOne(NS+"userlogin", id);
 	}
 
 	@Override
 	public List<MJ_MemberDTO> s_info() {
+		System.out.println("DaoImpl>>"+">>s_info");
 		return session.selectList(NS+"s_info");
 	}
 
 	@Override
 	public List<MJ_MemberDTO> c_info() {
+		System.out.println("DaoImpl>>"+">>c_info");
 		return session.selectList(NS+"c_info");
 	}
 
 	@Override
 	public boolean s_getout(String id) {
+		System.out.println("DaoImpl>>"+id+">>s_getout");
 		int n = session.update(NS+"s_getout",id);
 		return (n>0)?true:false;
 	}
 
 	@Override
-	public boolean c_getout(String id) {
-		int n = session.update(NS+"c_getout",id);
-		return (n>0)?true:false;
-	}
-
-	@Override
-	public boolean C_modify(String id) {
-		int n = session.update(NS+"C_modify", id);
-		return (n>0)?true:false;
-	}
-
-	@Override
-	public boolean S_modify(String id) {
-		int n =session.update(NS+"S_modify", id);
+	public boolean s_modify(String id) {
+		System.out.println("DaoImpl>>"+id+">>s_modify");
+		int n =session.update(NS+"s_modify", id);
 		return (n>0)?true:false;
 	}
 
