@@ -11,9 +11,15 @@
 <div id="container">
 <form class="form-horizontal" action="./pBoardWrite.do" method="post">
     <div class="form-group">
-      <label class="control-label col-sm-2" for="email">작성자:</label>
+      <label class="control-label col-sm-2" for="id">작성자:</label>
       <div class="col-sm-5">
-        <input type="text" class="form-control" value="${mem.id}" readonly="readonly">
+        <input type="text" class="form-control" value='${mDto.id}' readonly="readonly">
+      </div>
+    </div>
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="nicname">닉네임</label>
+      <div class="col-sm-5">          
+        <input type="text" class="form-control" id="nicname" placeholder="Enter title" name="nicname">
       </div>
     </div>
 	<div class="form-group">
