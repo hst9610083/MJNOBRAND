@@ -1,6 +1,7 @@
 package com.min.mj.model.Inquiry;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -26,9 +27,9 @@ public class MJ_Inquiry_DaoImpl implements IMj_Inquiry_Dao{
 	}
 
 	@Override
-	public List<INQUIRYBoardDto> Mimsi_Detail(String seq) {
+	public INQUIRYBoardDto Mimsi_Detail(String seq) {
 		log.info("Mimsi_Detail 성공");
-		return session.selectList(NS+"Mimsi_Detail",seq);
+		return session.selectOne(NS+"Mimsi_Detail",seq);
 	}
 
 	@Override
