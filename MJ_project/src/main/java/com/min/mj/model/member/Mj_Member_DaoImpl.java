@@ -25,6 +25,8 @@ public class Mj_Member_DaoImpl implements IMj_Member_Dao {
 	
 	@Autowired
 	private SqlSessionTemplate session;
+	
+	@Autowired
 	private PasswordEncoder passwordEncoder;
 
 		
