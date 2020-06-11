@@ -1,6 +1,7 @@
 package com.min.mj.model.Inquiry;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -26,15 +27,15 @@ public class MJ_Inquiry_DaoImpl implements IMj_Inquiry_Dao{
 	}
 
 	@Override
-	public List<INQUIRYBoardDto> Mimsi_Detail(String seq) {
+	public INQUIRYBoardDto Mimsi_Detail(String seq) {
 		log.info("Mimsi_Detail 성공");
-		return session.selectList(NS+"Mimsi_Detail",seq);
+		return session.selectOne(NS+"Mimsi_Detail",seq);
 	}
 
 	@Override
-	public boolean Mimsi_modify(String seq) {
+	public boolean Mimsi_modify(INQUIRYBoardDto dto) {
 		log.info("Mimsi_modify 성공");
-		int n=session.update(NS+"Mimsi_modify",seq);
+		int n=session.update(NS+"Mimsi_modify",dto);
 		return (n>0)?true:false;
 	}
 
@@ -52,15 +53,15 @@ public class MJ_Inquiry_DaoImpl implements IMj_Inquiry_Dao{
 	}
 
 	@Override
-	public List<INQUIRYBoardDto> Mstore_Detail(String seq) {
+	public INQUIRYBoardDto Mstore_Detail(String seq) {
 		log.info("Mstore_Detail 성공");
-		return session.selectList(NS+"Mstore_Detail",seq);
+		return session.selectOne(NS+"Mstore_Detail",seq);
 	}
 
 	@Override
-	public boolean Mstore_modify(String seq) {
+	public boolean Mstore_modify(INQUIRYBoardDto dto) {
 		log.info("Mstore_modify 성공");
-		int n =session.update(NS+"Mstore_modify", seq);
+		int n =session.update(NS+"Mstore_modify", dto);
 		return (n>0)?true:false;
 	}
 

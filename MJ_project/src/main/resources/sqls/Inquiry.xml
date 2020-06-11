@@ -11,7 +11,7 @@ SELECT SEQ ,ID ,NICNAME ,TITLE ,REGDATE
 <!--  문의글 임시보관함 상세보기-->
 
 <select id="Mimsi_Detail" parameterType="java.lang.String" resultType="IDto">
-SELECT A.SEQ,A.ID,A.NICNAME ,A.TITLE,A.CONTENT ,NVL(B.REALFILE,'') ,A.REGDATE 
+SELECT A.SEQ,A.ID,A.NICNAME ,A.TITLE,A.CONTENT ,A.REALFILE ,A.REGDATE 
  FROM C_INQUIRY A LEFT JOIN "FILE" B
 ON(A.REALFILE =B.REALFILE )
  WHERE A.SEQ=#{seq} AND A.IMSI='Y'
@@ -36,10 +36,11 @@ SELECT SEQ ,ID ,NICNAME ,TITLE ,REGDATE
 
 <!--문의글 보관함 상세보기            -->
 <select id="Mstore_Detail" parameterType="java.lang.String" resultType="IDto">
-SELECT A.SEQ, A.ID, A.NICNAME ,A.TITLE,A.CONTENT ,B.REALFILE ,A.REGDATE 
+
+SELECT A.SEQ,A.ID,A.NICNAME ,A.TITLE,A.CONTENT ,A.REALFILE ,A.REGDATE 
  FROM C_INQUIRY A LEFT JOIN "FILE" B
 ON(A.REALFILE =B.REALFILE )
- WHERE A.SEQ=#{seq} AND A.IMSI='N'
+ WHERE A.SEQ={seq} AND A.IMSI='Y'
 </select>
 
 
@@ -65,7 +66,8 @@ WHERE AUTH='C'
   
 <!-- 소비자문의게시판 (글 전체 조회)(소비자)-->
 <select id="C_allSelectBoard" resultType="IDto">
-SELECT * FROM C_INQUIRY
+SELECT SEQ,ID,NICNAME,REGDATE,TITLE,CONTENT,AUTH,REALFILE,IMSI
+FROM C_INQUIRY
 </select>
 
 <!-- 소비자문의게시판 (글 상세 조회)(소비자) -->
@@ -81,6 +83,7 @@ SELECT * FROM C_INQUIRY
 <select id="S_allSelectBoard" resultType="IDto">
 SELECT SEQ,NICNAME,TITLE,REGDATE FROM C_INQUIRY WHERE AUTH='S'
 </select>
+
 <!-- 소비자문의게시판 (글 상세 조회)(업체) -->
  <select id="S_SelectBoardDetail" resultType="IDto">
 SELECT A.SEQ,A.ID,TITLE,CONTENT ,A.REALFILE ,REGDATE
@@ -88,6 +91,10 @@ SELECT A.SEQ,A.ID,TITLE,CONTENT ,A.REALFILE ,REGDATE
    ON (A.REALFILE =B.REALFILE ) WHERE AUTH='S'
  </select>
  
+ <!-- 임시문의글을 진짜 문의글로 바꾸기 -->
+ <update id="">
+ 
+ </update>
 
  
  <!-- 견적서 작성 -->
