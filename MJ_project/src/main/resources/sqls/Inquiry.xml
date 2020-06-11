@@ -65,7 +65,8 @@ WHERE AUTH='C'
   
 <!-- 소비자문의게시판 (글 전체 조회)(소비자)-->
 <select id="C_allSelectBoard" resultType="IDto">
-SELECT * FROM C_INQUIRY
+SELECT SEQ,ID,NICNAME,REGDATE,TITLE,CONTENT,AUTH,REALFILE,IMSI
+FROM C_INQUIRY
 </select>
 
 <!-- 소비자문의게시판 (글 상세 조회)(소비자) -->

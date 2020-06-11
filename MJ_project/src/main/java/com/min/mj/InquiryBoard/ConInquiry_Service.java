@@ -5,9 +5,11 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.min.mj.dtos.INQUIRYBoardDto;
 
+@Service
 public class ConInquiry_Service implements IConInquiry_Service {
 	
 	@Autowired
@@ -16,33 +18,34 @@ public class ConInquiry_Service implements IConInquiry_Service {
 	private Logger log = LoggerFactory.getLogger(getClass());
 
 	@Override
-	public List<INQUIRYBoardDto> InquiryInput(INQUIRYBoardDto dto) {
-		log.info("InquiryInput 성공");
-		return dao.InquiryInput(dto);
+	public List<INQUIRYBoardDto> c_insertBoard(INQUIRYBoardDto dto) {
+		log.info("c_insertBoard 성공");
+		return dao.c_insertBoard(dto);
 	}
 
 	@Override
-	public List<INQUIRYBoardDto> CInquiryAll() {
-		log.info("CInquiryAll 성공");
-		return dao.CInquiryAll();
+	public List<INQUIRYBoardDto> C_allSelectBoard() {
+		log.info("C_allSelectBoard 성공");
+		return dao.C_allSelectBoard();
 	}
 
 	@Override
-	public INQUIRYBoardDto SInquiryDetail(String seq) {
-		log.info("SInquiryDetail 성공");
-		return dao.SInquiryDetail(seq);
+	public INQUIRYBoardDto C_SelectBoardDetail(String seq) {
+		log.info("C_SelectBoardDetail 성공");
+		return dao.C_SelectBoardDetail(seq);
+	}
+	
+	@Override
+	public INQUIRYBoardDto S_SelectBoardDetail(String seq) {
+		log.info("S_SelectBoardDetail 성공");
+		return dao.S_SelectBoardDetail(seq);
 	}
 
 	@Override
-	public List<INQUIRYBoardDto> SInquiryAll() {
-		log.info("SInquiryAll 성공");
-		return dao.SInquiryAll();
+	public List<INQUIRYBoardDto> S_allSelectBoard() {
+		log.info("S_allSelectBoard 성공");
+		return dao.S_allSelectBoard();
 	}
 
-	@Override
-	public INQUIRYBoardDto CInquiryDetail(String seq) {
-		log.info("CInquiryDetail 성공");
-		return dao.CInquiryDetail(seq);
-	}
 
 }
