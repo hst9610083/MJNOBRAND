@@ -7,6 +7,6 @@
 <title>로그인 후 페이지</title>
 </head>
 <body>
-
+<%@include file="/WEB-INF/views/boardTopMenu.jsp"%>
 </body>
 </html>

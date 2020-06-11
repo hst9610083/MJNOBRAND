@@ -29,7 +29,6 @@ public class PBoardController {
 	IMj_Board_Service service;
 	
 	
-	
 	// 홍보게시판 전체글 리스트
 	@RequestMapping(value="/pBoardList.do", method = RequestMethod.GET)
 	public String pBoardList(Model model, HttpSession session ) {
@@ -55,10 +54,11 @@ public class PBoardController {
 	}
 	
 	@RequestMapping(value="/pBoardWrite.do", method = RequestMethod.POST)
-	public String boardWrite(HttpSession session, MJ_BoardDTO dto) {
+	public String boardWrite(HttpSession session, MJ_BoardDTO dto, Model model) {
 		log.info("Welcome boardWrite: \t {}",dto);
 		MJ_MemberDTO mDto = (MJ_MemberDTO) session.getAttribute("mem");
 		dto.setId(mDto.getId());
+		dto.setNicname(mDto.getNicname());
 		boolean isc = service.pplWriteBoard(dto);
 		return isc?"redirect:/pBoardList.do":"redirect:/logout.do";
 	}
