@@ -38,7 +38,7 @@ public class InquiryController {
 	
 	//임시 문의글 게시판 상세보기
 
-	}
+	
 	
 	// 임시 문의글 게시판 상세보기
 
