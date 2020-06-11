@@ -20,23 +20,43 @@ public class InquiryController {
 	@Autowired
 	private IMj_Inquiry_Service service;
 	
-	//임시 문의글 게시판 전체리스트
+	// 임시 문의글 게시판 전체리스트
 	@RequestMapping(value="/iBoardList.do",method = RequestMethod.GET)
 	public String iBoardList(Model model) {
 		
 		List<INQUIRYBoardDto> lists=service.Mimsi_All();
 		model.addAttribute("lists",lists);
 		return "iBoardList";
-	};
+	}
 	
-	//임시 문의글 게시판 상세보기
+	// 임시 문의글 게시판 상세보기
 	@RequestMapping(value="/iBoardListDetail.do",method = RequestMethod.GET)
 	public String iBoardListDetail(Model model,String seq) {
 		
 		List<INQUIRYBoardDto> lists = service.Mimsi_Detail(seq);
 		model.addAttribute("lists",lists);
 		return "iBoardListDetail";
-		
 	}
+	
+	// 소비자문의게시판 글 전체리스트 (소비자)
+	@RequestMapping(value="/c_BoardList.do",method = RequestMethod.GET)
+	public String C_BoardList(Model model) {
+		
+		List<INQUIRYBoardDto> lists=service.Mimsi_All();
+		model.addAttribute("lists",lists);
+		return "BoardList";
+	}
+	
+	// 소비자문의게시판 글 상세 조회 (소비자)
+	
+	
+	// 소비자문의게시판 글 입력 (소비자)
+	
+	
+	// 소비자문의게시판 글 전체리스트 (업체)
+	
+	
+	// 소비자문의게시판 글 상세 조회 (업체)
+	
 	
 }
