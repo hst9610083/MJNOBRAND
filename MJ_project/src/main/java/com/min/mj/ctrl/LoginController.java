@@ -54,15 +54,15 @@ public class LoginController {
       
    }
    //   회원가입 페이지 가기 
-   @RequestMapping(value = "/S_JoinUp", method = RequestMethod.GET)
-   public String S_Joingo() {
-      return "S_JoinUp";
-   }
-   @RequestMapping(value = "/C_JoinUp", method = RequestMethod.GET)
-   public String C_Joingo() {
-      return "C_JoinUp";
-   }
-   
+//   @RequestMapping(value = "/S_JoinUp", method = RequestMethod.GET)
+//   public String S_Joingo() {
+//      return "S_JoinUp";
+//   }
+//   @RequestMapping(value = "/C_JoinUp", method = RequestMethod.GET)
+//   public String C_Joingo() {
+//      return "C_JoinUp";
+//   }
+//   
    // 회원가입 성공 매핑
    @RequestMapping(value="/S_JoinUp.do",method = RequestMethod.POST)
    public String maingo_s(MJ_MemberDTO dto,Model model) {
