@@ -11,7 +11,7 @@ public interface IMj_Inquiry_Dao {
 	public List<INQUIRYBoardDto> Mimsi_All();
 	
 	//문의글 임시보관함 상세보기
-	public  INQUIRYBoardDto Mimsi_Detail(String seq);
+	public INQUIRYBoardDto Mimsi_Detail(String seq);
 	
 
 	

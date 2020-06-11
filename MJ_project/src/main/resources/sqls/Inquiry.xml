@@ -11,10 +11,9 @@ SELECT SEQ ,ID ,NICNAME ,TITLE ,REGDATE
 <!--  문의글 임시보관함 상세보기-->
 
 <select id="Mimsi_Detail" parameterType="java.lang.String" resultType="IDto">
-SELECT A.SEQ,A.ID,A.NICNAME ,A.TITLE,A.CONTENT ,A.REALFILE ,A.REGDATE 
- FROM C_INQUIRY A LEFT JOIN "FILE" B
-ON(A.REALFILE =B.REALFILE )
- WHERE A.ID=#{a.seq,jdbcType=VARCHAR} AND A.IMSI='Y'
+SELECT ID, NICNAME, REGDATE, TITLE, CONTENT, REALFILE 
+	FROM C_INQUIRY
+		WHERE SEQ = #{seq} AND IMSI='Y'
 </select>
 
 <!--문의글 임시 보관함 수정하기-->
@@ -31,7 +30,7 @@ DELETE FROM C_INQUIRY WHERE SEQ=#{seq} AND IMSI='Y'
 <!--문의글 보관함 리스트 전체보기     -->
 <select id="Mstore_All" resultType="IDto">
 SELECT SEQ ,ID ,NICNAME ,TITLE ,REGDATE 
- FROM C_INQUIRY WHERE IMSI ='N'
+ FROM C_INQUIRY WHERE IMSI ='N' 
 </select>
 
 <!--문의글 보관함 상세보기            -->

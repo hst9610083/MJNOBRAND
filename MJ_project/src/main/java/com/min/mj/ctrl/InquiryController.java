@@ -37,9 +37,10 @@ public class InquiryController {
    
       // 임시 문의글 게시판 상세보기
       @RequestMapping(value="/iBoardListDetail.do",method = RequestMethod.GET)
-      public String iBoardListDetail(Model model,String seq) {
-         
+      public String iBoardListDetail(Model model, String seq) {
+         log.info("게시판 상세보기,\t {}", seq);
          INQUIRYBoardDto lists = service.Mimsi_Detail(seq);
+         System.out.println("___________________________________"+lists.toString());
          model.addAttribute("lists",lists);
          return "iBoardListDetail";
       }
@@ -85,3 +86,4 @@ public class InquiryController {
    
    
 }
+
