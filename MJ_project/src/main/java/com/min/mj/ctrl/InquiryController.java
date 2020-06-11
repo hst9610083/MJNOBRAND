@@ -42,7 +42,7 @@ public class InquiryController {
 	// 임시 문의글 게시판 상세보기
 	@RequestMapping(value="/iBoardListDetail.do",method = RequestMethod.GET)
 	public String iBoardListDetail(Model model,String seq) {
-	
+		System.out.println(seq);
 		INQUIRYBoardDto Dlists = service.Mimsi_Detail(seq);
 		
 		model.addAttribute("Dlists",Dlists);
