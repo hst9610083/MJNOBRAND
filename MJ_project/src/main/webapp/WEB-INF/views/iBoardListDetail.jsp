@@ -10,7 +10,7 @@
 	<%@include file="/WEB-INF/views/boardTopMenu.jsp"%>
 
 		<div id="container">
-		<h1>문의글 임시보기 리스트</h1>
+		<h1>문의글 상세보기</h1>
 <!-- 		<input id="lists"> -->
 		<form action="./iBoardListDetail.do" method="post">
 			<table class="table table-bordered">

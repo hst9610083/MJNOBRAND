@@ -23,15 +23,41 @@ public class MJ_BoardDTO {
 		
 	}
 
-	
-	public MJ_BoardDTO(String id, int seq, String nicname, String title, String content) {
+
+
+	public MJ_BoardDTO(String id, int seq, String nicname, String title, String content, int readcount, String regdate,
+			String moneypub, String imsi, String jjim, String delflag, String realfile) {
 		super();
 		this.id = id;
 		this.seq = seq;
 		this.nicname = nicname;
 		this.title = title;
 		this.content = content;
+		this.readcount = readcount;
+		this.regdate = regdate;
+		this.moneypub = moneypub;
+		this.imsi = imsi;
+		this.jjim = jjim;
+		this.delflag = delflag;
+		this.realfile = realfile;
 	}
+
+
+
+	public MJ_BoardDTO(String id, int seq, String nicname, String title, String content, int readcount, String regdate,
+			String delflag, String realfile) {
+		super();
+		this.id = id;
+		this.seq = seq;
+		this.nicname = nicname;
+		this.title = title;
+		this.content = content;
+		this.readcount = readcount;
+		this.regdate = regdate;
+		this.delflag = delflag;
+		this.realfile = realfile;
+	}
+
 
 
 	public String getId() {

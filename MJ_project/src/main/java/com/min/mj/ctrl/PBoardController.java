@@ -36,11 +36,11 @@ public class PBoardController {
 		log.info("Welcome /BoardList.do : \t {}", new Date());
 		
 		//페이징 처리 DTO
-		RowNumDto rowDto = null;
+//		RowNumDto rowDto = null;
 		//페이징처리된 리스트
-		List<MJ_BoardDTO> lists = null;
+		
 		// 전체글 조회
-		lists = service.pplSelectBoard();
+		List<MJ_BoardDTO> lists = service.pplSelectBoard();
 //		MJ_BoardDTO mDto = (MJ_BoardDTO) session.getAttribute("list");
 		
 		model.addAttribute("lists", lists);
@@ -55,11 +55,10 @@ public class PBoardController {
 	}
 	
 	@RequestMapping(value="/pBoardWrite.do", method = RequestMethod.POST)
-	public String boardWrite(HttpSession session, MJ_BoardDTO dto,Model model) {
+	public String boardWrite(HttpSession session, MJ_BoardDTO dto) {
 		log.info("Welcome boardWrite: \t {}",dto);
 		MJ_MemberDTO mDto = (MJ_MemberDTO) session.getAttribute("mem");
 		dto.setId(mDto.getId());
-		model.addAttribute("mDto", mDto);
 		boolean isc = service.pplWriteBoard(dto);
 		return isc?"redirect:/pBoardList.do":"redirect:/logout.do";
 	}
