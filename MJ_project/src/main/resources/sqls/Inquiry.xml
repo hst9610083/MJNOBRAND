@@ -81,6 +81,7 @@ SELECT * FROM C_INQUIRY
 <select id="S_allSelectBoard" resultType="IDto">
 SELECT SEQ,NICNAME,TITLE,REGDATE FROM C_INQUIRY WHERE AUTH='S'
 </select>
+
 <!-- 소비자문의게시판 (글 상세 조회)(업체) -->
  <select id="S_SelectBoardDetail" resultType="IDto">
 SELECT A.SEQ,A.ID,TITLE,CONTENT ,A.REALFILE ,REGDATE
