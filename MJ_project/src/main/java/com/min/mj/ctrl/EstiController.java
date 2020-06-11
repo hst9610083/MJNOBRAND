@@ -21,7 +21,6 @@ public class EstiController {
 	@Autowired
 	private IMj_Esti_Service service;
 	
-	
 	//견적서 게시판 전체 리스트(소비자)
 	@RequestMapping(value="/c_EstiList.do",method = RequestMethod.GET)
 	public String c_EstiList(Model model,EstiDto dto) {
@@ -29,7 +28,6 @@ public class EstiController {
 		List<EstiDto> lists=service.Cesti_All();
 		model.addAttribute("lists",lists);
 		return "c_EstiList";
-		
 	};
 	
 	//견적서 게시판 전체 리스트(업체)
