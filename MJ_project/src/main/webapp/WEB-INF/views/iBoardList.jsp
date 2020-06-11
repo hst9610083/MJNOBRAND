@@ -14,7 +14,7 @@
 
 
 
-		<form action="./iBoardList.do" method="get">
+		<form action="./iBoardList.do" method="post">
 			<table class="table table-bordered">
 				<tr>
 					<th>번호</th>

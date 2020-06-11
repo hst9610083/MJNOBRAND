@@ -1,6 +1,7 @@
 package com.min.mj.model.Inquiry;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +26,7 @@ public class MJ_Inquiry_ServiceImpl implements IMj_Inquiry_Service {
 	}
 
 	@Override
-	public List<INQUIRYBoardDto> Mimsi_Detail(String seq) {
+	public INQUIRYBoardDto Mimsi_Detail(String seq) {
 		log.info("Mimsi_Detail 성공");
 		return dao.Mimsi_Detail(seq);
 	}
@@ -49,7 +50,7 @@ public class MJ_Inquiry_ServiceImpl implements IMj_Inquiry_Service {
 	}
 
 	@Override
-	public List<INQUIRYBoardDto> Mstore_Detail(String seq) {
+	public INQUIRYBoardDto Mstore_Detail(String seq) {
 		log.info("Mstore_Detail 성공");
 		return dao.Mstore_Detail(seq);
 	}

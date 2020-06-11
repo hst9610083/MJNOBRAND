@@ -44,7 +44,7 @@ public class Mj_Member_DaoImpl implements IMj_Member_Dao {
 	public boolean c_register(MJ_MemberDTO dto) {
 		String enPw = passwordEncoder.encode(dto.getPw());
 		dto.setPw(enPw);
-		return session.insert(NS+"signUp", dto) > 0 ? true : false;
+		return session.insert(NS+"signUp", dto) > 0 ? true : false ;
 	}
 
 	@Override
