@@ -11,8 +11,8 @@
 
 		<div id="container">
 		<h1>문의글 상세보기</h1>
+		
 <!-- 		<input id="lists"> -->
-		<form action="./iBoardListDetail.do" method="post">
 			<table class="table table-bordered">
 				<tr>
 <!-- 					<th><input type="checkbox" onclick="checkAll(this.checked)"></th> -->
@@ -24,19 +24,18 @@
 					<th>파일</th>
 					<th>날짜</th>
 				</tr>
-				<c:forEach items="${Dlists}" var="dto">
+				<%-- <c:forEach items="${lists}" var="dto"> --%>
 					<tr>
-						<td>${dto.seq}</td>
-						<td>${dto.id}</td>
-						<td>${dto.nicname}</td>
-						<td>${dto.title}</td>
-						<td>${dto.content}</td>
-						<td>${dto.file}</td>
-						<td>${dto.regdate}</td>
+<%-- 						<td>${dto.seq}</td> --%>
+						<td>${lists.id}</td>
+						<td>${lists.nicname}</td>
+						<td>${lists.title}</td>
+						<td>${lists.content}</td>
+						<td>${lists.realfile}</td>
+						<td>${lists.regdate}</td>
 					</tr>
-				</c:forEach>
+				<%-- </c:forEach> --%>
 			</table>
-		</form>
 	</div>
 
 </body>
