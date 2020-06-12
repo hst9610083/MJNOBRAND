@@ -23,10 +23,10 @@ public class LoginController {
    
    @RequestMapping(value= "/loginPage.do", method = RequestMethod.GET)
    public String login(@RequestParam(value = "error", required = false)String error,
-         @RequestParam(value = "logout",required = false)String logout, Model model, Authentication user) {
-      System.out.println("44");
+   @RequestParam(value = "logout",required = false)String logout, Model model, Authentication user) {
+
 	   
-	   if (user != null) {
+	  if (user != null) {
          UserDetails userD = (UserDetails)user.getPrincipal();
       }
       if(error != null) {
