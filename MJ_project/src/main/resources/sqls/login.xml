@@ -4,7 +4,7 @@
 
 <!-- 로그인 -->
 <select id="userlogin" parameterType="java.lang.String" resultType="MemberDto">
-	 SELECT ID, PW,AUTH
+	 SELECT ID, PW, AUTH
      FROM REGISTER
      WHERE ID = #{id}
 </select>
