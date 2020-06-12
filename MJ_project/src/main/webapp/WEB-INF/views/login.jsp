@@ -20,23 +20,6 @@
   
 <body>
 
-${msg}
-
-${user}
-
-<!-- 시큐리티를 사용하기 위해서는 반드시 POST여야 한다 -->
-<form action="./logingo.do" method="POST">
-아이디 : 
-<input type="text" name="id">
-비밀번호
-<input type="text" name="password">
-<input name ="remember-me" type = "checkbox"/>Remember me
-<input type="submit" value="제출">
-</form>
-
-<a href="./S_JoinUp.do">업체 회원가입</a>
-<a href="./C_JoinUp.do">소비자 회원가입</a>
-
 
     <!--로그인 팝업-->
     <div id="loginModal" data-uc-modal class="is-fade">
@@ -73,8 +56,6 @@ ${user}
             </div>
         </div>
     </div>
-
-
 
 
     <div id="joinModal" data-uc-modal class="is-fade">
@@ -182,11 +163,10 @@ ${user}
             <h1><a href="./index.html"><img src="images/main/logo.png" alt=""></a></h1>
             <nav id="gnb">
                 <ul>
-                    <li><a href="sub_2_3.html">방보기</a></li>
-                    <li><a href="sub_3.html">단기임대</a></li>
-                    <li><a href="sub_2_2.html">방올리기</a></li>
-                    <li><a href="sub_1.html">공유방</a></li>
-                    <li><a href="sub_3-customer.html">고객센터</a></li>
+                    <li><a href="">소비자 문의 게시판</a></li>
+                    <li><a href="">홍보게시판</a></li>
+                    <li><a href="">공유방</a></li>
+                    <li><a href="">고객센터</a></li>
                 </ul>
             </nav>
             <div class="util">
@@ -200,17 +180,7 @@ ${user}
     </header>
 
     <!--main_visial-->
-    <div class="main_visual">
-        <div class="wrap">
-            <img src="images/main/main_img.png" alt="">
-            <div class="sch_box">
-               <div>
-                <input type="text" class="sch_input">
-                <input type="submit" class="sch_submit">
-                </div>
-            </div>
-        </div>
-    </div>
+ 
 
     <div class="con con1">
         <div class="wrap">

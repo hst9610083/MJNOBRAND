@@ -27,10 +27,12 @@
 		<!-- intercept-url을 설정할때는 순서 중요함!! / url에 따라 접근자들을 관리하는 기능 -->
 		<security:intercept-url pattern="/loginPage.do"
 			access="permitAll" />
-		<security:intercept-url pattern="/admin/**"
-			access="hasRole('Admin')" />
+		<security:intercept-url pattern="/seller/**"
+			access="hasRole('ROLE_S')" />
 		<security:intercept-url pattern="/**"
 			access="permitAll" />
+
+
 
 		<!-- login-processing-url : 로그인 폼과 시큐리티를 매핑하는 주소 -->
 		<!-- login-page : 로그인 화면으로 가는 주소 -->

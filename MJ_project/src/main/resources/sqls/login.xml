@@ -4,7 +4,7 @@
 
 <!-- 로그인 -->
 <select id="userlogin" parameterType="java.lang.String" resultType="MemberDto">
-	 SELECT ID, PW,AUTH
+	 SELECT ID, PW, AUTH
      FROM REGISTER
      WHERE ID = #{id}
 </select>
@@ -22,6 +22,11 @@ INSERT INTO REGISTER
 (SEQ, ID, PW,  NAME,  ADDRESS, NICNAME, BIRTH, PHONNUM, AUTH )
  VALUES(REGISTER_SEQ.NEXTVAL,#{id},#{pw},#{name},#{address},#{nicname},#{birth},#{phonnum},'ROLE_C')
 </insert>
+<!-- 회원 정보 조회-->
+<select id="info" resultType="MemberDto" >
+SELECT  ID, SEQ, NAME, ADDRESS, NICNAME, SELLERNUM,SELPICK,AUTH
+FROM REGISTER
+</select>
 
 <!-- 업체 정보 조회-->
 <select id="s_info" resultType="MemberDto" >

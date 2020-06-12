@@ -74,6 +74,10 @@ public class Mj_Member_DaoImpl implements IMj_Member_Dao {
 		int n =session.update(NS+"s_modify", id);
 		return (n>0)?true:false;
 	}
-
+	@Override
+	public List<MJ_MemberDTO> info(MJ_MemberDTO dto) {
+		// TODO Auto-generated method stub
+		return session.selectList(NS+"info",dto);
+	}
 }
 
