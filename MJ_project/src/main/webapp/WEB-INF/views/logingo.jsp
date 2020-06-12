@@ -31,25 +31,22 @@
 			<nav id="gnb">
 				<ul>
 					<li><a href="">소비자 문의 게시판</a></li>
-					<li><a href="">홍보게시판</a></li>
-					<li><a href="">공유방</a></li>
+					<li><a href="./pBoardList.do">홍보게시판</a></li>
+					<li><a href="">마이페이지</a></li>
 				</ul>
-
+<!-- ㄴㄴ -->
 			</nav>
 			<nav >
 				<div class="util">
 					<ul>
-						<li><a
-							href="file:///C:/Users/uriim/OneDrive/바탕%20화면/html_4/mypage1-2.html"><img
-								src="images/main/mypage_icon.png" alt=""> ${mDto.id}님 환영합니다.</a></li>
-						<li><a href="./logout.do"> <span class="glyphicon glyphicon-log-out"></span> Logout
-						</a></li>
+						<li><a href="./userInfo.do">
+							<img src="images/main/mypage_icon.png" alt=""> ${mDto.id}님 환영합니다.</a></li>
+						<li><a href="./logout.do"> <span class="glyphicon glyphicon-log-out"></span> Logout	</a></li>
 
 					</ul>
 				</div>
-	
-		</nav>
-	</div>
+			</nav>
+		</div>
 	</header>
 
 	<!--main_visial-->
