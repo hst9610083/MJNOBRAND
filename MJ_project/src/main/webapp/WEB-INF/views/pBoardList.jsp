@@ -11,6 +11,7 @@
 <meta charset="UTF-8">
 <title>홍보게시판</title>
 </head>
+${mem}
 <body>
 	<%@include file="/WEB-INF/views/boardTopMenu.jsp"%>
 	<div id="container">
@@ -32,7 +33,7 @@
 						<td>${dto.seq}</td>
 						<td>${dto.id}</td>
 						<td>${dto.nicname}</td>
-						<td>${dto.title}</td>
+						<td><a href="./pBoardDetail.do?seq=${dto.seq}">${dto.title}</a></td>
 						<td>${dto.content}</td>
 						<td>${dto.readcount}</td>
 						<td>${dto.regdate}</td>

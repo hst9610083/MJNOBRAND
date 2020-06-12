@@ -1,5 +1,6 @@
 package com.min.mj.ctrl;
 
+import java.security.Principal;
 import java.util.Date;
 
 import java.util.List;
@@ -54,25 +55,37 @@ public class PBoardController {
 	}
 	
 	@RequestMapping(value="/pBoardWrite.do", method = RequestMethod.POST)
-	public String boardWrite(HttpSession session, MJ_BoardDTO dto, Model model) {
+	public String pboardWrite(HttpSession session, MJ_BoardDTO dto, Model model, Principal principal) {
 		log.info("Welcome boardWrite: \t {}",dto);
-		MJ_MemberDTO mDto = (MJ_MemberDTO) session.getAttribute("mem");
-		dto.setId(mDto.getId());
-		dto.setNicname(mDto.getNicname());
+		String id = principal.getName();
+		dto.setId(id);
+		log.info("Welcome boardWrite: \t {}",id,dto);
 		boolean isc = service.pplWriteBoard(dto);
-		return isc?"redirect:/pBoardList.do":"redirect:/logout.do";
+		model.addAttribute("mem", isc);
+//		boolean isc = service.pplWriteBoard(dto);
+		return "pBoardList";
+//		return isc?"redirect:/pBoardList.do":"redirect:/logout.do";
 	}
 	
 	@RequestMapping(value="/pModify.do", method = RequestMethod.POST)
-	public String Modify(MJ_BoardDTO dto){
+	public String ModifypBoard(MJ_BoardDTO dto){
 		log.info("Welcome Modify.do : \t{}",dto);
 		boolean isc = service.pplModifyBoard(dto);
 		return isc?"redirect:/pBoardList.do":":redirect:/pModify.do";
 	}
 	
 	
-	public String Del(String seq) {
+	public String DelpBoard(String seq) {
 		return "";
+	}
+	
+	
+	@RequestMapping(value="/pBoardDetail.do", method = RequestMethod.GET)
+	public String DetailpBoard(Model model,String seq) {
+		log.info("Welcome Detail.do : \t {}", seq);
+		MJ_BoardDTO bDto = service.pplgetOnBoard(seq);
+		model.addAttribute("bDto", bDto);
+		return "pBoardDetail";
 	}
 	
 }
