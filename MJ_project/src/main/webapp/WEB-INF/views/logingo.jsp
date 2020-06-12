@@ -34,7 +34,7 @@
 					<li><a href="./pBoardList.do">홍보게시판</a></li>
 					<li><a href="">마이페이지</a></li>
 				</ul>
-
+<!-- ㄴㄴ -->
 			</nav>
 			<nav >
 				<div class="util">
