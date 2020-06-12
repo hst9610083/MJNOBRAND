@@ -27,6 +27,13 @@ public interface IMj_Member_Service {
 	 */
 	public MJ_MemberDTO userlogin(String id);
 	
+	
+	/**
+	 * 회원 정보(info)
+	 * @return 회원 정보 리스트 
+	 */
+	public List<MJ_MemberDTO> info(MJ_MemberDTO dto);
+
 	/**
 	 * 업체 정보(s_info)
 	 * @return 업체 정보 리스트 
@@ -40,6 +47,7 @@ public interface IMj_Member_Service {
 	 */
 	public List<MJ_MemberDTO> c_info();
 	
+
 	/**
 	 * 회원 탈퇴
 	 * @param id

@@ -20,23 +20,6 @@
   
 <body>
 
-${msg}
-
-${user}
-
-<!-- 시큐리티를 사용하기 위해서는 반드시 POST여야 한다 -->
-<form action="./logingo.do" method="POST">
-아이디 : 
-<input type="text" name="id">
-비밀번호
-<input type="text" name="password">
-<input name ="remember-me" type = "checkbox"/>Remember me
-<input type="submit" value="제출">
-</form>
-
-<a href="./S_JoinUp.do">업체 회원가입</a>
-<a href="./C_JoinUp.do">소비자 회원가입</a>
-
 
     <!--로그인 팝업-->
     <div id="loginModal" data-uc-modal class="is-fade">
@@ -73,8 +56,6 @@ ${user}
             </div>
         </div>
     </div>
-
-
 
 
     <div id="joinModal" data-uc-modal class="is-fade">
@@ -199,17 +180,7 @@ ${user}
     </header>
 
     <!--main_visial-->
-    <div class="main_visual">
-        <div class="wrap">
-            <img src="images/main/logologo.jpg" alt="">
-            <div class="sch_box">
-               <div>
-                <input type="text" class="sch_input">
-                <input type="submit" class="sch_submit">
-                </div>
-            </div>
-        </div>
-    </div>
+ 
 
     <div class="con con1">
         <div class="wrap">
