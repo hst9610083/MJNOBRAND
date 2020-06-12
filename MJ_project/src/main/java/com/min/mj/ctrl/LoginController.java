@@ -1,6 +1,8 @@
 package com.min.mj.ctrl;
 
-import java.util.List;
+import java.security.Principal;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -22,12 +24,14 @@ public class LoginController {
    // 로그인 페이지로 가는 매핑
    
    @RequestMapping(value= "/loginPage.do", method = RequestMethod.GET)
-   public String login(@RequestParam(value = "error", required = false)String error,
+   public String login(
+		   @RequestParam(value = "error", required = false)String error,
    @RequestParam(value = "logout",required = false)String logout, Model model, Authentication user) {
 
 	   
 	  if (user != null) {
          UserDetails userD = (UserDetails)user.getPrincipal();
+
       }
       if(error != null) {
          model.addAttribute("msg", "로그인 에러");
@@ -36,23 +40,27 @@ public class LoginController {
          model.addAttribute("msg","로그아웃 성공");
       }
       System.out.println("loginPage.do1");
-
       return "login";
    }
 
 
-   // 로그인 후 홈페이지 가는 매핑
+   // 소비자 로그인 후 소비자 홈페이지 가는 매핑
    @RequestMapping(value = "/result.do", method = RequestMethod.GET)
-   public String maingo(Model model, Authentication user) {
-      System.out.println("result");
-	   if(user != null) {
-         UserDetails userD = (UserDetails)user.getPrincipal();
-      
-         model.addAttribute("user",userD.toString());
-      }
+   public String maingo_c(Model model, Authentication user, Principal principal) {
+      String id = principal.getName();
+      MJ_MemberDTO mDto = service.userlogin(id);
+      mDto.getAuth();
+      mDto.getId();
+      model.addAttribute("mDto",mDto);
+//      if(user != null) {
+//         UserDetails userD = (UserDetails)user.getPrincipal();
+//         model.addAttribute("user",userD.toString());
+//      }
+
       return "logingo";
       
    }
+
    //   회원가입 페이지 가기 
 //   @RequestMapping(value = "/S_JoinUp", method = RequestMethod.GET)
 //   public String S_Joingo() {
@@ -79,7 +87,7 @@ public class LoginController {
    
    @RequestMapping(value = "/admin/adminPage.do", method= RequestMethod.GET)
    public String adminPage() {
-      return "adminPage";
+      return "loginsell";
    }
    @RequestMapping(value = "/AuthError.do", method = RequestMethod .GET)
    public String AuthError() {
@@ -87,4 +95,14 @@ public class LoginController {
       return "AuthError";
    }
 
+   @RequestMapping(value="/userInfo.do",method = RequestMethod.GET)
+   public String userInfo(HttpSession session, Model model) {
+	   System.out.println("11111111");
+      MJ_MemberDTO mDto =  (MJ_MemberDTO) session.getAttribute("mem");
+      System.out.println("Welcome userInfo.do : \t {}"+mDto);
+      MJ_MemberDTO infoDto = service.info(mDto).get(0);
+      model.addAttribute("infoDto",infoDto);
+      System.out.println("Welcome userInfo.do : \t {}"+infoDto);
+      return "userInfo";
+   }
 }
