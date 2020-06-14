@@ -46,12 +46,12 @@ public class InquiryController {
       }
    
    // 소비자문의게시판 (글 전체 조회)(소비자)
-   @RequestMapping(value="/ConInquiryBoard.do",method = RequestMethod.GET)
-   public String ConInquiryBoard(Model model) {
+   @RequestMapping(value="/Contemplate.do",method = RequestMethod.GET)
+   public String Contemplate(Model model) {
       
       List<INQUIRYBoardDto> lists=service2.C_allSelectBoard();
       model.addAttribute("lists",lists);
-      return "ConInquiryBoard";
+      return "Contemplate";
    }
    
    // 소비자문의게시판 글 상세 조회 (소비자)
