@@ -13,7 +13,6 @@ private String realfile;
 private String auth;
 
 public EstiDto() {
-	// TODO Auto-generated constructor stub
 }
 
 public EstiDto(int seq, String id, String regdate, String title, String content, String imsi, String realfile,

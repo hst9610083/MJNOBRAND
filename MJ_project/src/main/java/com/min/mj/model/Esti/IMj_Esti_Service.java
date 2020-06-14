@@ -10,7 +10,7 @@ public interface IMj_Esti_Service {
 	public List<EstiDto> Cesti_All();
 	
 	//견적서 상세보기(소비자)
-	public List<EstiDto> Cesti_Detail(String seq);
+	public EstiDto Cesti_Detail(String seq);
 	
 	//견적서 삭제하기(소비자)
 	public boolean Cesti_Delete(String seq);
@@ -19,7 +19,11 @@ public interface IMj_Esti_Service {
 	public List<EstiDto> Sesti_All();
 	
 	//견적서 리스트 상세보기(업체)
-	public List<EstiDto> Sesti_Detail(String seq);
+	public EstiDto Sesti_Detail(String seq);
+	
+	//견적서 쓰기
+	public boolean EstiInput(EstiDto dto);
+
 	
 	
 	
