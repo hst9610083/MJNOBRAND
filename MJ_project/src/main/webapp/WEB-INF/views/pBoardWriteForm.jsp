@@ -10,17 +10,10 @@
 <%@include file="/WEB-INF/views/boardTopMenu.jsp" %>
 <div id="container">
 <form class="form-horizontal" action="./pBoardWrite.do" method="post">
-
     <div class="form-group">
-      <label class="control-label col-sm-2" for="id">작성자:</label>
+      <label class="control-label col-sm-2" for="email">작성자:</label>
       <div class="col-sm-5">
-        <input type="text" class="form-control" value='${mem.id}' name="id">
-      </div>
-    </div>
-	<div class="form-group">
-      <label class="control-label col-sm-2" for="nicname">닉네임</label>
-      <div class="col-sm-5">          
-        <input type="text" class="form-control" id="nicname" placeholder="Enter nicname" name="nicname" value='${mem.nicname}'>
+        <input type="text" class="form-control" value="${mem.id}" readonly="readonly">
       </div>
     </div>
 	<div class="form-group">
@@ -43,6 +36,7 @@
         <input class="btn btn-default" type="button" value="목록 이동" onclick="./pBoardList.do">
       </div>
     </div>
+  
   </form>
 </div>
 </body>

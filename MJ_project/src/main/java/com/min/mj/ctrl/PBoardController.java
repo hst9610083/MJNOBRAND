@@ -1,11 +1,8 @@
 package com.min.mj.ctrl;
 
-import java.security.Principal;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,32 +29,21 @@ public class PBoardController {
 	IMj_Board_Service service;
 	
 	
+	
 	// 홍보게시판 전체글 리스트
 	@RequestMapping(value="/pBoardList.do", method = RequestMethod.GET)
 	public String pBoardList(Model model, HttpSession session ) {
 		log.info("Welcome /BoardList.do : \t {}", new Date());
 		
 		//페이징 처리 DTO
-		RowNumDto rowDto = null;
+//		RowNumDto rowDto = null;
 		//페이징처리된 리스트
-		List<MJ_BoardDTO> lists = null;
-		MJ_MemberDTO mDto = (MJ_MemberDTO) session.getAttribute("mem");
-		if(session.getAttribute("row")==null) {
-			rowDto = new RowNumDto();
-		}else {
-			rowDto = (RowNumDto) session.getAttribute("row");
-		}
 		
-		if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_S")) {
-			rowDto.setTotal(service.BoardListTotal());
-			lists = service.BoardListRow(rowDto);
-		}else {
-			rowDto.setTotal(service.BoardListTotal());
-			lists = service.BoardListRow(rowDto);
-		}
-		model.addAttribute("row", rowDto);
+		// 전체글 조회
+		List<MJ_BoardDTO> lists = service.pplSelectBoard();
+//		MJ_BoardDTO mDto = (MJ_BoardDTO) session.getAttribute("list");
+		
 		model.addAttribute("lists", lists);
-		
 		return "pBoardList";
 	}
 	
@@ -70,50 +55,24 @@ public class PBoardController {
 	}
 	
 	@RequestMapping(value="/pBoardWrite.do", method = RequestMethod.POST)
-	public String pboardWrite(HttpSession session, MJ_BoardDTO dto, Model model) {
+	public String boardWrite(HttpSession session, MJ_BoardDTO dto) {
 		log.info("Welcome boardWrite: \t {}",dto);
-		MJ_MemberDTO mDto =  (MJ_MemberDTO) session.getAttribute("mem");
+		MJ_MemberDTO mDto = (MJ_MemberDTO) session.getAttribute("mem");
 		dto.setId(mDto.getId());
 		boolean isc = service.pplWriteBoard(dto);
 		return isc?"redirect:/pBoardList.do":"redirect:/logout.do";
 	}
 	
 	@RequestMapping(value="/pModify.do", method = RequestMethod.POST)
-	public String ModifypBoard(MJ_BoardDTO dto){
+	public String Modify(MJ_BoardDTO dto){
 		log.info("Welcome Modify.do : \t{}",dto);
 		boolean isc = service.pplModifyBoard(dto);
-		return "redirect:/pBoardList.do";
+		return isc?"redirect:/pBoardList.do":":redirect:/pModify.do";
 	}
 	
 	
-	@RequestMapping(value = "pMultiDel.do", method = RequestMethod.GET)
-	public String DelpBoard(HttpSession session,String[] seq) {
-		log.info("Welcome MultiDelete.do : \t{}",Arrays.toString(seq));
-		MJ_BoardDTO dto = service.pplgetOnBoard(seq[0]);
-		MJ_MemberDTO mDto = (MJ_MemberDTO) session.getAttribute("mem");
-		boolean isc = false;
-		if(mDto.getAuth().equalsIgnoreCase("ROLE_S") || dto.getId().equalsIgnoreCase(mDto.getId())) {
-			Map<String, String[]> map = new HashMap<String, String[]>();
-			map.put("seq_", seq);
-			isc = service.pplMultiDel(map);
-		}
-		return isc?"redirect:/pBoardList.do":"redirect:/logout.do";
-	}
-	
-	
-	@RequestMapping(value = "/pdel.do", method = RequestMethod.GET)
-	public String del(String seq) {
-		log.info("Welcome pdel.do : \t {}",seq);
-		boolean isc = service.pplDelBoard(seq);
-		return "pBoardList.do";
-	}
-	
-	@RequestMapping(value="/pBoardDetail.do", method = RequestMethod.GET)
-	public String DetailpBoard(Model model,String seq) {
-		log.info("Welcome Detail.do : \t {}", seq);
-		MJ_BoardDTO bDto = service.pplgetOnBoard(seq);
-		model.addAttribute("bDto", bDto);
-		return "pBoardDetail";
+	public String Del(String seq) {
+		return "";
 	}
 	
 }
