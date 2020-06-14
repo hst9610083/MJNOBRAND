@@ -26,9 +26,9 @@ public class MJ_Esti_DaoImpl implements IMj_Esti_Dao {
 	}
 
 	@Override
-	public List<EstiDto> Cesti_Detail(String seq) {
+	public EstiDto Cesti_Detail(String seq) {
 		log.info("Cesti_Detail 성공");
-		return session.selectList(NS+"Cesti_Detail",seq);
+		return session.selectOne(NS+"Cesti_Detail",seq);
 	}
 
 	@Override
@@ -45,9 +45,16 @@ public class MJ_Esti_DaoImpl implements IMj_Esti_Dao {
 	}
 
 	@Override
-	public List<EstiDto> Sesti_Detail(String seq) {
+	public EstiDto Sesti_Detail(String seq) {
 		log.info("Sesti_Detail 성공");
-		return session.selectList(NS+"Sesti_Detail",seq);
+		return session.selectOne(NS+"Sesti_Detail",seq);
+	}
+
+	@Override
+	public boolean EstiInput(EstiDto dto) {
+		log.info("EstiInput 성공");
+		int n =session.insert(NS+"EstiInput",dto);
+		return (n>0)?true:false;
 	}
 
 }
