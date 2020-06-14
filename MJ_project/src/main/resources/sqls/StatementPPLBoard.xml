@@ -10,8 +10,8 @@
    
    <!-- 글쓰기  -->
    <insert id="pplWriteBoard" parameterType="BDto">
-      INSERT INTO SELLER_PPL_BOARD(SEQ,ID, NICNAME, TITLE, CONTENT, READCOUNT, REGDATE, DELFLAG) 
-                        VALUES(SELLER_PPL_BOARD_SEQ.NEXTVAL, #{id}, #{nicname}, #{title}, #{content}, 0, SYSDATE, 'N')
+      INSERT INTO SELLER_PPL_BOARD(SEQ, ID, NICNAME, TITLE, CONTENT, READCOUNT, REGDATE, DELFLAG) 
+                        VALUES(SELLER_PPL_BOARD_SEQ.NEXTVAL,#{id}, #{nicname}, #{title}, #{content}, 0, SYSDATE, 'N')
    </insert>
 
    <!-- 상세글 보기 -->
@@ -23,7 +23,7 @@
    
    <!-- 조회수 -->
    <update id="pplReadcountBoard" parameterType="java.lang.String">
-   UPDATE SELLER_PPL_BOARD SER READCOUNT = READCOUNT+1
+   UPDATE SELLER_PPL_BOARD SET READCOUNT = READCOUNT+1
    WHERE SEQ = #{seq}
    </update>
    <!-- 수정 -->
@@ -56,9 +56,10 @@
         FROM
         (
         SELECT SEQ, ID, TITLE,CONTENT,
-                READCOUNT, DELFLAG, REGDATE FROM SELLER_PPL_BOARD
-                WHERE DELFLAG ='Y'
-                ORDER BY READCOUNT DESC
+                READCOUNT, DELFLAG, REGDATE
+                FROM SELLER_PPL_BOARD
+                WHERE DELFLAG ='N'
+                ORDER BY READCOUNT DESC, REGDATE
                 )
                 )
                 WHERE RNUM BETWEEN #{start} AND #{last}
@@ -66,6 +67,6 @@
    
    <!-- 홍보게시판 전체글 갯수 -->
    <select id="BoardListTotal" resultType="java.lang.Integer">
-   SELECT COUNT(*) FROM SELLER_PPL_BOARD WHERE DELFALG='N'
+   SELECT COUNT(*) FROM SELLER_PPL_BOARD WHERE DELFLAG='N'
    </select>
 </mapper>
