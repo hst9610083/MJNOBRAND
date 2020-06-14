@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>뭔말인지 알조</title>
+   <title>뭔말인지 알조</title>
 
 </head>
     <link rel="stylesheet" href="css/uc.min.css">
@@ -12,13 +12,13 @@
     <link rel="stylesheet" href="css/slick-theme.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/layout.css">
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/uc.lib.min.js"></script>
-    <script src="js/uc.plugin.min.js"></script>
-    <script src="js/slick.min.js"></script>
-    <script src="js/common.js"></script>	
-    <script src="js/signup.js"></script>	
-    <script src="js/signup2.js"></script>	
+    <script type="text/javascript"src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript"src="js/uc.lib.min.js"></script>
+    <script type="text/javascript"src="js/uc.plugin.min.js"></script>
+    <script type="text/javascript"src="js/slick.min.js"></script>
+    <script type="text/javascript"src="js/common.js"></script>   
+    <script type="text/javascript" src="js/signup.js"></script>   
+
   
 <body>
 
@@ -90,25 +90,24 @@
                     <div class="is-col-xs6 is-offset-xs3">
                         <h3 style="font-size: 34px; color: #404040; text-align: center; margin-bottom: 30px;">업체 회원가입</h3>
                        
-                       	<input type="hidden" id="chkval" value="0">
-                        <form data-uc-form action="./S_JoinUp.do" method="post"onsubmit="return check()">
-                        
-							<div class="is-input-field is-mg-b_15">
-                                <input type="text" name="selpick"  placeholder="* 사업자등록증이미지" />
+                          <input type="hidden" id="chkval" value="0">
+                        <form data-uc-form action="./S_JoinUp.do" method="post" onsubmit="return check()">
+
+                           <div class="is-input-field is-mg-b_15">
+                                <input type="text" name="selpick"  placeholder="* 사업자 등록증 이미지" />
                             </div>
-                           
                             <div class="is-input-field is-mg-b_15" >
                                 <input class="form-control" type="text" name="id" id="id" placeholder="* 아이디" maxlength="20"><br>
-								<span id="result"></span> 
-	                        </div>
+                        <span id="result"></span> 
+                           </div>
                             
                             <div class="is-input-field is-mg-b_15">
-                                <input type="text" name="pw"  placeholder="* 비밀번호" />
+                                <input type="text" id="pw" name="pw"  placeholder="* 비밀번호" >
                             </div>
                             <div class="is-input-field is-mg-b_15">
-	                            <input class="form-control" type="password" id="passOk"	placeholder="* 비밀번호 확인"><br> 
-	                            <span id="result_pw"></span>
-							</div>
+                               <input class="form-control" type="password" id="passOk"   placeholder="* 비밀번호 확인"><br> 
+                               <span id="result_pw"></span>
+                     </div>
                             <div class="is-input-field is-mg-b_15">
                                 <input type="text" name="name"  placeholder="* 이름" />
                             </div>
@@ -119,8 +118,8 @@
                                 <input type="text" name="nicname"  placeholder="* 별명" />
                             </div>
                              <div class="is-input-field is-mg-b_15">
-                                <input type="text" id="sellernum" name="sellernum"  placeholder="* 사업자번호" maxlength="20"/>
-                            	<span id="result1"></span> 
+                                <input type="text" id="sellernum" name="sellernum"  placeholder="* 사업자번호(숫자로만 입력해주세요)" maxlength="20"/>
+                               <span id="result1"></span> 
                             </div>
                             
                              <div class="is-input-field is-mg-b_15">
@@ -129,13 +128,13 @@
                             <div class="is-input-field is-mg-b_40">
                                 <label class="is-chk-lab">
                                     <input type="checkbox" id="privacy_1" name="privacy_1" value="0"><span></span> (선택)
-						                                    개인정보 제3자
-						                                    제공에 동의합니다.
+                                                      개인정보 제3자
+                                                      제공에 동의합니다.
                                 </label>
-                               	<label class="is-chk-lab">
+                                  <label class="is-chk-lab">
                                     <input type="checkbox" id="privacy_2" name="privacy_2" value="1"><span></span> (필수)
-						                                    개인정보 제공 및
-						                                    수집에 동의합니다.
+                                                      개인정보 제공 및
+                                                      수집에 동의합니다.
                                 </label>
                             </div>
                             <div class=" is-mg-b_15">
@@ -156,19 +155,19 @@
                     <div class="is-col-xs6 is-offset-xs3">
                         <h3 style="font-size: 34px; color: #404040; text-align: center; margin-bottom: 30px;">소비자 회원가입</h3>
                        
-                      	<input type="hidden" id="chkval" value="0">
+                         <input type="hidden" id="chkval" value="0">
                         <form data-uc-form action="./C_JoinUp.do" method="post"onsubmit="return check_1()">
                             <div class="is-input-field is-mg-b_15">
                                 <input class="form-control" type="text" name="id" id="id" placeholder="* 아이디입력란" maxlength="20">
-                     			<span id="result"></span> 
+                              <span id="result"></span> 
                             </div>
                             <div class="is-input-field is-mg-b_15">
                                 <input type="text" name="pw"  placeholder="* 비밀번호" />
                             </div>
                             <div class="is-input-field is-mg-b_15">
-                            <input class="form-control" type="password" id="passOk"	placeholder="* 비밀번호 확인"><br> 
-							<span id="result_pw"></span>
-							</div>
+                            <input class="form-control" type="password" id="passOk"   placeholder="* 비밀번호 확인"><br> 
+                     <span id="result_pw"></span>
+                     </div>
                             <div class="is-input-field is-mg-b_15">
                                 <input type="text" name="name"  placeholder="* 이름" />
                             </div>
@@ -230,7 +229,7 @@
 
     <div class="con con1">
         <div class="wrap">
-        	<br>
+           <br>
             <img src="images/main/GIFT.png"alt="">
         </div>
     </div>
@@ -600,7 +599,6 @@
 
 
 </body>
-
 
 
 
