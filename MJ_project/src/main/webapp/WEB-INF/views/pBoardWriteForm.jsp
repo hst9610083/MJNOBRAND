@@ -14,7 +14,7 @@
     <div class="form-group">
       <label class="control-label col-sm-2" for="id">작성자:</label>
       <div class="col-sm-5">
-        <input type="text" class="form-control" value='${mem.id}' readonly="readonly">
+        <input type="text" class="form-control" value='${mem.id}' name="id">
       </div>
     </div>
 	<div class="form-group">
@@ -43,7 +43,6 @@
         <input class="btn btn-default" type="button" value="목록 이동" onclick="./pBoardList.do">
       </div>
     </div>
-  
   </form>
 </div>
 </body>

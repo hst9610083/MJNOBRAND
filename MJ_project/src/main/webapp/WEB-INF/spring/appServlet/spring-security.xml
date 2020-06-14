@@ -27,7 +27,11 @@
 		<!-- intercept-url을 설정할때는 순서 중요함!! / url에 따라 접근자들을 관리하는 기능 -->
 		<security:intercept-url pattern="/loginPage.do"
 			access="permitAll" />
-		<security:intercept-url pattern="/seller/**"
+		<security:intercept-url pattern="/admin/**"
+			access="hasRole('ROLE_A')" />
+		<security:intercept-url pattern="/con/**"
+			access="hasRole('ROLE_C')" />
+		<security:intercept-url pattern="/sell/**"
 			access="hasRole('ROLE_S')" />
 		<security:intercept-url pattern="/**"
 			access="permitAll" />
@@ -91,5 +95,5 @@
 				ref="passwordEncoder" />
 		</security:authentication-provider>
 	</security:authentication-manager>
-	
+
 </beans>

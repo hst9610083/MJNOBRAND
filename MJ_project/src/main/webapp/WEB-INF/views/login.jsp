@@ -17,6 +17,8 @@
     <script src="js/uc.plugin.min.js"></script>
     <script src="js/slick.min.js"></script>
     <script src="js/common.js"></script>	
+    <script src="js/signup.js"></script>	
+    <script src="js/signup2.js"></script>	
   
 <body>
 
@@ -28,7 +30,7 @@
                 <div class="is-panel-body">
                     <div data-uc-colgroup="">
                         <div class="is-col-lg4 is-align-mid is-txt-center sns-wrap">
-                            <p class="login_title">로그인</p>
+                            <p class="login_title">업체 로그인</p>
                         </div>
                         <div class="is-col-lg4 is-align-mid">
                             <form data-uc-form action="./logingo.do" method="POST">
@@ -43,6 +45,28 @@
                                 <div class=" is-mg-b_15">
                                     <button type="submit" class="is-btn-yg1 is-mg-b_15">로그인</button>
                                     <a href="#joinModal" data-uc-click="modal" class="is-btn-yg2">업체 회원가입</a>
+                                </div>
+                                <div class="is-txt-center">
+                                    <a href="" class="is-txt-link">ID찾기</a>
+                                    <a href="" class="is-txt-link">비밀번호 찾기</a>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="is-col-lg4 is-align-mid is-txt-center sns-wrap">
+                            <p class="login_title">소비자 로그인</p>
+                        </div>
+                        <div class="is-col-lg4 is-align-mid">
+                            <form data-uc-form action="./logingo.do" method="POST">
+                                <div class="is-input-field is-mg-b_15">
+                                    <input type="text" name="id" placeholder="아이디"
+                                           style="border-color: #777676;" />
+                                </div>
+                                <div class="is-input-field is-mg-b_30">
+                                    <input type="text" name="password" placeholder="비밀번호"
+                                           style="border-color: #777676;" />
+                                </div>
+                                <div class=" is-mg-b_15">
+                                    <button type="submit" class="is-btn-yg1 is-mg-b_15">로그인</button>
                                     <a href="#joinModal_1" data-uc-click="modal" class="is-btn-yg2">소비자 회원가입</a>
                                 </div>
                                 <div class="is-txt-center">
@@ -50,6 +74,7 @@
                                     <a href="" class="is-txt-link">비밀번호 찾기</a>
                                 </div>
                             </form>
+                            
                         </div>
                     </div>
                 </div>
@@ -64,16 +89,26 @@
                 <div class="is-panel-body">
                     <div class="is-col-xs6 is-offset-xs3">
                         <h3 style="font-size: 34px; color: #404040; text-align: center; margin-bottom: 30px;">업체 회원가입</h3>
-                        <form data-uc-form action="./S_JoinUp.do" method="post">
+                       
+                       	<input type="hidden" id="chkval" value="0">
+                        <form data-uc-form action="./S_JoinUp.do" method="post"onsubmit="return check()">
+                        
 							<div class="is-input-field is-mg-b_15">
                                 <input type="text" name="selpick"  placeholder="* 사업자등록증이미지" />
                             </div>
-                            <div class="is-input-field is-mg-b_15">
-                                <input type="text" name="id"  placeholder="* 아이디" />
-                            </div>
+                           
+                            <div class="is-input-field is-mg-b_15" >
+                                <input class="form-control" type="text" name="id" id="id" placeholder="* 아이디" maxlength="20"><br>
+							<span id="result"></span> 
+	                        </div>
+                            
                             <div class="is-input-field is-mg-b_15">
                                 <input type="text" name="pw"  placeholder="* 비밀번호" />
                             </div>
+                            <div class="is-input-field is-mg-b_15">
+                            <input class="form-control" type="password" id="passOk"	placeholder="* 비밀번호 확인"><br> 
+                            <span id="result_pw"></span>
+							</div>
                             <div class="is-input-field is-mg-b_15">
                                 <input type="text" name="name"  placeholder="* 이름" />
                             </div>
@@ -92,12 +127,14 @@
                             <div class="is-input-field is-mg-b_40">
                                 <label class="is-chk-lab">
                                     <input type="checkbox" id="privacy_1" name="privacy_1" value="0"><span></span> (선택)
-                                    개인정보 제3자
-                                    제공에 동의합니다.</label>
-                                <label class="is-chk-lab">
+						                                    개인정보 제3자
+						                                    제공에 동의합니다.
+                                </label>
+                               	<label class="is-chk-lab">
                                     <input type="checkbox" id="privacy_2" name="privacy_2" value="1"><span></span> (필수)
-                                    개인정보 제공 및
-                                    수집에 동의합니다.</label>
+						                                    개인정보 제공 및
+						                                    수집에 동의합니다.
+                                </label>
                             </div>
                             <div class=" is-mg-b_15">
                                 <button type="submit" class="is-btn-yg1 is-mg-b_15">회원가입</button>
@@ -116,13 +153,20 @@
                 <div class="is-panel-body">
                     <div class="is-col-xs6 is-offset-xs3">
                         <h3 style="font-size: 34px; color: #404040; text-align: center; margin-bottom: 30px;">소비자 회원가입</h3>
-                        <form data-uc-form action="./C_JoinUp.do" method="post">
+                       
+                      	<input type="hidden" id="chkval" value="0">
+                        <form data-uc-form action="./C_JoinUp.do" method="post"onsubmit="return check_1()">
                             <div class="is-input-field is-mg-b_15">
-                                <input type="text" name="id"  placeholder="* 아이디" />
+                                <input class="form-control" type="text" name="id" id="id" placeholder="* 아이디입력란" maxlength="20">
+                     			<span id="result"></span> 
                             </div>
                             <div class="is-input-field is-mg-b_15">
                                 <input type="text" name="pw"  placeholder="* 비밀번호" />
                             </div>
+                            <div class="is-input-field is-mg-b_15">
+                            <input class="form-control" type="password" id="passOk"	placeholder="* 비밀번호 확인"><br> 
+							<span id="result_pw"></span>
+							</div>
                             <div class="is-input-field is-mg-b_15">
                                 <input type="text" name="name"  placeholder="* 이름" />
                             </div>
@@ -184,7 +228,8 @@
 
     <div class="con con1">
         <div class="wrap">
-            <img src="images/main/con1.png" alt="">
+        	<br>
+            <img src="images/main/GIFT.png"alt="">
         </div>
     </div>
 
@@ -199,7 +244,7 @@
                     </div>
                     <span>
                         조건 검색하기<br>
-                        방종류, 옵션 등 <b>조건 선택</b>
+                        디자인, 카테고리 등 <b>조건 선택</b>
                     </span>
                 </li>
                 <li>
@@ -207,7 +252,7 @@
                         <img src="images/main/con2_img2.png" alt="">
                     </div>
                     <span>
-                        <b>원하는방 찜</b> 해두고<br>
+                        <b>원하는 업체</b> 두고<br>
                         비교해보기
                     </span>
                 </li>
@@ -216,8 +261,8 @@
                         <img src="images/main/con2_img3.png" alt="">
                     </div>
                     <span>
-                        방문가능 날자,시간 체크 후<br>
-                        <b>방문 예약하기</b>
+                        원하는 날짜  체크 후<br>
+                        <b>1:1 문의 하기</b>
                     </span>
                 </li>
                 <li>
@@ -225,9 +270,10 @@
                         <img src="images/main/con2_img4.png" alt="">
                     </div>
                     <span>
-                        <b>예약한방</b> 꼼꼼히<br>
-                        체크하며 <b>둘러보기</b>
+                        <b>견적부터</b>거래까지<br>
+                         <b>쉽게쉽게</b>
                     </span>
+                      
                 </li>
                 <li>
                     <div class="img_area">

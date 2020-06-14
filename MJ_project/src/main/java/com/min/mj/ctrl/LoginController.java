@@ -2,6 +2,9 @@ package com.min.mj.ctrl;
 
 import java.security.Principal;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.min.mj.dtos.MJ_MemberDTO;
 import com.min.mj.model.member.IMj_Member_Service;
@@ -46,31 +50,32 @@ public class LoginController {
 
    // 소비자 로그인 후 소비자 홈페이지 가는 매핑
    @RequestMapping(value = "/result.do", method = RequestMethod.GET)
-   public String maingo_c(Model model, Authentication user, Principal principal) {
+   public String maingo_c(Model model, Authentication user, Principal principal,HttpSession session) {
       String id = principal.getName();
       MJ_MemberDTO mDto = service.userlogin(id);
+      System.out.println();
       mDto.getAuth();
+      System.out.println(mDto.getAuth());
       mDto.getId();
       model.addAttribute("mDto",mDto);
-//      if(user != null) {
-//         UserDetails userD = (UserDetails)user.getPrincipal();
-//         model.addAttribute("user",userD.toString());
-//      }
-
-      return "logingo";
-      
+      session.setAttribute("mem", mDto);
+      if( mDto.getAuth().trim().equalsIgnoreCase("ROLE_C")) {
+    	  mDto.getAuth();
+    	  System.out.println(mDto.getAuth()+"C");
+          return "logincon";
+      }else if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_S")) {
+    	  mDto.getAuth();
+          System.out.println(mDto.getAuth()+"S");
+          return "loginseller";
+      }else if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_A")) {
+    	  mDto.getAuth();
+          System.out.println(mDto.getAuth()+"A");
+          return "loginaddmin";
+      }
+      return "";
    }
 
-   //   회원가입 페이지 가기 
-//   @RequestMapping(value = "/S_JoinUp", method = RequestMethod.GET)
-//   public String S_Joingo() {
-//      return "S_JoinUp";
-//   }
-//   @RequestMapping(value = "/C_JoinUp", method = RequestMethod.GET)
-//   public String C_Joingo() {
-//      return "C_JoinUp";
-//   }
-//   
+
    // 회원가입 성공 매핑
    @RequestMapping(value="/S_JoinUp.do",method = RequestMethod.POST)
    public String maingo_s(MJ_MemberDTO dto,Model model) {
@@ -85,24 +90,27 @@ public class LoginController {
       return "login";
    }
    
-   @RequestMapping(value = "/admin/adminPage.do", method= RequestMethod.GET)
+   @RequestMapping(value = "/admin/userInfo.do", method= RequestMethod.GET)
    public String adminPage() {
-      return "loginsell";
+      return "userInfo";
    }
    @RequestMapping(value = "/AuthError.do", method = RequestMethod .GET)
    public String AuthError() {
    
       return "AuthError";
    }
-
-   @RequestMapping(value="/userInfo.do",method = RequestMethod.GET)
-   public String userInfo(HttpSession session, Model model) {
-	   System.out.println("11111111");
-      MJ_MemberDTO mDto =  (MJ_MemberDTO) session.getAttribute("mem");
-      System.out.println("Welcome userInfo.do : \t {}"+mDto);
-      MJ_MemberDTO infoDto = service.info(mDto).get(0);
-      model.addAttribute("infoDto",infoDto);
-      System.out.println("Welcome userInfo.do : \t {}"+infoDto);
-      return "userInfo";
+   
+   
+   @RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
+   @ResponseBody
+   public Map<String, String> idCheck(String id){
+      System.out.println(id);
+      Map<String, String> map = new HashMap<String, String>();
+      System.out.println("Welcome idCheck.do :\t {}"+ id);
+      boolean isc = service.idDuplicateCheck(id);
+      System.out.println(id);
+      map.put("isc", isc+"");
+      return map;
    }
+
 }

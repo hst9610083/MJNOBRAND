@@ -27,6 +27,12 @@ public interface IMj_Member_Service {
 	 */
 	public MJ_MemberDTO userlogin(String id);
 	
+	/**
+	 * 아이디 중복 검사(idDuplicateCheck)
+	 * @param 중복확인값
+	 * @return 사용가능 여부(true 사용가능)
+	 */
+	public boolean idDuplicateCheck(String id);
 	
 	/**
 	 * 회원 정보(info)
