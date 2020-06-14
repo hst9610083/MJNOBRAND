@@ -1,11 +1,6 @@
 package com.min.mj.ctrl;
 
-import java.security.Principal;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpSession;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -15,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.min.mj.dtos.MJ_MemberDTO;
 import com.min.mj.model.member.IMj_Member_Service;
@@ -28,14 +22,12 @@ public class LoginController {
    // 로그인 페이지로 가는 매핑
    
    @RequestMapping(value= "/loginPage.do", method = RequestMethod.GET)
-   public String login(
-		   @RequestParam(value = "error", required = false)String error,
-   @RequestParam(value = "logout",required = false)String logout, Model model, Authentication user) {
-
+   public String login(@RequestParam(value = "error", required = false)String error,
+         @RequestParam(value = "logout",required = false)String logout, Model model, Authentication user) {
+      System.out.println("44");
 	   
-	  if (user != null) {
+	   if (user != null) {
          UserDetails userD = (UserDetails)user.getPrincipal();
-
       }
       if(error != null) {
          model.addAttribute("msg", "로그인 에러");
@@ -44,38 +36,33 @@ public class LoginController {
          model.addAttribute("msg","로그아웃 성공");
       }
       System.out.println("loginPage.do1");
+
       return "login";
    }
 
 
-   // 소비자 로그인 후 소비자 홈페이지 가는 매핑
+   // 로그인 후 홈페이지 가는 매핑
    @RequestMapping(value = "/result.do", method = RequestMethod.GET)
-   public String maingo_c(Model model, Authentication user, Principal principal,HttpSession session) {
-      String id = principal.getName();
-      MJ_MemberDTO mDto = service.userlogin(id);
-      System.out.println();
-      mDto.getAuth();
-      System.out.println(mDto.getAuth());
-      mDto.getId();
-      model.addAttribute("mDto",mDto);
-      session.setAttribute("mem", mDto);
-      if( mDto.getAuth().trim().equalsIgnoreCase("ROLE_C")) {
-    	  mDto.getAuth();
-    	  System.out.println(mDto.getAuth()+"C");
-          return "logincon";
-      }else if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_S")) {
-    	  mDto.getAuth();
-          System.out.println(mDto.getAuth()+"S");
-          return "loginseller";
-      }else if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_A")) {
-    	  mDto.getAuth();
-          System.out.println(mDto.getAuth()+"A");
-          return "loginaddmin";
+   public String maingo(Model model, Authentication user) {
+      System.out.println("result");
+	   if(user != null) {
+         UserDetails userD = (UserDetails)user.getPrincipal();
+      
+         model.addAttribute("user",userD.toString());
       }
-      return "";
+      return "logingo";
+      
    }
-
-
+   //   회원가입 페이지 가기 
+//   @RequestMapping(value = "/S_JoinUp", method = RequestMethod.GET)
+//   public String S_Joingo() {
+//      return "S_JoinUp";
+//   }
+//   @RequestMapping(value = "/C_JoinUp", method = RequestMethod.GET)
+//   public String C_Joingo() {
+//      return "C_JoinUp";
+//   }
+//   
    // 회원가입 성공 매핑
    @RequestMapping(value="/S_JoinUp.do",method = RequestMethod.POST)
    public String maingo_s(MJ_MemberDTO dto,Model model) {
@@ -90,27 +77,14 @@ public class LoginController {
       return "login";
    }
    
-   @RequestMapping(value = "/admin/userInfo.do", method= RequestMethod.GET)
+   @RequestMapping(value = "/admin/adminPage.do", method= RequestMethod.GET)
    public String adminPage() {
-      return "userInfo";
+      return "adminPage";
    }
    @RequestMapping(value = "/AuthError.do", method = RequestMethod .GET)
    public String AuthError() {
    
       return "AuthError";
-   }
-   
-   
-   @RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
-   @ResponseBody
-   public Map<String, String> idCheck(String id){
-      System.out.println(id);
-      Map<String, String> map = new HashMap<String, String>();
-      System.out.println("Welcome idCheck.do :\t {}"+ id);
-      boolean isc = service.idDuplicateCheck(id);
-      System.out.println(id);
-      map.put("isc", isc+"");
-      return map;
    }
 
 }

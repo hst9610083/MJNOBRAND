@@ -28,15 +28,9 @@
 		<security:intercept-url pattern="/loginPage.do"
 			access="permitAll" />
 		<security:intercept-url pattern="/admin/**"
-			access="hasRole('ROLE_A')" />
-		<security:intercept-url pattern="/con/**"
-			access="hasRole('ROLE_C')" />
-		<security:intercept-url pattern="/sell/**"
-			access="hasRole('ROLE_S')" />
+			access="hasRole('Admin')" />
 		<security:intercept-url pattern="/**"
 			access="permitAll" />
-
-
 
 		<!-- login-processing-url : 로그인 폼과 시큐리티를 매핑하는 주소 -->
 		<!-- login-page : 로그인 화면으로 가는 주소 -->
@@ -95,5 +89,5 @@
 				ref="passwordEncoder" />
 		</security:authentication-provider>
 	</security:authentication-manager>
-
+	
 </beans>
