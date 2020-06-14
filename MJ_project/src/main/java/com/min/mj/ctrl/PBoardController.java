@@ -41,22 +41,22 @@ public class PBoardController {
 		//페이징 처리 DTO
 		RowNumDto rowDto = null;
 		//페이징처리된 리스트
-		List<MJ_BoardDTO> lists = null;
+		List<MJ_BoardDTO> lists = service.pplSelectBoard();
 		MJ_MemberDTO mDto = (MJ_MemberDTO) session.getAttribute("mem");
-		if(session.getAttribute("row")==null) {
-			rowDto = new RowNumDto();
-		}else {
-			rowDto = (RowNumDto) session.getAttribute("row");
-		}
-		
-		if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_S")) {
-			rowDto.setTotal(service.BoardListTotal());
-			lists = service.BoardListRow(rowDto);
-		}else {
-			rowDto.setTotal(service.BoardListTotal());
-			lists = service.BoardListRow(rowDto);
-		}
-		model.addAttribute("row", rowDto);
+//		if(session.getAttribute("row")==null) {
+//			rowDto = new RowNumDto();
+//		}else {
+//			rowDto = (RowNumDto) session.getAttribute("row");
+//		}
+//		
+//		if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_S")) {
+//			rowDto.setTotal(service.BoardListTotal());
+//			lists = service.BoardListRow(rowDto);
+//		}else {
+//			rowDto.setTotal(service.BoardListTotal());
+//			lists = service.BoardListRow(rowDto);
+//		}
+//		model.addAttribute("row", rowDto);
 		model.addAttribute("lists", lists);
 		
 		return "pBoardList";
@@ -105,7 +105,7 @@ public class PBoardController {
 	public String del(String seq) {
 		log.info("Welcome pdel.do : \t {}",seq);
 		boolean isc = service.pplDelBoard(seq);
-		return "pBoardList.do";
+		return "pBoardList";
 	}
 	
 	@RequestMapping(value="/pBoardDetail.do", method = RequestMethod.GET)

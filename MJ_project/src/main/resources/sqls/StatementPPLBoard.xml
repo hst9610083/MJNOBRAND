@@ -22,7 +22,7 @@
    </select>
    
    <!-- 조회수 -->
-   <update id="pplReadcountBoard" parameterType="java.lang.String">
+   <update id="pplReadcountBoard" parameterType="java.lang.Integer">
    UPDATE SELLER_PPL_BOARD SET READCOUNT = READCOUNT+1
    WHERE SEQ = #{seq}
    </update>
