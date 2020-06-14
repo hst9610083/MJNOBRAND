@@ -25,7 +25,7 @@ public class SecurityController implements UserDetailsService{
 
 			Collection<SimpleGrantedAuthority> roles= new ArrayList<SimpleGrantedAuthority>();
 			roles.add(new SimpleGrantedAuthority(dto.getAuth()));
-			System.out.println(roles+">>roles");
+			System.out.println(roles.toString().trim()+">>roles");
 			
 //			System.out.println(roles.toString());
 			

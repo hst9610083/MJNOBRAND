@@ -79,5 +79,10 @@ public class Mj_Member_DaoImpl implements IMj_Member_Dao {
 		// TODO Auto-generated method stub
 		return session.selectList(NS+"info",dto);
 	}
+	@Override
+	public boolean idDuplicateCheck(String id) {
+		int cnt = session.selectOne(NS+"idDuplicateCheck", id);
+		return (cnt>0)? true: false;
+	}
 }
 
