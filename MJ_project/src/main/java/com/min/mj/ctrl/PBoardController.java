@@ -1,8 +1,10 @@
 package com.min.mj.ctrl;
 
+import java.util.Arrays;
 import java.util.Date;
-
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.min.mj.dtos.MJ_BoardDTO;
 import com.min.mj.dtos.MJ_MemberDTO;
-import com.min.mj.dtos.RowNumDto;
 import com.min.mj.model.board.IMj_Board_Service;
 
 
@@ -38,7 +39,7 @@ public class PBoardController {
 		//페이징 처리 DTO
 //		RowNumDto rowDto = null;
 		//페이징처리된 리스트
-<<<<<<< HEAD
+
 		List<MJ_BoardDTO> lists = service.pplSelectBoard();
 		MJ_MemberDTO mDto = (MJ_MemberDTO) session.getAttribute("mem");
 //		if(session.getAttribute("row")==null) {
@@ -55,13 +56,12 @@ public class PBoardController {
 //			lists = service.BoardListRow(rowDto);
 //		}
 //		model.addAttribute("row", rowDto);
-=======
+
 		
 		// 전체글 조회
-		List<MJ_BoardDTO> lists = service.pplSelectBoard();
 //		MJ_BoardDTO mDto = (MJ_BoardDTO) session.getAttribute("list");
 		
->>>>>>> branch 'master' of https://github.com/hst9610083/MJNOBRAND.git
+
 		model.addAttribute("lists", lists);
 		return "pBoardList";
 	}
@@ -90,7 +90,7 @@ public class PBoardController {
 	}
 	
 	
-<<<<<<< HEAD
+
 	@RequestMapping(value = "pMultiDel.do", method = RequestMethod.GET)
 	public String DelpBoard(HttpSession session,String[] seq) {
 		log.info("Welcome MultiDelete.do : \t{}",Arrays.toString(seq));
@@ -119,10 +119,11 @@ public class PBoardController {
 		MJ_BoardDTO bDto = service.pplgetOnBoard(seq);
 		model.addAttribute("bDto", bDto);
 		return "pBoardDetail";
-=======
+	}
+
 	public String Del(String seq) {
 		return "";
->>>>>>> branch 'master' of https://github.com/hst9610083/MJNOBRAND.git
+
 	}
 	
 }

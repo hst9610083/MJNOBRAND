@@ -22,13 +22,8 @@
    </select>
    
    <!-- 조회수 -->
-<<<<<<< HEAD
-   <update id="pplReadcountBoard" parameterType="java.lang.Integer">
-   UPDATE SELLER_PPL_BOARD SET READCOUNT = READCOUNT+1
-=======
    <update id="pplReadcountBoard" parameterType="java.lang.String">
    UPDATE SELLER_PPL_BOARD SER READCOUNT = READCOUNT+1
->>>>>>> branch 'master' of https://github.com/hst9610083/MJNOBRAND.git
    WHERE SEQ = #{seq}
    </update>
    

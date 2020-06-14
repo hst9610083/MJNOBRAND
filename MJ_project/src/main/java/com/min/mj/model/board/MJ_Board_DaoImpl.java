@@ -40,17 +40,15 @@ public class MJ_Board_DaoImpl implements IMj_Board_Dao {
 		return (n>0)?true:false;
 	}
 
-<<<<<<< HEAD
+
 //	//나중에 수정
 //	public boolean pplReadcountBoard(String seq) {
 //	log.info("홍보게시판 조회수: pplReadcountBoard");
 //	int n = sqlSession.update(NS+"pplReadcountBoard", seq);
 //	return (n>0)?true:false;
 //	}
-=======
-	//나중에 수정
 
->>>>>>> branch 'master' of https://github.com/hst9610083/MJNOBRAND.git
+	//나중에 수정
 
 	@Override
 	public boolean pplModifyBoard(MJ_BoardDTO dto) {
