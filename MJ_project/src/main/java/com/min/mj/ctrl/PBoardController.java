@@ -1,5 +1,7 @@
 package com.min.mj.ctrl;
 
+
+import java.security.Principal;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -13,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -30,16 +33,11 @@ public class PBoardController {
 	IMj_Board_Service service;
 	
 	
-	
 	// 홍보게시판 전체글 리스트
 	@RequestMapping(value="/pBoardList.do", method = RequestMethod.GET)
 	public String pBoardList(Model model, HttpSession session ) {
 		log.info("Welcome /BoardList.do : \t {}", new Date());
 		
-		//페이징 처리 DTO
-//		RowNumDto rowDto = null;
-		//페이징처리된 리스트
-
 		List<MJ_BoardDTO> lists = service.pplSelectBoard();
 		MJ_MemberDTO mDto = (MJ_MemberDTO) session.getAttribute("mem");
 //		if(session.getAttribute("row")==null) {
@@ -62,7 +60,9 @@ public class PBoardController {
 //		MJ_BoardDTO mDto = (MJ_BoardDTO) session.getAttribute("list");
 		
 
+
 		model.addAttribute("lists", lists);
+		
 		return "pBoardList";
 	}
 	
@@ -74,19 +74,19 @@ public class PBoardController {
 	}
 	
 	@RequestMapping(value="/pBoardWrite.do", method = RequestMethod.POST)
-	public String boardWrite(HttpSession session, MJ_BoardDTO dto) {
+	public String pboardWrite(HttpSession session, MJ_BoardDTO dto, Model model) {
 		log.info("Welcome boardWrite: \t {}",dto);
-		MJ_MemberDTO mDto = (MJ_MemberDTO) session.getAttribute("mem");
+		MJ_MemberDTO mDto =  (MJ_MemberDTO) session.getAttribute("mem");
 		dto.setId(mDto.getId());
 		boolean isc = service.pplWriteBoard(dto);
 		return isc?"redirect:/pBoardList.do":"redirect:/logout.do";
 	}
 	
 	@RequestMapping(value="/pModify.do", method = RequestMethod.POST)
-	public String Modify(MJ_BoardDTO dto){
+	public String ModifypBoard(MJ_BoardDTO dto){
 		log.info("Welcome Modify.do : \t{}",dto);
 		boolean isc = service.pplModifyBoard(dto);
-		return isc?"redirect:/pBoardList.do":":redirect:/pModify.do";
+		return "redirect:/pBoardList.do";
 	}
 	
 	
@@ -110,7 +110,9 @@ public class PBoardController {
 	public String del(String seq) {
 		log.info("Welcome pdel.do : \t {}",seq);
 		boolean isc = service.pplDelBoard(seq);
+
 		return "pBoardList";
+
 	}
 	
 	@RequestMapping(value="/pBoardDetail.do", method = RequestMethod.GET)
@@ -119,6 +121,7 @@ public class PBoardController {
 		MJ_BoardDTO bDto = service.pplgetOnBoard(seq);
 		model.addAttribute("bDto", bDto);
 		return "pBoardDetail";
+
 	}
 
 	public String Del(String seq) {
