@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 후 페이지</title>
+<title>업체로그인 후 페이지</title>
 </head>
 <link rel="stylesheet" href="css/uc.min.css">
 <link rel="stylesheet" href="css/basic.css">
@@ -28,6 +28,7 @@
 			<h1>
 				<a href="./index.html"><img src="images/main/logo.png" alt=""></a>
 			</h1>
+			
 			<nav id="gnb">
 				<ul>
 					<li><a href="">소비자 문의 게시판</a></li>
