@@ -22,14 +22,14 @@
 					<th>제목</th>
 					<th>날짜</th>
 				</tr>
-				<c:forEach items="${lists}" var="dto">
 					<tr>
-						<td>${dto.seq}</td>
-						<td>${dto.id}</td>
-						<td>${dto.title}</td>
-						<td>${dto.regdate}</td>
+						<td>${lists.seq}</td>
+						<td>${lists.id}</td>
+						<td>${lists.regdate}</td>
+						<td>${lists.title}</td>
+						<td>${lists.content}</td>
+						<td>${lists.realfile}</td>
 					</tr>
-				</c:forEach>
 			</table>
 		</form>
 	</div>

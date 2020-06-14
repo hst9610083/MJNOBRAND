@@ -171,9 +171,9 @@
             </nav>
             <div class="util">
                 <ul>
-                    <li><a href="#loginModal" data-uc-click="modal"><img src="images/main/login_icon.png" alt=""></a></li>
-                    <li><a href="#joinModal1" data-uc-click="modal"><img src="images/main/join_icon.png" alt=""></a></li>
-                    <li><a href="file:///C:/Users/uriim/OneDrive/바탕%20화면/html_4/mypage1-2.html"><img src="images/main/mypage_icon.png" alt=""></a></li>
+                    <li><a href="#loginModal" data-uc-click="modal"><img src="/images/icon/form/imagegege/11512.png" alt=""></a></li>
+                    <li><a href="#joinModal1" data-uc-click="modal"><img src="images/icon/form/imagegege/512-1.png" alt=""></a></li>
+                    <li><a href="file:///C:/Users/uriim/OneDrive/바탕%20화면/html_4/mypage1-2.html"><img src="/images/icon/form/imagegege/512.png" alt=""></a></li>
                 </ul>
             </div>
         </div>

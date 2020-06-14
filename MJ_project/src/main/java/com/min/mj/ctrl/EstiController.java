@@ -14,6 +14,7 @@ import com.min.mj.dtos.EstiDto;
 import com.min.mj.dtos.INQUIRYBoardDto;
 import com.min.mj.model.Esti.IMj_Esti_Service;
 
+
 @Controller
 public class EstiController {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
@@ -41,6 +42,16 @@ public class EstiController {
 	};
 	
 	// 견적서 쓰기
+	@RequestMapping(value = "/board/write", method = RequestMethod.POST)
+	public String write(EstiDto dto) throws Exception{
+		log.info("write");
+		service.EstiInput(dto);
+		return "redirect:/board/list";
+	}
+	
+	
+	
+	
 	
 	
 	
