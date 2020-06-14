@@ -9,6 +9,12 @@ public interface IMj_Member_Dao {
 	 * @return 회원 등록 성공 여부(true 성공)
 	 */
 	public boolean s_register(MJ_MemberDTO dto);
+	/**
+	 * 아이디 중복 검사(idDuplicateCheck)
+	 * @param 중복확인값
+	 * @return 사용가능 여부(true 사용가능)
+	 */
+	public boolean idDuplicateCheck(String id);
 	
 	/**
 	 * 소비자 회원가입(c_register)
