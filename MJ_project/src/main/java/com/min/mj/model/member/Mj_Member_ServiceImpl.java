@@ -56,4 +56,18 @@ public class Mj_Member_ServiceImpl implements IMj_Member_Service {
 		return dao.s_modify(id);
 	}
 
+	@Override
+	public List<MJ_MemberDTO> info(MJ_MemberDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.info(dto);
+	}
+
+	@Override
+	public boolean idDuplicateCheck(String id) {
+		System.out.println("idDuplicateCheck 중복검사, {}"+id);
+		return dao.idDuplicateCheck(id);
+	}
+
+	
+
 }

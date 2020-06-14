@@ -2,18 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.min.inquiry">
  
+ <!-- 문의 임시글 작성 -->
+ <insert id="Mimsi_Write">
+ INSERT INTO C_INQUIRY
+(SEQ, ID, NICNAME, REGDATE, TITLE, CONTENT, AUTH, REALFILE, IMSI)
+VALUES(C_INQUIRY_SEQ.NEXTVAL, #{id}, #{nicname}, SYSDATE, #{title}, #{content}, 'C', #{realfile}, 'Y')
+ </insert>
+ 
+ 
 <!--  문의글 임시보관함 리스트 전체보기-->  
 <select id="Mimsi_All" resultType="IDto">
-SELECT SEQ ,ID ,NICNAME ,TITLE ,REGDATE
- FROM C_INQUIRY WHERE IMSI = 'Y'
+SELECT A.SEQ ,A.ID ,A.NICNAME ,A.TITLE ,A.REGDATE,A.AUTH
+ FROM C_INQUIRY A JOIN REGISTER B ON A.ID=B.ID WHERE IMSI = 'Y'
 </select> 
 
 <!--  문의글 임시보관함 상세보기-->
 
 <select id="Mimsi_Detail" parameterType="java.lang.String" resultType="IDto">
-SELECT ID, NICNAME, REGDATE, TITLE, CONTENT, REALFILE 
-	FROM C_INQUIRY
-		WHERE SEQ = #{seq} AND IMSI='Y'
+SELECT A.SEQ,A.ID,A.NICNAME ,A.TITLE,A.CONTENT ,B.REALFILE , A.REGDATE 
+ FROM C_INQUIRY A LEFT JOIN "FILE" B
+	ON(A.REALFILE =B.REALFILE )
+ 		WHERE A.SEQ=#{seq} AND A.IMSI='Y'
 </select>
 
 <!--문의글 임시 보관함 수정하기-->
@@ -27,7 +36,9 @@ DELETE FROM C_INQUIRY WHERE SEQ=#{seq} AND IMSI='Y'
 </delete>
 
 
-<!--문의글 보관함 리스트 전체보기     -->
+
+
+<!--문의글 보관함 리스트 전체보기  -->
 <select id="Mstore_All" resultType="IDto">
 SELECT SEQ ,ID ,NICNAME ,TITLE ,REGDATE 
  FROM C_INQUIRY WHERE IMSI ='N' 
@@ -36,7 +47,7 @@ SELECT SEQ ,ID ,NICNAME ,TITLE ,REGDATE
 <!--문의글 보관함 상세보기            -->
 <select id="Mstore_Detail" parameterType="java.lang.String" resultType="IDto">
 
-SELECT A.SEQ,A.ID,A.NICNAME ,A.TITLE,A.CONTENT ,A.REALFILE ,A.REGDATE 
+SELECT A.SEQ,A.ID,A.NICNAME ,A.TITLE,A.CONTENT ,B.REALFILE ,A.REGDATE 
  FROM C_INQUIRY A LEFT JOIN "FILE" B
 ON(A.REALFILE =B.REALFILE )
  WHERE A.SEQ={seq} AND A.IMSI='N'
@@ -72,7 +83,7 @@ WHERE AUTH='C' AND IMSI='N'
 
 <!-- 소비자문의게시판 (글 상세 조회)(소비자) -->
  <select id="C_SelectBoardDetail" resultType="IDto">
- SELECT A.SEQ,A.ID,TITLE,CONTENT ,A.REALFILE ,REGDATE
+ SELECT A.SEQ,A.ID,TITLE,CONTENT ,B.REALFILE ,REGDATE
   FROM C_INQUIRY A LEFT JOIN "FILE" B
    ON (A.REALFILE =B.REALFILE )
    WHERE AUTH='C' AND IMSI='N'
@@ -86,7 +97,7 @@ SELECT SEQ,NICNAME,TITLE,REGDATE FROM C_INQUIRY WHERE AUTH='S' AND IMSI='N'
 
 <!-- 소비자문의게시판 (글 상세 조회)(업체) -->
  <select id="S_SelectBoardDetail" resultType="IDto">
-SELECT A.SEQ,A.ID,TITLE,CONTENT ,A.REALFILE ,REGDATE
+SELECT A.SEQ,A.ID,TITLE,CONTENT ,B.REALFILE ,REGDATE
   FROM C_INQUIRY A LEFT JOIN "FILE" B
    ON (A.REALFILE =B.REALFILE ) WHERE AUTH='S' AND IMSI='N'
  </select>

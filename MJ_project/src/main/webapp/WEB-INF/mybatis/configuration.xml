@@ -19,6 +19,7 @@
 		<mapper resource="/sqls/Statement_Chat.xml" />
 		<mapper resource="/sqls/Inquiry.xml"/>
 		<mapper resource="/sqls/login.xml"/>
+		<mapper resource="/mappers/boardMapper2.xml"/>
 	</mappers>
 
 </configuration>
