@@ -3,6 +3,8 @@ package com.min.mj.model.Inquiry;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +15,15 @@ import com.min.mj.dtos.INQUIRYBoardDto;
 @Service
 public class MJ_Inquiry_ServiceImpl implements IMj_Inquiry_Service {
 
+	@Inject
+	private IMj_Inquiry_Dao dao2;
+	
+	
 	@Autowired
 	private IMj_Inquiry_Dao dao;
 	
 	private Logger log = LoggerFactory.getLogger(getClass());
+	
 	
 	
 	@Override
@@ -66,5 +73,9 @@ public class MJ_Inquiry_ServiceImpl implements IMj_Inquiry_Service {
 		log.info("Mstore_Delete 성공");
 		return dao.Mstore_Delete(seq);
 	}
+
+
+
+	
 
 }

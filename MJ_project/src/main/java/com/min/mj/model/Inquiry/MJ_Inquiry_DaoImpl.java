@@ -3,6 +3,9 @@ package com.min.mj.model.Inquiry;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,11 +17,16 @@ import com.min.mj.dtos.INQUIRYBoardDto;
 @Repository
 public class MJ_Inquiry_DaoImpl implements IMj_Inquiry_Dao{
 
+	@Inject
+	private SqlSession sqlSession;
+	
 	@Autowired
 	SqlSessionTemplate session;
 	
 	private Logger log = LoggerFactory.getLogger(getClass());
 	private final String NS="com.min.inquiry.";
+	
+
 	
 	@Override
 	public List<INQUIRYBoardDto> Mimsi_All() {
@@ -71,5 +79,8 @@ public class MJ_Inquiry_DaoImpl implements IMj_Inquiry_Dao{
 		int n=session.delete(NS+"Mstore_Delete", seq);
 		return (n>0)?true:false;
 	}
+
+	
+	
 
 }

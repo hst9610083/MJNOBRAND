@@ -28,6 +28,19 @@ public interface IMj_Member_Service {
 	public MJ_MemberDTO userlogin(String id);
 	
 	/**
+	 * 아이디 중복 검사(idDuplicateCheck)
+	 * @param 중복확인값
+	 * @return 사용가능 여부(true 사용가능)
+	 */
+	public boolean idDuplicateCheck(String id);
+	
+	/**
+	 * 회원 정보(info)
+	 * @return 회원 정보 리스트 
+	 */
+	public List<MJ_MemberDTO> info(MJ_MemberDTO dto);
+
+	/**
 	 * 업체 정보(s_info)
 	 * @return 업체 정보 리스트 
 	 */
@@ -40,6 +53,7 @@ public interface IMj_Member_Service {
 	 */
 	public List<MJ_MemberDTO> c_info();
 	
+
 	/**
 	 * 회원 탈퇴
 	 * @param id
