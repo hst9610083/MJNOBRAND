@@ -42,17 +42,12 @@ public class EstiController {
 	};
 	
 	// 견적서 쓰기
-	@RequestMapping(value = "/board/write", method = RequestMethod.POST)
-	public String write(EstiDto dto) throws Exception{
-		log.info("write");
-		service.EstiInput(dto);
-		return "redirect:/board/list";
-	}
-	
-	
-	
-	
-	
-	
-	
+	@RequestMapping(value="/s_EstiInput.do",method = RequestMethod.GET)
+	public String s_EstiInput(Model model,EstiDto dto) {
+		
+		boolean lists=service.EstiInput(dto);
+		model.addAttribute("lists",lists);
+		return "s_EstiInput";
+
+};
 }

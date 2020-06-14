@@ -36,11 +36,10 @@ WHERE AUTH='S' AND A.SEQ=#{seq}
  </select>
  
  <!-- 견적서 작성 -->
- <insert id="s_esimake" parameterType="EDto">
+ <insert id="EstiInput" parameterType="EDto">
 INSERT INTO ESTIMATE_MAKE
-(SEQ, ID, REGDATE, TITLE, CONTENT, REALFILE)
-VALUES(ESTIMATE_MAKE_SEQ.NEXTVAL,#{id}, SYSDATE, #{title}, #{content}, #{realfile})
-WHERE AUTH='S'
+(SEQ, ID, REGDATE, TITLE, CONTENT, REALFILE,AUTH)
+VALUES(ESTIMATE_MAKE_SEQ.NEXTVAL,#{id}, SYSDATE, #{title}, #{content}, #{realfile},'ROLE_S')
  </insert>
   
 </mapper>

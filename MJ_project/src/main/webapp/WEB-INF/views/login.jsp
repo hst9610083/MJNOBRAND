@@ -207,7 +207,7 @@
             <h1><a href="./index.html"><img src="images/main/logo.png" alt=""></a></h1>
             <nav id="gnb">
                 <ul>
-                    <li><a href="">소비자 문의 게시판</a></li>
+                    <li><a href="/MJ_project/ConInquiryBoard.do">소비자 문의 게시판</a></li>
                     <li><a href="">홍보게시판</a></li>
                     <li><a href="">공유방</a></li>
                     <li><a href="">고객센터</a></li>
@@ -216,7 +216,6 @@
             <div class="util">
                 <ul>
                     <li><a href="#loginModal" data-uc-click="modal"><img src="/images/icon/form/imagegege/11512.png" alt=""></a></li>
-                    <li><a href="#joinModal1" data-uc-click="modal"><img src="images/icon/form/imagegege/512-1.png" alt=""></a></li>
                     <li><a href="file:///C:/Users/uriim/OneDrive/바탕%20화면/html_4/mypage1-2.html"><img src="/images/icon/form/imagegege/512.png" alt=""></a></li>
                 </ul>
             </div>
@@ -224,7 +223,6 @@
     </header>
 
     <!--main_visial-->
- 
 
     <div class="con con1">
         <div class="wrap">
