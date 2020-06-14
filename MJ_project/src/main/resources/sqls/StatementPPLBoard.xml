@@ -26,6 +26,7 @@
    UPDATE SELLER_PPL_BOARD SET READCOUNT = READCOUNT+1
    WHERE SEQ = #{seq}
    </update>
+   
    <!-- 수정 -->
    <update id="pplModifyBoard" parameterType="BDto">
    UPDATE SELLER_PPL_BOARD SET TITLE = #{title}, CONTENT=#{content}, REGDATE = SYSDATE

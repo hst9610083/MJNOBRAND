@@ -14,6 +14,7 @@ import com.min.mj.dtos.EstiDto;
 import com.min.mj.dtos.INQUIRYBoardDto;
 import com.min.mj.model.Esti.IMj_Esti_Service;
 
+
 @Controller
 public class EstiController {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
@@ -41,7 +42,12 @@ public class EstiController {
 	};
 	
 	// 견적서 쓰기
-	
-	
-	
+	@RequestMapping(value="/s_EstiInput.do",method = RequestMethod.GET)
+	public String s_EstiInput(Model model,EstiDto dto) {
+		
+		boolean lists=service.EstiInput(dto);
+		model.addAttribute("lists",lists);
+		return "s_EstiInput";
+
+};
 }
