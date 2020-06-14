@@ -99,15 +99,15 @@
                            
                             <div class="is-input-field is-mg-b_15" >
                                 <input class="form-control" type="text" name="id" id="id" placeholder="* 아이디" maxlength="20"><br>
-							<span id="result"></span> 
+								<span id="result"></span> 
 	                        </div>
                             
                             <div class="is-input-field is-mg-b_15">
                                 <input type="text" name="pw"  placeholder="* 비밀번호" />
                             </div>
                             <div class="is-input-field is-mg-b_15">
-                            <input class="form-control" type="password" id="passOk"	placeholder="* 비밀번호 확인"><br> 
-                            <span id="result_pw"></span>
+	                            <input class="form-control" type="password" id="passOk"	placeholder="* 비밀번호 확인"><br> 
+	                            <span id="result_pw"></span>
 							</div>
                             <div class="is-input-field is-mg-b_15">
                                 <input type="text" name="name"  placeholder="* 이름" />
@@ -119,8 +119,10 @@
                                 <input type="text" name="nicname"  placeholder="* 별명" />
                             </div>
                              <div class="is-input-field is-mg-b_15">
-                                <input type="text" name="sellernum"  placeholder="* 사업자번호" />
+                                <input type="text" id="sellernum" name="sellernum"  placeholder="* 사업자번호" maxlength="20"/>
+                            	<span id="result1"></span> 
                             </div>
+                            
                              <div class="is-input-field is-mg-b_15">
                                 <input type="text" name="email"  placeholder="* 이메일" />
                             </div>
