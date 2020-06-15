@@ -65,7 +65,7 @@
 		</div>
 		<div class="is-frame-md">
 
-			<form name="" method="" action="" data-uc-form="">
+			<form name="" method="post" action="./Contemplate.do">
 				
 
 				
@@ -227,7 +227,7 @@
 						<tr style="border:none;border:none">
 							<td style="text-align:center;">
 								<div style="display:inline-flex">
-									<a href="javascript:void(0);"><img src="images/sub_2_2/btn2.png" alt=""></a>
+									<button type="submit" class="write_btn">작성</button>
 									<a href="javascript:void(0);"><img src="images/sub_2_2/btn3.png" alt=""></a>
 								</div>
 							</td>

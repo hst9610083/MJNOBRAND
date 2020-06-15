@@ -170,7 +170,7 @@ public class InquiryController {
       INQUIRYBoardDto mDto =  (INQUIRYBoardDto) session.getAttribute("mem");
       mDto.setId(mDto.getId());
       boolean isc = service2.c_insertBoard(dto);
-      return isc?"redirect:/Contemplate.do":"redirect:/logout.do";
+      return isc?"redirect:/iBoardList.do":"redirect:/logout.do";
    }
    
    
