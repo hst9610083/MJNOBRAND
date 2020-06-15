@@ -6,8 +6,6 @@ function modify(val){
 
 //글삭제-----------------------------------------------------------------
 function del(val){
-
-
 	location.href="./pdel.do?seq="+val;
 }
 
@@ -136,84 +134,6 @@ function pageIndex(idx){
 	pageAjax();
 }
 
-//function pageList(){
-//	var index = document.getElementById("index");
-//	var pageNum = document.getElementById("pageNum");
-//	var listNum = document.getElementById("listNum");
-//	
-//	index.value=0;
-//	pageNum.value=1;
-//	listNum.value= document.getElementById("list").value;
-//	alert(index.value+";"+pageNum.value+";"+listNum.value);
-//	
-//	pageAjax();
-//}
-////첫번째 페이지로 이동
-//function pageFirst(){
-//	var index = document.getElementById("index");
-//	var pageNum = document.getElementById("pageNum");
-//	index.value= 0;
-//	pageNum.value = 1;
-//	pageAjax();
-//}
-//// <  버튼 
-//function pagePre(num,pageList){
-//	if(0 < num - pageList){
-//		num -= pageList;
-//		var index = document.getElementById("index");
-//		var pageNum = document.getElementById("pageNum");
-//		pageNum.value = num;
-//		index.value = num -1;
-//	}
-//	pageAjax();
-//}
-//
-//function pageNext(num ,total, listNum, pageList){ 
-//	var index = Math.ceil(total/listNum);
-//	var max = Math.ceil(index/pageList); 
-//	
-//	if(max*pageList > num+pageList){
-//		
-//		num += pageList;
-//		
-//		var index = document.getElementById("index");
-//		var pageNum = document.getElementById("pageNum");
-//		
-//		
-//		pageNum.value = num;
-//		index.value = num -1;
-//		
-//	}
-//	pageAjax();
-//	
-//}
-//
-//function pageLast(num ,total, listNum, pageList){
-//	var idx = Math.ceil(total/listNum);
-//	var max = Math.ceil(idx/pageList);
-//	
-//	while(max*pageList > num+pageList){
-//		num += pageList;
-//	}
-//	var index = document.getElementById("index");
-//	var pageNum = document.getElementById("pageNum");
-//	pageNum.value = num;
-//	index.value = idx-1;
-//	pageAjax();
-//}
-//
-//
-//
-//function pageIndex(idx){
-//
-//	var index= document.getElementById("index");
-//	index.value = idx-1;
-//	pageAjax();
-//}
-
-
-
-
 //공통 페이징 아작스----------------------------------------------
 
 var pageAjax = function(){
@@ -271,12 +191,8 @@ var pageAjax = function(){
 			    varHtml+= "          </div>";
 			    varHtml+= "          <div>";
 			    varHtml+= "          <div class='form-group'>";
-			    if(v.id == v.meid){
 			    varHtml+= "        <input type='button' class='btn btn-primary btn-sm btn-center' value='글 수정' onclick='modify(\""+v.seq+"\")'>";
-			    }
-			    if(v.id == v.meid || n==7){
 			    varHtml+= "        <input type='button' class='btn btn-primary btn-sm btn-center' value='글 삭제' onclick='del(\""+v.seq+"\")'>";
-			    }
 			    varHtml+= "      </div>";
 			    varHtml+= "      </div>";
 			    varHtml+= "      </div> ";

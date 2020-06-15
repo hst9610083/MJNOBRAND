@@ -91,7 +91,7 @@ public class PBoardController {
 	
 	
 
-	@RequestMapping(value = "pMultiDel.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/pMultiDel.do", method = RequestMethod.GET)
 	public String DelpBoard(HttpSession session,String[] seq) {
 		log.info("Welcome MultiDelete.do : \t{}",Arrays.toString(seq));
 		MJ_BoardDTO dto = service.pplgetOnBoard(seq[0]);
@@ -110,8 +110,7 @@ public class PBoardController {
 	public String del(String seq) {
 		log.info("Welcome pdel.do : \t {}",seq);
 		boolean isc = service.pplDelBoard(seq);
-
-		return "pBoardList";
+		return isc?"pBoardList.do":"logout.do";
 
 	}
 	
@@ -122,11 +121,5 @@ public class PBoardController {
 		model.addAttribute("bDto", bDto);
 		return "pBoardDetail";
 
-	}
-
-	public String Del(String seq) {
-		return "";
-
-	}
-	
+	}	
 }
