@@ -13,7 +13,7 @@
 			
 			// 수정 
 			$(".update_btn").on("click", function(){
-				formObj.attr("action", "/board/updateView.do");
+				formObj.attr("action", "./updateView.do");
 				formObj.attr("method", "get");
 				formObj.submit();				
 			})
@@ -24,7 +24,7 @@
 				var deleteYN = confirm("삭제하시겠습니가?");
 				if(deleteYN == true){
 					
-				formObj.attr("action", "/board/delete");
+				formObj.attr("action", "./delete.do");
 				formObj.attr("method", "post");
 				formObj.submit();
 				
@@ -34,7 +34,7 @@
 			// 취소
 			$(".list_btn").on("click", function(){
 				
-				location.href = "/board/list";
+				location.href = "./list.do";
 			})
 		})
 	</script>

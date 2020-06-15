@@ -1,4 +1,4 @@
-package com.min.mj.kr.co.dao;
+package com.min.mj.model.kr;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.min.mj.kr.co.vo.BoardVO;
-import com.min.mj.kr.co.vo.Criteria;
+import com.min.mj.dtos.BoardVO;
+import com.min.mj.dtos.Criteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
