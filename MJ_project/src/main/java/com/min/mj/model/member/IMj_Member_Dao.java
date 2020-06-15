@@ -31,7 +31,7 @@ public interface IMj_Member_Dao {
 	public MJ_MemberDTO userlogin(String id);
 	
 	
-	public List<MJ_MemberDTO> info(MJ_MemberDTO dto);
+	public List<MJ_MemberDTO> info();
 	
 	/**
 	 * 업체 정보(s_info)

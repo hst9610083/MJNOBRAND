@@ -4,28 +4,25 @@ function check() {
    var id = document.getElementById("id").value;
    var pw = document.getElementById("pw").value;
    var passOk = document.getElementById("passOk").value;
-   var i_agree2 = document.getElementById("i_agree2").checked;
-   var chkId = document.getElementById("chkval").value;
    var sellernum = document.getElementById("sellernum").value;
    
    if (name == "") {
-      swal("회원가입 오류", "성명을 확인해주세요");
+	   alert("회원가입 오류", "성명을 확인해주세요");
       return false;
    } else if (pw != passOk) {
-      swal("회원가입 오류", "비밀번호가 일치하지 않습니다");
+	   alert("회원가입 오류", "비밀번호가 일치하지 않습니다");
       return false;
    } else if (chkId == "0") {
-      swal("회원가입 오류", "사용할 수 없는 아이디입니다.");
+	   alert("회원가입 오류", "사용할 수 없는 아이디입니다.");
       return false;
    } else if (i_agree2 == false) {
-      swal("회원가입 오류", "개인정보 수집 동의(필수) 해주세요");
+	   alert("회원가입 오류", "개인정보 수집 동의(필수) 해주세요");
       return false;
    } else if (selpick == "") {
-	  swal("회원가입 오류", "사업자번호사진을 등록해주세요");
+	   alert("회원가입 오류", "사업자 등록증을 첨부해주세요");
 	  return false;
-   } else {
-      return true;
-   }
+   } 
+      return false;
 }
 
 $(document).ready(function() {
@@ -40,6 +37,8 @@ $(document).ready(function() {
       } else if (inputLength <= 4) { // 아이디를 5자리 이상으로 써야함 12345 5<5!
          $("#result").css("color", "red");
          $("#result").html("5자리 이상의 아이디를 입력해주세요.");
+         $("#result1").css("color", "red");
+         $("#result1").html("5자리 이상의 아이디를 입력해주세요.");
          $("#chkval").val("0");
       } else if (inputLength > 4) { // 공백이 없고 5자리 이상이라면 ajax를 통해 유효성 검증할 것
          jQuery.ajax({ // $.ajax도 가능함
@@ -61,7 +60,8 @@ $(document).ready(function() {
                   $(this).val("");
                }
             },
-            error : function() {
+            error : function
+            () {
                alert("잘못된 요청 값 입니다.");
             }
          });
@@ -84,16 +84,19 @@ window.onload = function() {
       }
    });
 
-   // 이메일 문장 정규화
-   function emailCheck() {
-      var email = document.geteElementById('email').value;
-      var regEx = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_0-9a-zA-Z-]+(\.[_0-9a-zA-Z-]+{1,2}$)/;
-      if(!regEX.test(email)){
-         alert("이메일 형식이 아님");
-         
-      }else{
-         alert("사용가능한 이메일이 아님.");
-      }
-   }
 
+}
+// 이메일 문장 정규화
+function emailCheck() {
+//	alert("FDGfdsgfsdgsfdgfsdg");
+	
+	var email = document.getElementById("email").value;
+	
+	var regEX = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	if(!regEX.test(email)){
+		alert("이메일 형식이 아님");
+	}else{
+		alert("사용가능한 이메일이 아님.");
+	}
+//	return false;
 }

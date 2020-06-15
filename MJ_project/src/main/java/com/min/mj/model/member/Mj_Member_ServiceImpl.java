@@ -57,9 +57,9 @@ public class Mj_Member_ServiceImpl implements IMj_Member_Service {
 	}
 
 	@Override
-	public List<MJ_MemberDTO> info(MJ_MemberDTO dto) {
+	public List<MJ_MemberDTO> info() {
 		// TODO Auto-generated method stub
-		return dao.info(dto);
+		return dao.info();
 	}
 
 	@Override
