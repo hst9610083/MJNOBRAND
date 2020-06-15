@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.min.mj.dtos.MJ_BoardDTO;
 import com.min.mj.dtos.MJ_MemberDTO;
+import com.min.mj.dtos.RowNumDto;
 import com.min.mj.model.board.IMj_Board_Service;
 
 
@@ -42,21 +43,7 @@ public class PBoardController {
 		RowNumDto rowDto = null;
 		//페이징처리된 리스트
 
-		List<MJ_BoardDTO> lists = null;
-		MJ_MemberDTO mDto = (MJ_MemberDTO) session.getAttribute("mem");
-		if(session.getAttribute("row")==null) {
-			rowDto = new RowNumDto();
-		}else {
-			rowDto = (RowNumDto) session.getAttribute("row");
-		}
 		
-		if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_S")) {
-			rowDto.setTotal(service.BoardListTotal());
-			lists = service.BoardListRow(rowDto);
-		}else {
-			rowDto.setTotal(service.BoardListTotal());
-			lists = service.BoardListRow(rowDto);
-		}
 		model.addAttribute("row", rowDto);
 
 
@@ -133,7 +120,7 @@ public class PBoardController {
 		log.info("Welcome pdel.do : \t {}",seq);
 		boolean isc = service.pplDelBoard(seq);
 
-		return "pBoardList.do";
+	
 
 		return "pBoardList";
 
