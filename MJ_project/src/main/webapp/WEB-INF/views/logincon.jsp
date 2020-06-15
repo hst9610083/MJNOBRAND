@@ -50,51 +50,69 @@
 		</div>
 	</header>
 
-	<!--main_visial-->
+	 <!--main_visial-->
+ 
 
-	<div class="con con1">
-		<div class="wrap">
-			<img src="images/main/con1.png" alt="">
-		</div>
-	</div>
+    <div class="con con1">
+        <div class="wrap">
+            <img src="images/main/con1.png" alt="">
+        </div>
+    </div>
 
-	<div class="con con2">
-		<div class="wrap">
-			<b class="title"><img src="images/main/con2_title.png" alt=""></b>
+    <div class="con con2">
+        <div class="wrap">
+            <b class="title"><img src="images/main/con2_title.png" alt=""></b>
 
-			<ul>
-				<li>
-					<div class="img_area">
-						<img src="images/main/con2_img1.png" alt="">
-					</div> <span> 조건 검색하기<br> 방종류, 옵션 등 <b>조건 선택</b>
-				</span>
-				</li>
-				<li>
-					<div class="img_area">
-						<img src="images/main/con2_img2.png" alt="">
-					</div> <span> <b>원하는방 찜</b> 해두고<br> 비교해보기
-				</span>
-				</li>
-				<li>
-					<div class="img_area">
-						<img src="images/main/con2_img3.png" alt="">
-					</div> <span> 방문가능 날자,시간 체크 후<br> <b>방문 예약하기</b>
-				</span>
-				</li>
-				<li>
-					<div class="img_area">
-						<img src="images/main/con2_img4.png" alt="">
-					</div> <span> <b>예약한방</b> 꼼꼼히<br> 체크하며 <b>둘러보기</b>
-				</span>
-				</li>
-				<li>
-					<div class="img_area">
-						<img src="images/main/con2_img5.png" alt="">
-					</div> <span> 계약하기 </span>
-				</li>
-			</ul>
-		</div>
-	</div>
+            <ul>
+                <li>
+                    <div class="img_area">
+                        <img src="images/main/con2_img1.png" alt="">
+                    </div>
+                    <span>
+                        조건 검색하기<br>
+                        방종류, 옵션 등 <b>조건 선택</b>
+                    </span>
+                </li>
+                <li>
+                    <div class="img_area">
+                        <img src="images/main/con2_img2.png" alt="">
+                    </div>
+                    <span>
+                        <b>원하는방 찜</b> 해두고<br>
+                        비교해보기
+                    </span>
+                </li>
+                <li>
+                    <div class="img_area">
+                        <img src="images/main/con2_img3.png" alt="">
+                    </div>
+                    <span>
+                        방문가능 날자,시간 체크 후<br>
+                        <b>방문 예약하기</b>
+                    </span>
+                </li>
+                <li>
+                    <div class="img_area">
+                        <img src="images/main/con2_img4.png" alt="">
+                    </div>
+                    <span>
+                        <b>예약한방</b> 꼼꼼히<br>
+                        체크하며 <b>둘러보기</b>
+                    </span>
+                </li>
+                <li>
+                    <div class="img_area">
+                        <img src="images/main/con2_img5.png" alt="">
+                    </div>
+                    <span>
+                        계약하기
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
 
 
 

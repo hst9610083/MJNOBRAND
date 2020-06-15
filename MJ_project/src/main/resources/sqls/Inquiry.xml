@@ -107,12 +107,6 @@ SELECT A.SEQ,A.ID,TITLE,CONTENT ,B.REALFILE ,REGDATE
  
  </update>
 
- <!-- 견적서 작성 -->
- <insert id="s_esimake" parameterType="EDto">
-INSERT INTO ESTIMATE_MAKE
-(SEQ, ID, REGDATE, TITLE, CONTENT, REALFILE)
-VALUES(ESTIMATE_MAKE_SEQ.NEXTVAL,#{id}, SYSDATE, #{title}, #{content}, #{realfile})
-WHERE AUTH='S'
- </insert>
+
   
 </mapper>

@@ -101,7 +101,12 @@ public class BoardController {
 			return "redirect:/board/list";
 		}
 }
+<<<<<<< HEAD
 ///
 
 //sdfsdfsdfsdfdszz
 //안돼
+=======
+
+///
+>>>>>>> refs/heads/master

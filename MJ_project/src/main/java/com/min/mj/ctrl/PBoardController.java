@@ -1,5 +1,6 @@
 package com.min.mj.ctrl;
 
+
 import java.security.Principal;
 import java.util.Arrays;
 import java.util.Date;
@@ -41,22 +42,34 @@ public class PBoardController {
 		//페이징 처리 DTO
 		RowNumDto rowDto = null;
 		//페이징처리된 리스트
-		List<MJ_BoardDTO> lists = null;
-		MJ_MemberDTO mDto = (MJ_MemberDTO) session.getAttribute("mem");
-		if(session.getAttribute("row")==null) {
-			rowDto = new RowNumDto();
-		}else {
-			rowDto = (RowNumDto) session.getAttribute("row");
-		}
+
 		
-		if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_S")) {
-			rowDto.setTotal(service.BoardListTotal());
-			lists = service.BoardListRow(rowDto);
-		}else {
-			rowDto.setTotal(service.BoardListTotal());
-			lists = service.BoardListRow(rowDto);
-		}
 		model.addAttribute("row", rowDto);
+
+
+		List<MJ_BoardDTO> lists = service.pplSelectBoard();
+		MJ_MemberDTO mDto = (MJ_MemberDTO) session.getAttribute("mem");
+//		if(session.getAttribute("row")==null) {
+//			rowDto = new RowNumDto();
+//		}else {
+//			rowDto = (RowNumDto) session.getAttribute("row");
+//		}
+//		
+//		if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_S")) {
+//			rowDto.setTotal(service.BoardListTotal());
+//			lists = service.BoardListRow(rowDto);
+//		}else {
+//			rowDto.setTotal(service.BoardListTotal());
+//			lists = service.BoardListRow(rowDto);
+//		}
+//		model.addAttribute("row", rowDto);
+
+		
+		// 전체글 조회
+//		MJ_BoardDTO mDto = (MJ_BoardDTO) session.getAttribute("list");
+		
+
+
 		model.addAttribute("lists", lists);
 		
 		return "pBoardList";
@@ -86,6 +99,7 @@ public class PBoardController {
 	}
 	
 	
+
 	@RequestMapping(value = "pMultiDel.do", method = RequestMethod.GET)
 	public String DelpBoard(HttpSession session,String[] seq) {
 		log.info("Welcome MultiDelete.do : \t{}",Arrays.toString(seq));
@@ -105,7 +119,11 @@ public class PBoardController {
 	public String del(String seq) {
 		log.info("Welcome pdel.do : \t {}",seq);
 		boolean isc = service.pplDelBoard(seq);
-		return "pBoardList.do";
+
+	
+
+		return "pBoardList";
+
 	}
 	
 	@RequestMapping(value="/pBoardDetail.do", method = RequestMethod.GET)
@@ -114,6 +132,12 @@ public class PBoardController {
 		MJ_BoardDTO bDto = service.pplgetOnBoard(seq);
 		model.addAttribute("bDto", bDto);
 		return "pBoardDetail";
+
+	}
+
+	public String Del(String seq) {
+		return "";
+
 	}
 	
 }
