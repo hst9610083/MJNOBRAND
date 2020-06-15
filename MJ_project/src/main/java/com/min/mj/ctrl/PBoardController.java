@@ -39,12 +39,14 @@ public class PBoardController {
 	public String pBoardList(Model model, HttpSession session ) {
 		log.info("Welcome /BoardList.do : \t {}", new Date());
 		
+
 		//페이징 처리 DTO
 		RowNumDto rowDto = null;
 		//페이징처리된 리스트
 
 		
 		model.addAttribute("row", rowDto);
+
 
 
 		List<MJ_BoardDTO> lists = service.pplSelectBoard();
@@ -120,7 +122,6 @@ public class PBoardController {
 		log.info("Welcome pdel.do : \t {}",seq);
 		boolean isc = service.pplDelBoard(seq);
 
-	
 
 		return "pBoardList";
 

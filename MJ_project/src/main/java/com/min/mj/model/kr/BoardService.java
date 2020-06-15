@@ -1,9 +1,9 @@
-package com.min.mj.kr.co.service;
+package com.min.mj.model.kr;
 
 import java.util.List;
 
-import com.min.mj.kr.co.vo.BoardVO;
-import com.min.mj.kr.co.vo.Criteria;
+import com.min.mj.dtos.BoardVO;
+import com.min.mj.dtos.Criteria;
 
 public interface BoardService {
 

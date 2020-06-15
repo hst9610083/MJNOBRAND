@@ -14,7 +14,7 @@
 				if(fn_valiChk()){
 					return false;
 				}
-				formObj.attr("action", "/write.do");
+				formObj.attr("action", "./write.do");
 				formObj.attr("method", "post");
 				formObj.submit();
 			});
@@ -44,7 +44,7 @@
 			<hr />
 			
 			<section id="container">
-				<form name="writeForm" method="post" action="/board/write.do">
+				<form name="writeForm" method="post" action="/write.do">
 					<table>
 						<tbody>
 							<tr>
