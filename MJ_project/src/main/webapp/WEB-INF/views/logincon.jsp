@@ -31,7 +31,7 @@
 			
 			<nav id="gnb">
 				<ul>
-					<li><a href="">소비자 문의 게시판</a></li>
+					<li><a href="./Contemplate.do">소비자 문의 게시판</a></li>
 					<li><a href="./pBoardList.do">홍보게시판</a></li>
 					<li><a href="./iBoardList.do">문의글 마이페이지</a></li>
 				</ul>
@@ -42,7 +42,7 @@
 					<ul>
 						<li><a href="./userInfo.do">
 							<img src="images/main/mypage_icon.png" alt=""> ${mDto.id}님 환영합니다.</a></li>
-						<li><a href="./logout.do"> <span class="glyphicon glyphicon-log-out"></span> Logout	</a></li>
+						<li><a href="./logout.do"><span class="glyphicon glyphicon-log-out"></span> Logout	</a></li>
 
 					</ul>
 				</div>

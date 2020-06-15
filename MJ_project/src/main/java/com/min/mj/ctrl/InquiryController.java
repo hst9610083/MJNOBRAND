@@ -107,35 +107,52 @@ public class InquiryController {
 
 
   
-   // 소비자문의게시판 (글 전체 조회)(소비자)
-   @RequestMapping(value="/Contemplate.do",method = RequestMethod.GET)
-   public String Contemplate(Model model) {
-      
-      List<INQUIRYBoardDto> lists=service2.C_allSelectBoard();
-      model.addAttribute("lists",lists);
-      return "Contemplate";
-   }
-   
-   // 소비자문의게시판 글 상세 조회 (소비자)
-   @RequestMapping(value="/ConInquiryBoardDetail.do",method = RequestMethod.GET)
-   public String ConInquiryBoardDetail(Model model,String seq) {
-      
-      INQUIRYBoardDto lists=service2.C_SelectBoardDetail(seq);
-      model.addAttribute("lists",lists);
-      return "ConInquiryBoardDetail";
-   }
-   
-   // 소비자문의게시판 글 입력 (소비자)
-   
+   // 소비자문의게시판 (글 쓰기 템플릿)(소비자)
+    @RequestMapping(value="/Contemplate.do",method = RequestMethod.GET)
+    public String Contemplate(Model model, Authentication user, Principal principal,HttpSession session) {
+       
+ 	   String id = principal.getName();
+ 	      MJ_MemberDTO mDto = service.userlogin(id);
+ 	      System.out.println();
+ 	      mDto.getAuth();
+ 	      System.out.println(mDto.getAuth());
+ 	      mDto.getId();
+ 	      model.addAttribute("mDto",mDto);
+ 	      session.setAttribute("mem", mDto);
+ 	      if( mDto.getAuth().trim().equalsIgnoreCase("ROLE_C")) {
+ 	    	  mDto.getAuth();
+ 	    	  System.out.println(mDto.getAuth()+"C");
+ 	    	  
+ 	      }
+ 	      return "Contemplate";
+ 	   
+//       List<INQUIRYBoardDto> lists=service2.C_allSelectBoard();
+//       model.addAttribute("lists",lists);
+    }
    
    // 소비자문의 게시판 (글 전체 조회)(업체)
-   @RequestMapping(value="/SellInquiryBoard.do",method = RequestMethod.GET)
-   public String SellInquiryBoard(Model model) {
-      
-      List<INQUIRYBoardDto> lists=service2.S_allSelectBoard();
-      model.addAttribute("lists",lists);
-      return "SellInquiryBoard";
-   }
+    @RequestMapping(value="/ConInquiryBoard.do",method = RequestMethod.GET)
+    public String SellInquiryBoard(Model model, Authentication user, Principal principal,HttpSession session) {
+       
+ 	   String id = principal.getName();
+ 	      MJ_MemberDTO mDto = service.userlogin(id);
+ 	      System.out.println();
+ 	      mDto.getAuth();
+ 	      System.out.println(mDto.getAuth());
+ 	      mDto.getId();
+ 	      model.addAttribute("mDto",mDto);
+ 	      session.setAttribute("mem", mDto);
+ 	      if( mDto.getAuth().trim().equalsIgnoreCase("ROLE_S")) {
+ 	    	  mDto.getAuth();
+ 	    	  System.out.println(mDto.getAuth()+"S");
+
+ 	      }
+ 	   
+       List<INQUIRYBoardDto> lists=service2.S_allSelectBoard();
+       model.addAttribute("lists",lists);
+       return "SellInquiryBoard";
+    }
+   
    
    // 소비자 문의 게시판 (글 상세 조회)(업체)
    @RequestMapping(value="/SellInquiryBoardDetail.do",method = RequestMethod.GET)
@@ -146,7 +163,27 @@ public class InquiryController {
       return "SellInquiryBoardDetail";
    }
    
+   // 소비자문의게시판 글 입력 (소비자)
+   @RequestMapping(value="/Contemplate.do", method = RequestMethod.POST)
+   public String ConInput(HttpSession session, INQUIRYBoardDto dto, Model model) {
+      log.info("Welcome boardWrite: \t {}",dto);
+      INQUIRYBoardDto mDto =  (INQUIRYBoardDto) session.getAttribute("mem");
+      mDto.setId(mDto.getId());
+      boolean isc = service2.c_insertBoard(dto);
+      return isc?"redirect:/Contemplate.do":"redirect:/logout.do";
+   }
    
+   
+   
+   
+//   // 소비자문의게시판 글 상세 조회 (소비자)
+//   @RequestMapping(value="/ConInquiryBoardDetail.do",method = RequestMethod.GET)
+//   public String ConInquiryBoardDetail(Model model,String seq) {
+//      
+//      INQUIRYBoardDto lists=service2.C_SelectBoardDetail(seq);
+//      model.addAttribute("lists",lists);
+//      return "ConInquiryBoardDetail";
+//   }
    
    
    

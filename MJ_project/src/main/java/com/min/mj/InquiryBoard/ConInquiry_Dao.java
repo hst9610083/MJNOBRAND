@@ -19,9 +19,10 @@ public class ConInquiry_Dao implements IConInquiry_Dao {
 	private final String NS="com.min.inquiry.";
 
 	@Override
-	public List<INQUIRYBoardDto> c_insertBoard(INQUIRYBoardDto dto) {
+	public boolean c_insertBoard(INQUIRYBoardDto dto) {
 		log.info("c_insertBoard 성공");
-		return session.selectList(NS+"c_insertBoard",dto);
+		int n = session.update(NS+"c_insertBoard",dto);
+		return (n>0)?true:false;
 	}
 
 	@Override

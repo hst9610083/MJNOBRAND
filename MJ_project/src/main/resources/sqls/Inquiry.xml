@@ -74,25 +74,25 @@ VALUES(C_INQUIRY_SEQ.NEXTVAL,#{realfile},#{id},#{nicname},SYSDATE,#{title},#{con
 WHERE AUTH='C' AND IMSI='N'
 </insert>
   
-<!-- 소비자문의게시판 (글 전체 조회)(소비자)-->
+<!-- 소비자문의게시판 (글 템플릿)(소비자)-->
 <select id="C_allSelectBoard" resultType="IDto">
-SELECT SEQ,ID,NICNAME,REGDATE,TITLE,CONTENT,AUTH,REALFILE,IMSI
-FROM C_INQUIRY
-WHERE AUTH='C' AND IMSI='N'
+ SELECT A.SEQ,A.ID,A.NICNAME,A.REGDATE,A.TITLE,A.CONTENT,A.AUTH,A.REALFILE,A.IMSI
+ FROM C_INQUIRY A JOIN REGISTER B ON A.ID=B.ID
 </select>
 
-<!-- 소비자문의게시판 (글 상세 조회)(소비자) -->
- <select id="C_SelectBoardDetail" resultType="IDto">
+<!-- 소비자문의게시판 (글 상세 조회)(소비자) --> <!-- 존나 쓸데없음 -->
+ <!-- <select id="C_SelectBoardDetail" resultType="IDto">
  SELECT A.SEQ,A.ID,TITLE,CONTENT ,B.REALFILE ,REGDATE
   FROM C_INQUIRY A LEFT JOIN "FILE" B
    ON (A.REALFILE =B.REALFILE )
    WHERE AUTH='C' AND IMSI='N'
- </select>
+ </select> -->
  
   
 <!-- 소비자문의게시판 (글 전체 조회)(업체)-->
 <select id="S_allSelectBoard" resultType="IDto">
-SELECT SEQ,NICNAME,TITLE,REGDATE FROM C_INQUIRY WHERE AUTH='S' AND IMSI='N'
+SELECT A.SEQ, A.NICNAME, A.TITLE, A.REGDATE
+FROM C_INQUIRY A JOIN REGISTER B ON A.ID=B.ID WHERE A.AUTH='ROLE_S'
 </select>
 
 <!-- 소비자문의게시판 (글 상세 조회)(업체) -->

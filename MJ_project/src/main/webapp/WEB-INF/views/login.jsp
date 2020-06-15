@@ -12,13 +12,13 @@
     <link rel="stylesheet" href="css/slick-theme.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/layout.css">
-    <script type="text/javascript"src="js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript"src="js/uc.lib.min.js"></script>
-    <script type="text/javascript"src="js/uc.plugin.min.js"></script>
-    <script type="text/javascript"src="js/slick.min.js"></script>
-    <script type="text/javascript"src="js/common.js"></script>   
-    <script type="text/javascript" src="js/signup.js"></script>   
-
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/uc.lib.min.js"></script>
+    <script src="js/uc.plugin.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/common.js"></script>   
+    <script src="js/signup.js"></script>   
+    <script src="js/signup2.js"></script>   
   
 <body>
 
@@ -91,18 +91,19 @@
                         <h3 style="font-size: 34px; color: #404040; text-align: center; margin-bottom: 30px;">업체 회원가입</h3>
                        
                           <input type="hidden" id="chkval" value="0">
-                        <form data-uc-form action="./S_JoinUp.do" method="post" onsubmit="return check()">
-
-                           <div class="is-input-field is-mg-b_15">
-                                <input type="text" name="selpick"  placeholder="* 사업자 등록증 이미지" />
+                        <form data-uc-form action="./S_JoinUp.do" method="post"onsubmit="return check()">
+                        
+                     <div class="is-input-field is-mg-b_15">
+                                <input type="text" name="selpick"  placeholder="* 사업자등록증이미지" />
                             </div>
+                           
                             <div class="is-input-field is-mg-b_15" >
                                 <input class="form-control" type="text" name="id" id="id" placeholder="* 아이디" maxlength="20"><br>
                         <span id="result"></span> 
                            </div>
                             
                             <div class="is-input-field is-mg-b_15">
-                                <input type="text" id="pw" name="pw"  placeholder="* 비밀번호" >
+                                <input type="text" name="pw"  placeholder="* 비밀번호" />
                             </div>
                             <div class="is-input-field is-mg-b_15">
                                <input class="form-control" type="password" id="passOk"   placeholder="* 비밀번호 확인"><br> 
@@ -118,7 +119,7 @@
                                 <input type="text" name="nicname"  placeholder="* 별명" />
                             </div>
                              <div class="is-input-field is-mg-b_15">
-                                <input type="text" id="sellernum" name="sellernum"  placeholder="* 사업자번호(숫자로만 입력해주세요)" maxlength="20"/>
+                                <input type="text" id="sellernum" name="sellernum"  placeholder="* 사업자번호" maxlength="20"/>
                                <span id="result1"></span> 
                             </div>
                             
@@ -208,7 +209,7 @@
             <h1><a href="./index.html"><img src="images/main/logo.png" alt=""></a></h1>
             <nav id="gnb">
                 <ul>
-                    <li><a href="/MJ_project/ConInquiryBoard.do">소비자 문의 게시판</a></li>
+                    <li><a href="">소비자 문의 게시판</a></li>
                     <li><a href="">홍보게시판</a></li>
                     <li><a href="">공유방</a></li>
                     <li><a href="">고객센터</a></li>
@@ -216,14 +217,16 @@
             </nav>
             <div class="util">
                 <ul>
-                    <li><a href="#loginModal" data-uc-click="modal"><img src="/images/icon/form/imagegege/11512.png" alt=""></a></li>
-                    <li><a href="file:///C:/Users/uriim/OneDrive/바탕%20화면/html_4/mypage1-2.html"><img src="/images/icon/form/imagegege/512.png" alt=""></a></li>
+                    <li><a href="#loginModal" data-uc-click="modal"><img src="images/main/login_icon.png" alt=""></a></li>
+                    <li><a href="#joinModal1" data-uc-click="modal"><img src="images/main/join_icon.png" alt=""></a></li>
+                    <li><a href="file:///C:/Users/uriim/OneDrive/바탕%20화면/html_4/mypage1-2.html"><img src="images/main/mypage_icon.png" alt=""></a></li>
                 </ul>
             </div>
         </div>
     </header>
 
     <!--main_visial-->
+ 
 
     <div class="con con1">
         <div class="wrap">

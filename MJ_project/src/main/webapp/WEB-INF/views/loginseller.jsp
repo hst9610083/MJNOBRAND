@@ -31,7 +31,7 @@
 			
 			<nav id="gnb">
 				<ul>
-					<li><a href="">소비자 문의 게시판</a></li>
+					<li><a href="./ConInquiryBoard.do">소비자 문의 게시판</a></li>
 					<li><a href="./pBoardList.do">홍보게시판</a></li>
 					<li><a href="">견적서 마이페이지</a></li>
 				</ul>
