@@ -4,27 +4,25 @@ function check() {
    var id = document.getElementById("id").value;
    var pw = document.getElementById("pw").value;
    var passOk = document.getElementById("passOk").value;
-//   var chkId = document.getElementById("chkval").value;
    var sellernum = document.getElementById("sellernum").value;
    
    if (name == "") {
-      swal("회원가입 오류", "성명을 확인해주세요");
+	   alert("회원가입 오류", "성명을 확인해주세요");
       return false;
    } else if (pw != passOk) {
-      swal("회원가입 오류", "비밀번호가 일치하지 않습니다");
+	   alert("회원가입 오류", "비밀번호가 일치하지 않습니다");
       return false;
    } else if (chkId == "0") {
-      swal("회원가입 오류", "사용할 수 없는 아이디입니다.");
+	   alert("회원가입 오류", "사용할 수 없는 아이디입니다.");
       return false;
    } else if (i_agree2 == false) {
-      swal("회원가입 오류", "개인정보 수집 동의(필수) 해주세요");
+	   alert("회원가입 오류", "개인정보 수집 동의(필수) 해주세요");
       return false;
    } else if (selpick == "") {
-	  swal("회원가입 오류", "사업자 등록증을 첨부해주세요");
+	   alert("회원가입 오류", "사업자 등록증을 첨부해주세요");
 	  return false;
-   } else {
-      return true;
-   }
+   } 
+      return false;
 }
 
 $(document).ready(function() {
