@@ -90,11 +90,11 @@ public class LoginController {
       service.c_register(dto);
       return "login";
    }
-   
-   @RequestMapping(value = "/admin/userInfo.do", method= RequestMethod.GET)
-   public String adminPage() {
-      return "userInfo";
-   }
+//   관리자페이지
+//   @RequestMapping(value = "/admin/userInfo.do", method= RequestMethod.GET)
+//   public String adminPage() {
+//      return "userInfo";
+//   }
    @RequestMapping(value = "/AuthError.do", method = RequestMethod .GET)
    public String AuthError() {
    
