@@ -37,7 +37,7 @@ public class BoardController {
 		
 		service.write(boardVO);
 		
-		return "redirect:/board/list";
+		return "/board/list";
 	}
 	
 	// 게시판 목록 조회
@@ -101,3 +101,4 @@ public class BoardController {
 			return "redirect:/board/list";
 		}
 }
+///
