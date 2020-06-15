@@ -44,7 +44,7 @@
 			<hr />
 			
 			<section id="container">
-				<form name="writeForm" method="post" action="/write.do">
+				<form name="writeForm" method="post" action="/board/write.do">
 					<table>
 						<tbody>
 							<tr>
