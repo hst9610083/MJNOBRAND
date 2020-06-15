@@ -4,8 +4,7 @@ function check() {
    var id = document.getElementById("id").value;
    var pw = document.getElementById("pw").value;
    var passOk = document.getElementById("passOk").value;
-   var i_agree2 = document.getElementById("i_agree2").checked;
-   var chkId = document.getElementById("chkval").value;
+//   var chkId = document.getElementById("chkval").value;
    var sellernum = document.getElementById("sellernum").value;
    
    if (name == "") {
@@ -21,7 +20,7 @@ function check() {
       swal("회원가입 오류", "개인정보 수집 동의(필수) 해주세요");
       return false;
    } else if (selpick == "") {
-	  swal("회원가입 오류", "사업자번호사진을 등록해주세요");
+	  swal("회원가입 오류", "사업자 등록증을 첨부해주세요");
 	  return false;
    } else {
       return true;
@@ -40,6 +39,8 @@ $(document).ready(function() {
       } else if (inputLength <= 4) { // 아이디를 5자리 이상으로 써야함 12345 5<5!
          $("#result").css("color", "red");
          $("#result").html("5자리 이상의 아이디를 입력해주세요.");
+         $("#result1").css("color", "red");
+         $("#result1").html("5자리 이상의 아이디를 입력해주세요.");
          $("#chkval").val("0");
       } else if (inputLength > 4) { // 공백이 없고 5자리 이상이라면 ajax를 통해 유효성 검증할 것
          jQuery.ajax({ // $.ajax도 가능함
@@ -84,16 +85,19 @@ window.onload = function() {
       }
    });
 
-   // 이메일 문장 정규화
-   function emailCheck() {
-      var email = document.geteElementById('email').value;
-      var regEx = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_0-9a-zA-Z-]+(\.[_0-9a-zA-Z-]+{1,2}$)/;
-      if(!regEX.test(email)){
-         alert("이메일 형식이 아님");
-         
-      }else{
-         alert("사용가능한 이메일이 아님.");
-      }
-   }
 
+}
+// 이메일 문장 정규화
+function emailCheck() {
+//	alert("FDGfdsgfsdgsfdgfsdg");
+	
+	var email = document.getElementById("email").value;
+	
+	var regEX = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	if(!regEX.test(email)){
+		alert("이메일 형식이 아님");
+	}else{
+		alert("사용가능한 이메일이 아님.");
+	}
+//	return false;
 }
