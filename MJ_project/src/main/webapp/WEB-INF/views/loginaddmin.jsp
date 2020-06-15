@@ -102,7 +102,7 @@
 					<span>주소: </span>
 				</p>
 				<p>
-					<span>팩스: </span><span>통신판매업 신고번호: </span>
+					<span>팩스: 010</span><span>통신판매업 신고번호: </span>
 				</p>
 				<p>
 					<span>서비스 이용문의: </span><span>이메일: </span><span>서비스제휴문의: </span>
