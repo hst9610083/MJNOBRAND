@@ -7,6 +7,8 @@ import com.min.mj.dtos.INQUIRYBoardDto;
 
 public interface IMj_Inquiry_Service {
 	
+		
+	
 		//문의글 임시보관함 리스트 전체보기
 		public List<INQUIRYBoardDto> Mimsi_All();
 		
@@ -18,6 +20,8 @@ public interface IMj_Inquiry_Service {
 		
 		//문의글 임시 보관함 삭제하기
 		public boolean MiImsi_Delete(String seq);
+		
+		
 		
 		//내가 쓴 문의글 보관함 리스트 전체보기
 		public List<INQUIRYBoardDto> Mstore_All();

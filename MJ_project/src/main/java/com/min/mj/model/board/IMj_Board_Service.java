@@ -18,7 +18,12 @@ public interface IMj_Board_Service {
 	public boolean pplWriteBoard(MJ_BoardDTO dto);
 	
 	//홍보게시판 조회수
+
 	public boolean pplReadcountBoard(String seq);
+
+
+//	public boolean pplReadcountBoard(String seq);
+
 	
 //	홍보게시판 수정
 	public boolean pplModifyBoard(MJ_BoardDTO dto);
