@@ -6,6 +6,7 @@
    <select id="pplSelectBoard" resultType="BDto">
       SELECT ID, SEQ, NICNAME, TITLE, CONTENT, READCOUNT, REGDATE
        FROM SELLER_PPL_BOARD
+       WHERE DELFLAG = 'N'
    </select>
    
    <!-- 글쓰기  -->
@@ -48,7 +49,7 @@
    </update>
    
    <select id="BoardListRow" parameterType="RowNum" resultType="BDto">
-   SELECT SEQ, ID, TITLE,CONTENT
+   SELECT SEQ, ID, TITLE,CONTENT,
                 READCOUNT, DELFLAG, REGDATE
         FROM
         (
@@ -60,14 +61,24 @@
                 READCOUNT, DELFLAG, REGDATE
                 FROM SELLER_PPL_BOARD
                 WHERE DELFLAG ='N'
-                ORDER BY READCOUNT DESC, REGDATE
                 )
                 )
                 WHERE RNUM BETWEEN #{start} AND #{last}
    </select>
-   
+<!--    <select id="BoardListRow" resultType="BDto" parameterType="RowNum"> -->
+<!-- 		SELECT  SEQ, ID, TITLE,CONTENT -->
+<!--                 READCOUNT, DELFLAG, REGDATE -->
+<!-- 		 FROM (  -->
+<!-- 		        SELECT SEQ, ID, TITLE,CONTENT, -->
+<!--                 READCOUNT, DELFLAG, REGDATE  -->
+<!-- 		               ROW_NUMBER() OVER(ORDER BY SEQ DESC) AS RNUM -->
+<!-- 		         FROM SELLER_PPL_BOARD  -->
+<!-- 		                       ) SELLER -->
+<!-- 		WHERE RNUM BETWEEN #{start} AND #{last} -->
+<!-- 		ORDER BY SEQ DESC -->
+<!-- 	</select> -->
    <!-- 홍보게시판 전체글 갯수 -->
    <select id="BoardListTotal" resultType="java.lang.Integer">
-   SELECT COUNT(*) FROM SELLER_PPL_BOARD WHERE DELFLAG='N'
+   SELECT COUNT(*) FROM SELLER_PPL_BOARD WHERE DELFLAG = 'N'
    </select>
 </mapper>

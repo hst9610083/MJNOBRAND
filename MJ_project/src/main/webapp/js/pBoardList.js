@@ -356,6 +356,7 @@ var ajaxModify = function(val){
 		    html+="";
 		    html+="<div class='modal-footer'>";
 		    html+="<input  class='btn btn-success' type='button' value='글수정 완료' onclick='update()'>";
+		    html+="<input  class='btn btn-success' type='button' value='글삭제 ' onclick='del()'>";
 		    html+="<input class='btn btn-info' type='reset' value='내용초기화'>";
 		    html+="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
 		    html+="</div>";
