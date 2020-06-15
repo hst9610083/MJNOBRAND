@@ -65,7 +65,7 @@ public class InquiryController {
 	      if( mDto.getAuth().trim().equalsIgnoreCase("ROLE_C")) {
 	    	  mDto.getAuth();
 	    	  System.out.println(mDto.getAuth()+"C");
-
+	    	  
 	      }
 	   
       List<INQUIRYBoardDto> lists=service3.Mimsi_All();
@@ -75,7 +75,25 @@ public class InquiryController {
    
       // 임시 문의글 게시판 상세보기
       @RequestMapping(value="/iBoardListDetail.do",method = RequestMethod.GET)
-      public String iBoardListDetail(Model model, String seq) {
+      public String iBoardListDetail(Model model, String seq, Authentication user, Principal principal,HttpSession session) {
+    	  
+    	  String id = principal.getName();
+	      MJ_MemberDTO mDto = service.userlogin(id);
+	      System.out.println();
+	      mDto.getAuth();
+	      System.out.println(mDto.getAuth());
+	      mDto.getId();
+	      model.addAttribute("mDto",mDto);
+	      session.setAttribute("mem", mDto);
+	      if( mDto.getAuth().trim().equalsIgnoreCase("ROLE_C")) {
+	    	  mDto.getAuth();
+	    	  System.out.println(mDto.getAuth()+"C");
+	    	  
+	      }
+    	  
+    	  
+    	  
+    	  
          log.info("게시판 상세보기,\t {}", seq);
          INQUIRYBoardDto lists = service3.Mimsi_Detail(seq);
          System.out.println("___________________________________"+lists.toString());

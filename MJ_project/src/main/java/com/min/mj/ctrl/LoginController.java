@@ -70,7 +70,8 @@ public class LoginController {
       }else if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_A")) {
     	  mDto.getAuth();
           System.out.println(mDto.getAuth()+"A");
-          return "loginaddmin";
+          return "redirect:/loginaddmin.do";
+          
       }
       return "";
    }
@@ -90,11 +91,11 @@ public class LoginController {
       service.c_register(dto);
       return "login";
    }
-   
-   @RequestMapping(value = "/admin/userInfo.do", method= RequestMethod.GET)
-   public String adminPage() {
-      return "userInfo";
-   }
+//   관리자페이지
+//   @RequestMapping(value = "/admin/userInfo.do", method= RequestMethod.GET)
+//   public String adminPage() {
+//      return "userInfo";
+//   }
    @RequestMapping(value = "/AuthError.do", method = RequestMethod .GET)
    public String AuthError() {
    

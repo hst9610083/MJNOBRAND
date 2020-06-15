@@ -1,4 +1,4 @@
-package com.min.mj.kr.co.vo;
+package com.min.mj.dtos;
 
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;

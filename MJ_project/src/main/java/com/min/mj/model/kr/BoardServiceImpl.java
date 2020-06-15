@@ -1,4 +1,4 @@
-package com.min.mj.kr.co.service;
+package com.min.mj.model.kr;
 
 
 import java.util.List;
@@ -7,9 +7,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.min.mj.kr.co.dao.BoardDAO;
-import com.min.mj.kr.co.vo.BoardVO;
-import com.min.mj.kr.co.vo.Criteria;
+import com.min.mj.dtos.BoardVO;
+import com.min.mj.dtos.Criteria;
 
 @Service
 public class BoardServiceImpl implements BoardService {

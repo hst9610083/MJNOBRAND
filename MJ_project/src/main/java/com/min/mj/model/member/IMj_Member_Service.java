@@ -38,7 +38,7 @@ public interface IMj_Member_Service {
 	 * 회원 정보(info)
 	 * @return 회원 정보 리스트 
 	 */
-	public List<MJ_MemberDTO> info(MJ_MemberDTO dto);
+	public List<MJ_MemberDTO> info();
 
 	/**
 	 * 업체 정보(s_info)
