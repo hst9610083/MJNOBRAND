@@ -70,7 +70,8 @@ public class LoginController {
       }else if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_A")) {
     	  mDto.getAuth();
           System.out.println(mDto.getAuth()+"A");
-          return "loginaddmin";
+          return "redirect:/loginaddmin.do";
+          
       }
       return "";
    }

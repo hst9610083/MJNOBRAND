@@ -60,7 +60,8 @@ $(document).ready(function() {
                   $(this).val("");
                }
             },
-            error : function() {
+            error : function
+            () {
                alert("잘못된 요청 값 입니다.");
             }
          });
