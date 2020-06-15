@@ -38,11 +38,20 @@ public class MJ_Board_ServiceImpl implements IMj_Board_Service {
 		return dao.pplWriteBoard(dto);
 	}
 
+
 	//니중에 수정
 	public boolean pplReadcountBoard(String seq) {
 		log.info("pplReadcountBoard 조회수{}",seq);
 		return dao.pplReadcountBoard(seq);
 	}
+
+//	//니중에 수정
+//	public boolean pplReadcountBoard(String seq) {
+//		log.info("pplReadcountBoard 조회수{}",seq);
+//		return dao.pplReadcountBoard(seq);
+//	}
+	
+	//니중에 수정
 
 	@Override
 	public boolean pplModifyBoard(MJ_BoardDTO dto) {

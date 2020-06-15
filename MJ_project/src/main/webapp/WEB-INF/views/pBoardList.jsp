@@ -71,7 +71,7 @@
 			</div>
 
 			<div>
-				<input class="btn btn-danger" type="submit" value="다중 삭제">
+				<input class="btn btn-danger" type="submit" value="삭제">
 			</div>
 		</form>
 

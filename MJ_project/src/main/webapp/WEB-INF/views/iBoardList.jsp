@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,13 +9,13 @@
 </head>
 <body>
 	<%@include file="/WEB-INF/views/boardTopMenu.jsp"%>
-
+	 ${mDto.id}님 환영합니다.
 	<div id="container">
-		<h1>문의글 임시보기 리스트</h1>
+		<h1>문의글  리스트</h1>
 
 
 
-		<form action="./iBoardList.do" method="post">
+		<form action="./writeView.do" method="post">
 			<table class="table table-bordered">
 				<tr>
 					<th>번호</th>
