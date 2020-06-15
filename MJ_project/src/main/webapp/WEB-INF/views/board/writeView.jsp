@@ -14,7 +14,7 @@
 				if(fn_valiChk()){
 					return false;
 				}
-				formObj.attr("action", "/write.do");
+				formObj.attr("action", "./write.do");
 				formObj.attr("method", "post");
 				formObj.submit();
 			});

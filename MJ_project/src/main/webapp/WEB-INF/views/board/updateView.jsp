@@ -11,7 +11,7 @@
 			
 			$(".cancel_btn").on("click", function(){
 				event.preventDefault();
-				location.href = "/board/list";
+				location.href = "./board/list.do";
 			})
 		})
 		
@@ -20,14 +20,14 @@
 			
 			$(".cancel_btn").on("click", function(){
 				event.preventDefault();
-				location.href = "/board/list";
+				location.href = "./list.do";
 			})
 			
 			$(".update_btn").on("click", function(){
 				if(fn_valiChk()){
 					return false;
 				}
-				formObj.attr("action", "/board/update");
+				formObj.attr("action", "./update.do");
 				formObj.attr("method", "post");
 				formObj.submit();
 			})
@@ -57,8 +57,8 @@
 			</div>
 			<hr />
 			
-			<section id="container">
-				<form name="updateForm" role="form" method="post" action="/board/update.do">
+				<section id="container">
+				<form name="updateForm" role="form" method="post" action="/update.do">
 					<input type="hidden" name="bno" value="${update.bno}" readonly="readonly"/>
 					<table>
 						<tbody>

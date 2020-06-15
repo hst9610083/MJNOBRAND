@@ -1,4 +1,4 @@
-package com.min.mj.kr.co.vo;
+package com.min.mj.dtos;
 
 import java.util.Date;
 
