@@ -6,32 +6,46 @@
 <meta charset="UTF-8">
 <title>MyPage</title>
 </head>
-<body>
-<div id="container" class="table-responsive">
-<table class="table">
-<tbody>
-      <tr>
-        <th>아이디</th>
-        <td>${mDto.id}</td>
-      </tr>
-      <tr>
-         <th>성명</th>
-        <td>${mDto.name}</td>
-      </tr>
-      <tr>
-        <td>권한</td>
-        <td>${mDto.auth eq 'ROLE_C    '?'업체':'소비자'}</td>
-      </tr>
-      <tr>
-        <td>가입일</td>
-        <td>${mDto.regdate}</td>
-      </tr>
-      <tr>
-        <td colspan="2">
-           <button class="btn btn-warning">탈퇴</button>
-           <button class="btn btn-info">수정</button>
-        </td>
-      </tr>
+<link rel="stylesheet" href="css/uc.min.css">
+<link rel="stylesheet" href="css/basic.css">
+<link rel="stylesheet" href="css/slick.css">
+<link rel="stylesheet" href="css/slick-theme.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/layout.css">
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/uc.lib.min.js"></script>
+<script src="js/uc.plugin.min.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript"></script>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+      <form action="./del.do"  >
+			<table class="table table-bordered">
+
+				<tr>
+					<th>연번</th>
+					<th>아이디</th>
+					<th>이름</th>
+					<th>권한</th>
+				</tr>
+				<c:forEach items="${memlists}" var="dto">
+					<tr>
+						<td>${mDto.seq}</td>
+						<td>${mDto.id}</td>
+						<td>${mDto.name}</td>
+						<td>${mDto.auth}</td>
+						<td><input type="submit" placeholder="회원탈퇴" value="회원탈퇴"
+                              style="border-color: #777676;" onclick="del(${dto.seq})" > </td>
+					</tr>
+				</c:forEach>
+				
+			</table>
+		
+		</form>
+
   </tbody>
   </table>
 </div>
