@@ -12,7 +12,7 @@ function del(val){
 
 //다중삭제-------------------------------------
 function checkAll(bool){
-  var chkVals = document.getElementsByName("chkVal");
+  var chkVals = document.getElementsByName("chkval");
   for (var i = 0; i < chkVals.length; i++) {
      chkVals[i].checked = bool;
   }
@@ -21,20 +21,20 @@ function checkAll(bool){
 function chkbox() {
   var n = 0;
   
-  var chkVals = document.getElementsByName("chkVal");
+  var chkVals = document.getElementsByName("chkval");
   for (var i = 0; i < chkVals.length; i++) {
      if (chkVals[i].checked) {
         n++;
      }
   }
-  if (n != 0) {
+  if (n > 0) {
      document.getElementById("frm").action="./pMultiDel.do";
   }else{
      swal("게시글 오류", "삭제 값이 없습니다.");
      return false;
   }
 }
-
+//--------------------------------------------------------------
 function reseted(){
 	document.getElementById("con").innerHTML = '내용(원본)';
 	$("#title").html('제목(원본)');

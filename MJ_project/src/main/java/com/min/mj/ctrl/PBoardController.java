@@ -1,6 +1,8 @@
 package com.min.mj.ctrl;
 
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.security.Principal;
 import java.util.Arrays;
 import java.util.Date;
@@ -8,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -43,12 +46,6 @@ public class PBoardController {
       //페이징 처리 DTO
       RowNumDto rowDto = null;
       //페이징처리된 리스트
-
-      
-      model.addAttribute("row", rowDto);
-
-
-
       List<MJ_BoardDTO> lists = service.pplSelectBoard();
       MJ_MemberDTO mDto = (MJ_MemberDTO) session.getAttribute("mem");
       if(session.getAttribute("row")==null) {
@@ -102,28 +99,24 @@ public class PBoardController {
    
    
 
-   @RequestMapping(value = "pMultiDel.do", method = RequestMethod.GET)
-   public String DelpBoard(HttpSession session,String[] seq) {
-      log.info("Welcome MultiDelete.do : \t{}",Arrays.toString(seq));
-      MJ_BoardDTO dto = service.pplgetOnBoard(seq[0]);
+   @RequestMapping(value = "/pMultiDel.do", method = RequestMethod.POST)
+   public String DelpBoard(HttpSession session,String[] chkval, HttpServletResponse response)throws IOException{
+	  response.setContentType("UTF-8");
+      log.info("Welcome /MultiDelete.do : \t{}",Arrays.toString(chkval));
       MJ_MemberDTO mDto = (MJ_MemberDTO) session.getAttribute("mem");
       boolean isc = false;
-      if(mDto.getAuth().equalsIgnoreCase("ROLE_S") || dto.getId().equalsIgnoreCase(mDto.getId())) {
          Map<String, String[]> map = new HashMap<String, String[]>();
-         map.put("seq_", seq);
+         map.put("seq_", chkval);
          isc = service.pplMultiDel(map);
-      }
-      return isc?"redirect:/pBoardList.do":"redirect:/logout.do";
-   }
+      return isc?"redirect:/pBoardList.do":"redirect:/pBoardList.do";
+  }
    
    
    @RequestMapping(value = "/pdel.do", method = RequestMethod.GET)
    public String del(String seq) {
       log.info("Welcome pdel.do : \t {}",seq);
       boolean isc = service.pplDelBoard(seq);
-
-
-      return "pBoardList";
+      return isc?"redirect:/pBoardList.do":"redirect:/logout.do";
 
    }
    
@@ -133,11 +126,6 @@ public class PBoardController {
       MJ_BoardDTO bDto = service.pplgetOnBoard(seq);
       model.addAttribute("bDto", bDto);
       return "pBoardDetail";
-
-   }
-
-   public String Del(String seq) {
-      return "";
 
    }
    

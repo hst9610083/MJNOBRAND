@@ -11,8 +11,8 @@
    
    <!-- 글쓰기  -->
    <insert id="pplWriteBoard" parameterType="BDto">
-      INSERT INTO SELLER_PPL_BOARD(SEQ, ID, NICNAME, TITLE, CONTENT, READCOUNT, REGDATE, DELFLAG) 
-                        VALUES(SELLER_PPL_BOARD_SEQ.NEXTVAL,#{id}, #{nicname}, #{title}, #{content}, 0, SYSDATE, 'N')
+      INSERT INTO SELLER_PPL_BOARD(SEQ, ID, TITLE, CONTENT, READCOUNT, REGDATE, DELFLAG) 
+                        VALUES(SELLER_PPL_BOARD_SEQ.NEXTVAL,#{id}, #{title}, #{content}, 0, SYSDATE, 'N')
    </insert>
 
    <!-- 상세글 보기 -->
@@ -39,12 +39,13 @@
    UPDATE SELLER_PPL_BOARD SET DELFLAG = 'Y' WHERE SEQ= #{seq}
    </update>
    
+   <!-- 다중삭제 -->
    <update id="pplMultiDel" parameterType="java.util.Map">
-   UPDATE SELLER_PPL_BOARD SET DELFLAG = 'N' 
-   WHERE DELFLAG = 'Y'
+   UPDATE SELLER_PPL_BOARD SET DELFLAG = 'Y' 
+   WHERE DELFLAG = 'N' AND
    SEQ IN 
    <foreach collection="seq_" item="seq" open="(" separator="," close=")">
-   #{seq_}
+   #{seq}
    </foreach>
    </update>
    
@@ -61,6 +62,7 @@
                 READCOUNT, DELFLAG, REGDATE
                 FROM SELLER_PPL_BOARD
                 WHERE DELFLAG ='N'
+                ORDER BY SEQ DESC, SEQ 
                 )
                 )
                 WHERE RNUM BETWEEN #{start} AND #{last}

@@ -27,7 +27,7 @@
 			</select>
 			</span>
 		</div>
-		<form action="#" method="post" id="frm" name="frm"
+		<form action="./pMultiDel.do" method="post" id="frm" name="frm"
 			onsubmit="return chkbox()">
 			<div class="panel-group" id="accordion">
 				<table class="table table-bordered">
@@ -37,7 +37,7 @@
 						<th>제목</th>
 						<th>작성자</th>
 						<th>조회수</th>
-						<c:if test="${mem.auth eq 'A'}">
+						<c:if test="${mem.auth eq 'ROLE_A'}">
 							<th>삭제여부</th>
 						</c:if>
 						<th>작성일</th>
@@ -71,7 +71,9 @@
 			</div>
 
 			<div>
-				<input class="btn btn-danger" type="submit" value="삭제">
+				<c:if test="${mem.auth eq 'ROLE_A'}">
+					<input class="btn btn-danger" type="submit" value="삭제">
+				</c:if>
 			</div>
 		</form>
 
