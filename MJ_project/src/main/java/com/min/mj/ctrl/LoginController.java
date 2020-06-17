@@ -53,7 +53,7 @@ public class LoginController {
    public String maingo_c(Model model, Authentication user, Principal principal,HttpSession session) {
       String id = principal.getName();
       MJ_MemberDTO mDto = service.userlogin(id);
-      System.out.println();
+      System.out.println(mDto);
       mDto.getAuth();
       System.out.println(mDto.getAuth());
       mDto.getId();

@@ -17,6 +17,8 @@
 <script src="js/uc.plugin.min.js"></script>
 <script src="js/slick.min.js"></script>
 <script src="js/common.js"></script>
+<script src="js/admin.js"></script>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -44,13 +46,8 @@
 			<nav>
 				<div class="util">
 					<ul>
-						<li><a href="./userInfo.do"> <img
-								src="images/main/mypage_icon.png" alt=""> ${mDto.id}님
-								환영합니다.
-						</a></li>
-						<li><a href="./logout.do"> <span
-								class="glyphicon glyphicon-log-out"></span> Logout
-						</a></li>
+						<li><img src="images/main/mypage_icon.png" alt=""> ${mDto.id}님 환영합니다. </li>
+						<li><a href="./logout.do"> <span class="glyphicon glyphicon-log-out"></span> Logout	</a></li>
 
 					</ul>
 				</div>
@@ -60,26 +57,33 @@
 
 	<!--main_visial-->
 	<div>
-	
-		<table class="table table-bordered">
 
-			<tr>
-				<th>연번</th>
-				<th>아이디</th>
-				<th>이름</th>
-				<th>권한</th>
-			</tr>
-			<c:forEach items="${memlists}" var="dto">
+		<form action="#" method="GET" >
+			<table class="table table-bordered">
+
 				<tr>
-					<td>${dto.seq}</td>
-					<td>${dto.id}</td>
-					<td>${dto.name}</td>
-					<td>${dto.auth}</td>
-					
+					<th>연번</th>
+					<th>아이디</th>
+					<th>이름</th>
+					<th>권한</th>
 				</tr>
-			</c:forEach>
-		</table>
-
+				<c:forEach items="${memlists}" var="dto">
+					<tr>
+						<td>${dto.seq}</td>
+						<td>${dto.id}</td>
+						<td>${dto.name}</td>
+						<td>${dto.auth}</td>
+						<td><input type="button" value="회원탈퇴"
+						    style="border-color: #777676" onclick=" del('${dto.id}')" > </td>
+						
+<!--                               style="border-color: #777676" onclick="del();" > </td> -->
+					</tr>
+					
+				</c:forEach>
+				
+			</table>
+		
+		</form>
 	</div>
 
 	<!-- 하단 시작 -->
@@ -108,7 +112,7 @@
 					<span>서비스 이용문의: </span><span>이메일: </span><span>서비스제휴문의: </span>
 				</p>
 			</div>
-<!-- 			ASA -->
+
 			<div class="is-area-bot">
 				<!-- 아이콘 필요 -->
 				<a href="#" class="is-btn-transparent"><img src="" alt=""></a>

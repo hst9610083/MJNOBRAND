@@ -833,7 +833,11 @@
    <header id="header">
       <div class="header_wrap">
          <h1>
+<<<<<<< HEAD
             <a href="./index.html"><img src="images/main/logo.png" alt=""></a>
+=======
+            <a href="./index.html"><img src="" alt=""></a>
+>>>>>>> branch 'master' of https://github.com/hst9610083/MJNOBRAND.git
          </h1>
          <nav id="gnb">
             <ul>
