@@ -1,6 +1,8 @@
 package com.min.mj.model.member;
 
 import com.min.mj.dtos.MJ_MemberDTO;
+import com.min.mj.dtos.RowNumDto;
+
 import java.util.List;
 public interface IMj_Member_Dao {
 	/**
@@ -53,11 +55,13 @@ public interface IMj_Member_Dao {
 	 */
 	public boolean s_getout(String id);
 
-	
-	
+
 	//회원 정보 수정
 	public boolean s_modify(String id);
 
+//	public List<MJ_MemberDTO> infoListRow(RowNumDto dto);
+//	
+//	public int infoListTotal();
 	
 	
 }

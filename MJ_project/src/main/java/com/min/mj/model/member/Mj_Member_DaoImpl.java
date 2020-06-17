@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import com.min.mj.dtos.MJ_MemberDTO;
+import com.min.mj.dtos.RowNumDto;
 
 
 
@@ -84,5 +85,15 @@ public class Mj_Member_DaoImpl implements IMj_Member_Dao {
 		int cnt = session.selectOne(NS+"idDuplicateCheck", id);
 		return (cnt>0)? true: false;
 	}
+//	@Override
+//	public List<MJ_MemberDTO> infoListRow(RowNumDto dto) {
+//		// TODO Auto-generated method stub
+//		return session.selectList(NS+"infoListRow");
+//	}
+//	@Override
+//	public int infoListTotal() {
+//		// TODO Auto-generated method stub
+//		return session.selectOne(NS+"infoListTotal");
+//	}
 }
 

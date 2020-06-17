@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.min.mj.dtos.MJ_MemberDTO;
+import com.min.mj.dtos.RowNumDto;
 
 @Service
 public class Mj_Member_ServiceImpl implements IMj_Member_Service {
@@ -67,6 +68,18 @@ public class Mj_Member_ServiceImpl implements IMj_Member_Service {
 		System.out.println("idDuplicateCheck 중복검사, {}"+id);
 		return dao.idDuplicateCheck(id);
 	}
+
+//	@Override
+//	public List<MJ_MemberDTO> infoListRow(RowNumDto dto) {
+//		System.out.println("infoListRow 페이징처리, {}"+dto);
+//		return dao.infoListRow(dto);
+//	}
+//
+//	@Override
+//	public int infoListTotal() {
+//		System.out.println("infoListRow 토탈 리스트, {}");
+//		return dao.infoListTotal();
+//	}
 
 	
 
