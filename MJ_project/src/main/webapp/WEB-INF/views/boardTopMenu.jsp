@@ -37,16 +37,16 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
       <li><a href="./pBoardList.do">게시판</a></li>
-<%--       <c:if test="${fn:trim(mem.auth) eq 'U'}"> --%>
+      <c:if test="${fn:trim(mem.auth) eq 'ROLE_S'}">
       	<li><a href="./writeForm.do">글작성</a></li>
-<%--       </c:if> --%>
+      </c:if>
 <%--       <c:if test="${fn:trim(mem.auth) eq 'A'}"> --%>
       	<li><a href="./memberListMAV.do">무엇을넣을까?</a></li>	
 <%--       </c:if> --%>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="./userInfo.do"><span class="glyphicon glyphicon-user"></span> 
-<%--         	${mem.name}님 환영합니다.(${mem.auth eq 'U'?'일반':'관리자'}) --%>
+        	${mem.id}님 환영합니다.(${mem.auth eq 'ROLE_C'?'소비자':'업체'})
         	</a></li>
         <li><a href="./logout.do"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a></li>
       </ul>

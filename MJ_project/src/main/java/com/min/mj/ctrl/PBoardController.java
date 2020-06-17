@@ -54,7 +54,7 @@ public class PBoardController {
          rowDto = (RowNumDto) session.getAttribute("row");
       }
       
-      if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_S")) {
+      if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_S")||mDto.getAuth().trim().equalsIgnoreCase("ROLE_C")) {
          rowDto.setTotal(service.BoardListTotal());
          lists = service.BoardListRow(rowDto);
       }else {
