@@ -59,5 +59,4 @@
 	<update id="s_modify" parameterType="java.lang.String">
 		UPDATE REGISTER SET PW = #{pw}, ADDRESS=#{address} WHERE ID=#{id}
 	</update>
-
 </mapper>
