@@ -47,8 +47,8 @@
                                     <a href="#joinModal" data-uc-click="modal" class="is-btn-yg2">업체 회원가입</a>
                                 </div>
                                 <div class="is-txt-center">
-                                    <a href="" class="is-txt-link">ID찾기</a>
-                                    <a href="" class="is-txt-link">비밀번호 찾기</a>
+                                    <a href="./findId.do" class="is-txt-link">ID찾기</a>
+                                    <a href="./findpw.do" class="is-txt-link">비밀번호 찾기</a>
                                 </div>
                             </form>
                         </div>
