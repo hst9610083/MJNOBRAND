@@ -26,7 +26,7 @@
 	<header id="header">
 		<div class="header_wrap">
 			<h1>
-				<a href="./index.html"><img src="images/main/logo.png" alt=""></a>
+				<a href=""><img src="" alt=""></a>
 			</h1>
 			
 			<nav id="gnb">
@@ -35,13 +35,12 @@
 					<li><a href="./pBoardList.do">홍보게시판</a></li>
 					<li><a href="./s_EstiList.do">견적서 마이페이지</a></li>
 				</ul>
-<!-- ㄴㄴ -->
 			</nav>
 			<nav >
 				<div class="util">
 					<ul>
 						<li><a href="./userInfo.do">
-							<img src="images/main/mypage_icon.png" alt=""> ${mDto.id}님 환영합니다.</a></li>
+							<img src="images/main/mypage_icon.png" alt=""> ${mDto.id}님</a></li>
 						<li><a href="./logout.do"> <span class="glyphicon glyphicon-log-out"></span> Logout	</a></li>
 
 					</ul>
@@ -52,10 +51,10 @@
 
 	 <!--main_visial-->
  
-
-    <div class="con con1">
+ <div class="con con1">
         <div class="wrap">
-            <img src="images/main/con1.png" alt="">
+           <br>
+            <img src="images/main/GIFT.png"alt="">
         </div>
     </div>
 
@@ -70,7 +69,7 @@
                     </div>
                     <span>
                         조건 검색하기<br>
-                        방종류, 옵션 등 <b>조건 선택</b>
+                        디자인, 카테고리 등 <b>조건 선택</b>
                     </span>
                 </li>
                 <li>
@@ -78,7 +77,7 @@
                         <img src="images/main/con2_img2.png" alt="">
                     </div>
                     <span>
-                        <b>원하는방 찜</b> 해두고<br>
+                        <b>원하는 업체</b> 두고<br>
                         비교해보기
                     </span>
                 </li>
@@ -87,8 +86,8 @@
                         <img src="images/main/con2_img3.png" alt="">
                     </div>
                     <span>
-                        방문가능 날자,시간 체크 후<br>
-                        <b>방문 예약하기</b>
+                        원하는 날짜  체크 후<br>
+                        <b>1:1 문의 하기</b>
                     </span>
                 </li>
                 <li>
@@ -96,9 +95,10 @@
                         <img src="images/main/con2_img4.png" alt="">
                     </div>
                     <span>
-                        <b>예약한방</b> 꼼꼼히<br>
-                        체크하며 <b>둘러보기</b>
+                        <b>견적부터</b>거래까지<br>
+                         <b>쉽게쉽게</b>
                     </span>
+                      
                 </li>
                 <li>
                     <div class="img_area">
@@ -111,9 +111,6 @@
             </ul>
         </div>
     </div>
-
-
-
 
 
 	<!-- 신규 업데이트. 인기방 -->
@@ -339,7 +336,7 @@
 					<li class=""><a href="#">이용약관</a></li>
 					<li class=""><a href="#">개인정보 처리방침</a></li>
 					<li class=""><a href="#">위치기반</a></li>
-					<li class=""><a href="#">중개사 사이트 바로가기</a></li>
+					<li class=""><a href="#">사이트 바로가기</a></li>
 				</ul>
 			</div>
 			<div class="is-area-mid">

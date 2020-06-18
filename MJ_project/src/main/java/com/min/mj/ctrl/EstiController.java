@@ -39,6 +39,10 @@ public class EstiController {
 		return "c_EstiList";
 	};
 	
+	//견적서 게시판 상세보기(소비자)
+	
+	
+	
 	//견적서 게시판 전체 리스트(업체)
 	@RequestMapping(value="/s_EstiList.do",method = RequestMethod.GET)
 	public String s_EstiList(Model model,EstiDto dto, Authentication user, Principal principal,HttpSession session) {

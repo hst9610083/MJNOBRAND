@@ -22,6 +22,7 @@
 					<th>제목</th>
 					<th>날짜</th>
 				</tr>
+				<c:forEach items="${lists}" var="dto">
 					<tr>
 						<td>${lists.seq}</td>
 						<td>${lists.id}</td>
@@ -30,6 +31,7 @@
 						<td>${lists.content}</td>
 						<td>${lists.realfile}</td>
 					</tr>
+					</c:forEach>
 			</table>
 		</form>
 	</div>

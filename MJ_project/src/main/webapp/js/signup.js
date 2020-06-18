@@ -22,7 +22,7 @@ function check() {
 	   alert("회원가입 오류", "사업자 등록증을 첨부해주세요");
 	  return false;
    } 
-      return false;
+      return true;
 }
 
 $(document).ready(function() {
@@ -88,15 +88,18 @@ window.onload = function() {
 }
 // 이메일 문장 정규화
 function emailCheck() {
-//	alert("FDGfdsgfsdgsfdgfsdg");
+// alert("FDGfdsgfsdgsfdgfsdg");
 	
 	var email = document.getElementById("email").value;
 	
-	var regEX = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-	if(!regEX.test(email)){
-		alert("이메일 형식이 아님");
+	var regEX = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	if(regEX.test(email)==false) {
+
+		alert("메일형식이 맞지 않습니다. 다시 입력해주세요.");
+		return false;
+
 	}else{
-		alert("사용가능한 이메일이 아님.");
+		alert("체크완료.");
 	}
-//	return false;
+	return true;
 }

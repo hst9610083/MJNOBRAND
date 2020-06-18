@@ -3,6 +3,7 @@ package com.min.mj.ctrl;
 import java.security.Principal;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.min.mj.dtos.MJ_BoardDTO;
 import com.min.mj.dtos.MJ_MemberDTO;
 import com.min.mj.model.member.IMj_Member_Service;
 
@@ -53,7 +55,7 @@ public class LoginController {
    public String maingo_c(Model model, Authentication user, Principal principal,HttpSession session) {
       String id = principal.getName();
       MJ_MemberDTO mDto = service.userlogin(id);
-      System.out.println();
+      System.out.println(mDto);
       mDto.getAuth();
       System.out.println(mDto.getAuth());
       mDto.getId();
@@ -61,17 +63,17 @@ public class LoginController {
       session.setAttribute("mem", mDto);
       if( mDto.getAuth().trim().equalsIgnoreCase("ROLE_C")) {
     	  mDto.getAuth();
-    	  System.out.println(mDto.getAuth()+"C");
+    	  System.out.println(mDto.getAuth()+"@@C");
           return "logincon";
       }else if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_S")) {
     	  mDto.getAuth();
-          System.out.println(mDto.getAuth()+"S");
+          System.out.println(mDto.getAuth()+"@@S");
           return "loginseller";
       }else if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_A")) {
     	  mDto.getAuth();
-          System.out.println(mDto.getAuth()+"A");
-          return "redirect:/loginaddmin.do";
-          
+          System.out.println(mDto.getAuth()+"@@A");
+          return "addmin_main";
+//          return "redirect:/loginaddmin.do";
       }
       return "";
    }
@@ -91,6 +93,20 @@ public class LoginController {
       service.c_register(dto);
       return "login";
    }
+   
+//   아이디 찾기페이지로 가기
+   @RequestMapping(value="/findId.do",method = RequestMethod.GET)
+   public String f_id(MJ_MemberDTO dto,Model model) {
+      System.out.println("아이디 찾기"+ dto.toString());
+      return "findId";
+   }
+//   비밀번호 찾기페이지로 가기
+   @RequestMapping(value="/findpw.do",method = RequestMethod.GET)
+   public String f_pw(MJ_MemberDTO dto,Model model) {
+      System.out.println("비밀번호 찾기"+ dto.toString());
+      return "findpw";
+   }
+   
 //   관리자페이지
 //   @RequestMapping(value = "/admin/userInfo.do", method= RequestMethod.GET)
 //   public String adminPage() {
@@ -101,7 +117,20 @@ public class LoginController {
    
       return "AuthError";
    }
-   
+   @RequestMapping(value = "/findiding.do", method = RequestMethod.POST)
+   public String findiding(String email,String name, Model model,MJ_MemberDTO Mdto){
+      System.out.println(email);
+      System.out.println(name);
+      Mdto.setEmail(email);
+      Mdto.setName(name);
+      MJ_MemberDTO id = service.findid(Mdto);
+      System.out.println(id);
+      System.out.println(id.getId());
+      System.out.println(model.addAttribute("id", id));
+      model.addAttribute("id",id);
+      return "findIdAfter";
+   }
+
    
    @RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
    @ResponseBody

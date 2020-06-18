@@ -19,6 +19,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
+<<script type="text/javascript" src="./js/pBoardList.js"></script>
+
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -29,22 +31,22 @@
         <span class="icon-bar"></span>                        
       </button>
       <a class="navbar-brand" href="./pBoardList.do">
-      <img style="width:30px; height:30px;" src="./img/naver.png">
+<!--       <img style="width:30px; height:30px;" src="./img/naver.png"> -->
       </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
       <li><a href="./pBoardList.do">게시판</a></li>
-<%--       <c:if test="${fn:trim(mem.auth) eq 'U'}"> --%>
+      <c:if test="${fn:trim(mem.auth) eq 'ROLE_S'}">
       	<li><a href="./writeForm.do">글작성</a></li>
-<%--       </c:if> --%>
+      </c:if>
 <%--       <c:if test="${fn:trim(mem.auth) eq 'A'}"> --%>
       	<li><a href="./memberListMAV.do">무엇을넣을까?</a></li>	
 <%--       </c:if> --%>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="./userInfo.do"><span class="glyphicon glyphicon-user"></span> 
-<%--         	${mem.name}님 환영합니다.(${mem.auth eq 'U'?'일반':'관리자'}) --%>
+        	${mem.id}님 환영합니다.(${mem.auth eq 'ROLE_C'?'소비자':'업체'})
         	</a></li>
         <li><a href="./logout.do"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a></li>
       </ul>
