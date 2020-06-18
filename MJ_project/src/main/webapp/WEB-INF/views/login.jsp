@@ -582,7 +582,7 @@
                     <li class=""><a href="#">이용약관</a></li>
                     <li class=""><a href="#">개인정보 처리방침</a></li>
                     <li class=""><a href="#">위치기반</a></li>
-                    <li class=""><a href="#">중개사 사이트 바로가기</a></li>
+                    <li class=""><a href="#">사이트 바로가기</a></li>
                 </ul>
             </div>
             <div class="is-area-mid">
