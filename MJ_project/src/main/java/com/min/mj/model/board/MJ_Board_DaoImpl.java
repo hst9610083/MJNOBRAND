@@ -8,9 +8,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.min.mj.dtos.MJ_BoardDTO;
 import com.min.mj.dtos.RowNumDto;
+import com.min.mj.dtos.fileDto;
 
 @Repository
 public class MJ_Board_DaoImpl implements IMj_Board_Dao {
@@ -89,6 +91,13 @@ public class MJ_Board_DaoImpl implements IMj_Board_Dao {
 	public int BoardListTotal() {
 		log.info("홍보게시판 전체글 갯수 : BoardListTotal");
 		return sqlSession.selectOne(NS+"BoardListTotal");
+	}
+
+	@Override
+	public boolean insertFile(Map<String, Object> map) {
+		log.info("홍보게시판 파일업로드");
+		int n = sqlSession.insert(NS+"insertFile", map);
+		return (n>0)?true:false;
 	}
 
 }

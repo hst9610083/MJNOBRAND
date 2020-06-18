@@ -1,6 +1,7 @@
 package com.min.mj.ctrl;
 
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +30,7 @@ public class AjaxController {
 	private IMj_Board_Service service;
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/modifyForm.do", method= RequestMethod.POST, produces = "application/text; charset=UTF-8;")
+	@RequestMapping(value="/modifyForm.do", method= RequestMethod.GET, produces = "application/text; charset=UTF-8;")
 	@ResponseBody
 	public String modifyForm(String seq) {
 		log.info("Welcome modifyForm,{}",seq);
@@ -87,7 +88,7 @@ public class AjaxController {
 			jdto.put("meid", dto.getId());
 			jList.add(jdto);
 		}
-		//페이지 관련
+		//페이지 관련//오류
 		jdto = new JSONObject();
 		jdto.put("pageList", row.getPageList());
 		jdto.put("index", row.getIndex());

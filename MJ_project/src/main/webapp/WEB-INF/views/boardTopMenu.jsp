@@ -19,7 +19,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
-<<script type="text/javascript" src="./js/pBoardList.js"></script>
+<script type="text/javascript" src="./js/pBoardList.js"></script>
 
 
 <nav class="navbar navbar-inverse">
@@ -46,7 +46,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="./userInfo.do"><span class="glyphicon glyphicon-user"></span> 
-        	${mem.id}님 환영합니다.(${mem.auth eq 'ROLE_C'?'소비자':'업체'})
+        	${mem.id}님 환영합니다.(${mem.auth eq 'ROLE_C'?'업체':'소비자'})
         	</a></li>
         <li><a href="./logout.do"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a></li>
       </ul>

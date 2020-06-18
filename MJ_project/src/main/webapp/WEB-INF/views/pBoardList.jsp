@@ -4,6 +4,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -34,8 +35,8 @@
 					<tr>
 						<th><input type="checkbox" onclick="checkAll(this.checked)"></th>
 						<th>글번호</th>
-						<th>제목</th>
 						<th>작성자</th>
+						<th>제목</th>
 						<th>조회수</th>
 						<c:if test="${mem.auth eq 'ROLE_A'}">
 							<th>삭제여부</th>
@@ -72,27 +73,10 @@
 
 			<div>
 				<c:if test="${mem.auth eq 'ROLE_A'}">
-					<input class="btn btn-danger" type="submit" value="삭제">
+					<input class="btn btn-danger" type="submit" value="다중 or삭제">
 				</c:if>
 			</div>
 		</form>
-
-		<div id="modify" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">게시글 수정</h4>
-					</div>
-					<div class="modal-body">
-					<!-- ajax를 통해서 수정하고 넘길 데이터를 표출해줌 -->
-						<form action="#" method="post" id="frmModify"></form>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 
 </body>
