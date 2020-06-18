@@ -19,6 +19,7 @@
 <script src="js/common.js"></script>
 <script src="js/admin.js"></script>
 
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -30,24 +31,27 @@
 	</ul>
 	<!--header-->
 	<header id="header">
-		<div class="header_wrap" >
+		<div class="header_wrap">
 			<h1>
-				<a href=""><img src="" alt=""></a>
+				<a href="./index.html"><img src="images/main/logo.png" alt=""></a>
 			</h1>
 
 			<nav id="gnb">
 				<ul>
-					<li><a href="">소비자 문의 게시판</a></li>
-					<li><a href="./pBoardList.do">홍보게시판</a></li>
-					<li><a href="./result.do">메인화면</a></li>
+					<li><a href="">회원 관리 게시판</a></li>
+					<li><a href="">?</a></li>
+					<li><a href="">!</a></li>
 				</ul>
 
 			</nav>
 			<nav>
-				<div class="util" >
+				<div class="util">
 					<ul>
-						<li><img src="images/main/mypage_icon.png" alt="">	${mDto.id}님</li>
-						<li><a href="./logout.do"> <span class="glyphicon glyphicon-log-out"></span> Logout	</a></li>
+						<li><img src="images/main/mypage_icon.png" alt="">
+							${mDto.id}님 환영합니다.</li>
+						<li><a href="./logout.do"> <span
+								class="glyphicon glyphicon-log-out"></span> Logout
+						</a></li>
 
 					</ul>
 				</div>
@@ -77,16 +81,40 @@
 							style="border-color: #777676" onclick=" del('${dto.id}')">
 						</td>
 
+						<!--                               style="border-color: #777676" onclick="del();" > </td> -->
 					</tr>
 
 				</c:forEach>
-
+<%-- 				<jsp:useBean id="format" class="com.min.mj.bean.InputList" --%>
+<%-- 					scope="page" /> --%>
+<%-- 				<jsp:setProperty property="lists" name="format" value="${lists}" /> --%>
+<%-- 				<jsp:setProperty property="mem" name="format" value="${mem}" /> --%>
+<%-- 				<jsp:getProperty property="listForm" name="format" /> --%>
 
 			</table>
 
 		</form>
 	</div>
+<%-- 	<input type="text" name="index" id="index" value="${row.index}"> --%>
+<%-- 	<input type="text" name="pageNum" id="pageNum" value="${row.pageNum}"> --%>
+<%-- 	<input type="text" name="listNum" id="listNum" value="${row.listNum}"> --%>
+<!-- 	<script type="text/javascript"> -->
+<!--             var listNum = document.getElementById("listNum").value; -->
+<!--             var list = document.getElementById("list"); -->
+<!--             alert(list.options[listNum/5-1].selected = 'selected'); -->
+<!--          </script> -->
 
+<!-- 	<div class="center"> -->
+<!-- 		<ul class="pagination"> -->
+<!-- 			<li><a href="#" onclick="pageFirst()">&laquo;</a></li> -->
+<%-- 			<li><a href="#" onclick="pagePre(${row.pageNum},${row.pageList})">&lsaquo;</a></li> --%>
+<%-- 			<c:forEach var='i' begin="${row.pageNum}" end="${row.count}" step="1"> --%>
+<%-- 				<li><a href="#" onclick="pageIndex(${i})">${i}</a></li> --%>
+<%-- 			</c:forEach> --%>
+<%-- 			<li><a href="#" onclick="pageNext(${row.pageNum},${row.total},${row.listNum},${row.pageList})">&rsaquo;</a></li> --%>
+<%-- 			<li><a href="#" onclick="pageLast(${row.pageNum},${row.total},${row.listNum},${row.pageList})">&raquo;</a></li> --%>
+<!-- 		</ul> -->
+<!-- 	</div> -->
 	<!-- 하단 시작 -->
 	<footer class="footer">
 		<div class="is-frame-md is-relative">
@@ -96,7 +124,7 @@
 					<li class=""><a href="#">이용약관</a></li>
 					<li class=""><a href="#">개인정보 처리방침</a></li>
 					<li class=""><a href="#">위치기반</a></li>
-					<li class=""><a href="#">사이트 바로가기</a></li>
+					<li class=""><a href="#">중개사 사이트 바로가기</a></li>
 				</ul>
 			</div>
 			<div class="is-area-mid">

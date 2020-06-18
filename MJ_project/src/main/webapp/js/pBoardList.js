@@ -1,11 +1,12 @@
 function modify(val){
-	ajaxModify(val);
-	$("#modify").modal();
+//	alert("????");
+	location.href="./pModifyForm.do?seq="+val;
 }
 
 
 //글삭제-----------------------------------------------------------------
 function del(val){
+//	alert("????");
 	location.href="./pdel.do?seq="+val;
 }
 
@@ -154,8 +155,8 @@ var pageAjax = function(){
 				    varHtml += "      <input type='checkbox' onclick='checkAll(this.checked)'>";
 				    varHtml += "  </th>";
 				    varHtml += "  <th>글번호</th>";
-				    varHtml += "  <th>제목</th>";
 				    varHtml += "  <th>작성자</th>";
+				    varHtml += "  <th>제목</th>";
 				    varHtml += "  <th>조회수</th>";
 				    if(n == 7){
 				    varHtml += "  <th>";
@@ -170,34 +171,15 @@ var pageAjax = function(){
 					    varHtml += "  <input type='checkbox' name='chkval' value='"+v.seq+"'>";
 					    varHtml += "  </td>";
 					    varHtml += "  <td>"+v.seq+"</td>";
-					    varHtml += "  <td> ";
-					    varHtml += "     <div class='panel-heading'> ";
-					    varHtml += "         <a data-toggle='collapse' data-parent='#accordion' href='#collapse"+v.seq+"' onclick='collapse(\""+v.seq+"\")'>"+v.title+"</a>";
-					    varHtml += "     </div> ";
-					    varHtml += "  </td>";
-					    varHtml += "  <td>"+v.id+"</td>  ";
-					    varHtml += "  <td>"+v.readcount+"</td>  ";
+					    varHtml += "  <td>"+v.id+"</td>";
+					    varHtml += "  <td><a href='./pBoardDetail.do?seq="+v.seq+"'>"+v.title+"</a></td>  ";
+					    varHtml += "  <td>"+v.readcoun+"</td>  ";
 					    if(n==7){
 					    	varHtml += "<td>"+v.delflag+"</td>";
 					    }
 					    varHtml += "  <td>"+v.regdate+"</td>";
 					    varHtml += "  </tr> ";
-					    varHtml += "  <tr>  ";
-					    
-				varHtml+= "	       <td colspan='"+n+"'> ";
-			    varHtml+= "        <div id='collapse"+v.seq+"' class='panel-collapse collapse'><div class='form-group'>";
-			    varHtml+= "        <label>내용</label> <br>";
-			    varHtml+= "          <textarea rows='7' class='form-control' readonly='readonly'>"+v.content+"</textarea> ";
-			    varHtml+= "          </div>";
-			    varHtml+= "          <div>";
-			    varHtml+= "          <div class='form-group'>";
-			    varHtml+= "        <input type='button' class='btn btn-primary btn-sm btn-center' value='글 수정' onclick='modify(\""+v.seq+"\")'>";
-			    varHtml+= "        <input type='button' class='btn btn-primary btn-sm btn-center' value='글 삭제' onclick='del(\""+v.seq+"\")'>";
-			    varHtml+= "      </div>";
-			    varHtml+= "      </div>";
-			    varHtml+= "      </div> ";
-			    varHtml+= "      </td>";
-			    varHtml+= "      </tr>";    
+					       
 				    });
 				    
 				    $(".table > tbody").html(varHtml);
@@ -227,163 +209,9 @@ var pageAjax = function(){
 		}
 	});
 }
-//var pageAjax = function(){
-//	$.ajax({
-//		url:"./page.do",
-//		type:"post",
-//		async:true,
-//		data:$("#frm").serialize(),
-//		dataType:"json",
-//		success:function(msg){
-//
-//			$.each(msg,function(key,value){
-//				var varHtml = "";
-//				var n = $(".table tr:eq(0) th").length;
-//				if(key == "lists"){
-//				    varHtml += "  <tr>";
-//				    varHtml += "  <th> ";
-//				    varHtml += "      <input type='checkbox' onclick='checkAll(this.checked)'>";
-//				    varHtml += "  </th>";
-//				    varHtml += "  <th>글번호</th>";
-//				    varHtml += "  <th>제목</th>";
-//				    varHtml += "  <th>작성자</th>";
-//				    varHtml += "  <th>조회수</th>";
-//				    if(n == 7){
-//				    varHtml += "  <th>";
-//				    varHtml += "     삭제여부";
-//				    varHtml += "  </th>";
-//				    }
-//				    varHtml += "  <th>작성일</th>";
-//				    varHtml += "  </tr>";
-//				    $.each(value,function(k,v){
-//				    	varHtml += "  <tr>";
-//				    	varHtml += "  <td>";
-//					    varHtml += "  <input type='checkbox' name='chkval' value='"+v.seq+"'>";
-//					    varHtml += "  </td>";
-//					    varHtml += "  <td>"+v.seq+"</td>";
-//					    varHtml += "  <td> ";
-//					    varHtml += "     <div class='panel-heading'> ";
-//					    varHtml += "         <a data-toggle='collapse' data-parent='#accordion' href='#collapse"+v.seq+"' onclick='collapse(\""+v.seq+"\")'>"+v.title+"</a>";
-//					    varHtml += "     </div> ";
-//					    varHtml += "  </td>";
-//					    varHtml += "  <td>"+v.id+"</td>  ";
-//					    varHtml += "  <td>"+v.readcount+"</td>  ";
-//					    if(n==7){
-//					    	varHtml += "<td>"+v.delflag+"</td>";
-//					    }
-//					    varHtml += "  <td>"+v.regdate+"</td>";
-//					    varHtml += "  </tr> ";
-//					    varHtml += "  <tr>  ";
-//					    
-//				varHtml+= "	       <td colspan='"+n+"'> ";
-//			    varHtml+= "        <div id='collapse"+v.seq+"' class='panel-collapse collapse'><div class='form-group'>";
-//			    varHtml+= "        <label>내용</label> <br>";
-//			    varHtml+= "          <textarea rows='7' class='form-control' readonly='readonly'>"+v.content+"</textarea> ";
-//			    varHtml+= "          </div>";
-//			    varHtml+= "          <div>";
-//			    varHtml+= "          <div class='form-group'>";
-//			    if(v.id == v.meid){
-//			    varHtml+= "        <input type='button' class='btn btn-primary btn-sm btn-center' value='글 수정' onclick='modify(\""+v.seq+"\")'>";
-//			    }
-//			    if(v.id == v.meid || n==7){
-//			    varHtml+= "        <input type='button' class='btn btn-primary btn-sm btn-center' value='글 삭제' onclick='del(\""+v.seq+"\")'>";
-//			    }
-//			    varHtml+= "      </div>";
-//			    varHtml+= "      </div>";
-//			    varHtml+= "      </div> ";
-//			    varHtml+= "      </td>";
-//			    varHtml+= "      </tr>";    
-//				    });
-//				    
-//				    $(".table > tbody").html(varHtml);
-//				    
-//					}else{ //페이지 값 변경
-//					varHtml +="<li><a href='#' onclick='pageFirst()'>&laquo;</a></li>";
-//					varHtml +="<li><a href='#' onclick='pagePre("+value.pageNum+","+value.pageList+")'>&lsaquo;</a></li>";
-//					for(var i = value.pageNum; i <= value.count; i++){		
-//					varHtml +="<li><a href='#' onclick= 'pageIndex("+i+")'>"+i+"</a></li>";
-//					}
-//					varHtml +="<li><a href='#' onclick='pageNext("+value.pageNum+","+value.total+","+value.listNum+","+value.pageList+")'>&rsaquo;</a></li>";
-//					varHtml +="<li><a href='#' onclick='pageLast("+value.pageNum+","+value.total+","+value.listNum+","+value.pageList+")'>&raquo;</a></li>";
-//					}
-//				
-//					if(key == "lists"){
-//						$(".table > tbody").html(varHtml);
-//					}else{
-//						$(".pagination").html(varHtml);
-//					}
-//			});
-//
-//
-//
-//			
-//		}, error:function(){
-//			alert("데이터 처리를 하지 못했습니다");
-//		}
-//	});
-//}
-
-
-//글 수정 ----------------------------------------------------------------------------
-var ajaxModify = function(val){
-//	alert('Ajax'+val);
-	$.ajax({
-		url:"./modifyForm.do",
-		type:"post",
-		dataType:"json",
-		data:{"seq":val},
-		success:function(msg){
-			html="<div class='form-group'>";
-			html+="<input type='hidden' name='seq' value='"+msg.seq+"'>"
-		    html+="<label for='id'>아이디</label>";
-		    html+="<p class='form-control'><strong>"+msg.id+"</strong></p>";
-		    html+="</div>";
-		    html+="";
-		    html+="<div class='form-group'>";
-		    html+="<label for='regdate'>작성일</label>";
-		    html+="<p class='form-control'><strong>"+msg.regdate+"</strong></p>";
-		    html+="</div>";
-		    html+="";
-		    html+="<div class='form-group'>";
-		    html+="<label for='title'>제목</label>";
-		    html+="<input type='text' class='form-control' id='title' name='title' value='"+msg.title+"' required='required'>";
-		    html+="</div>";
-		    html+="";
-		    html+="<div class='form-group'>";
-		    html+="<label for='content'>내용</label>";
-		    html+="<textarea id='content' name='content' class='form-control' rows='5'>"+msg.content+"</textarea>";
-		    html+="</div>";
-		    html+="";
-		    html+="<div class='modal-footer'>";
-		    html+="<input  class='btn btn-success' type='button' value='글수정 완료' onclick='update()'>";
-		    html+="<input  class='btn btn-success' type='button' value='글삭제 ' onclick='del()'>";
-		    html+="<input class='btn btn-info' type='reset' value='내용초기화'>";
-		    html+="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
-		    html+="</div>";
-		    
-		    	
-		    	
-		    	
-		    	
-		    	
-		    	
-		    	
-		    	
-		    	
-		    	
-		    $("#frmModify").html(html);
-		    
-		},
-		error:function(){
-			alert("잘못된 요청입니다");
-		}
-	});
-}
-
-
 
 function update(){
-	var frm = document.getElementById("frmModify");
+	var frm = document.getElementById("modi");
 	frm.action ="./pModify.do";
 	var title= $("#title").val();
 	if(title == ''){

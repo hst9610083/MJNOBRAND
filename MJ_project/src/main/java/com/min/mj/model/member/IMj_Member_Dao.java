@@ -63,7 +63,5 @@ public interface IMj_Member_Dao {
 //	
 //	public int infoListTotal();
 	
-//	아이디 찾기
-	public  MJ_MemberDTO findid(MJ_MemberDTO dto);
 	
 }

@@ -74,6 +74,5 @@ public interface IMj_Member_Service {
 //	public List<MJ_MemberDTO> infoListRow(RowNumDto dto);
 //
 //	public int infoListTotal();
-//	아이디찾기
-	public  MJ_MemberDTO findid(MJ_MemberDTO dto);
+
 }

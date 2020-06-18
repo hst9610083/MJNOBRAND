@@ -47,8 +47,8 @@
                                     <a href="#joinModal" data-uc-click="modal" class="is-btn-yg2">업체 회원가입</a>
                                 </div>
                                 <div class="is-txt-center">
-                                    <a href="./findId.do" class="is-txt-link">ID찾기</a>
-                                    <a href="./findpw.do" class="is-txt-link">비밀번호 찾기</a>
+                                    <a href="" class="is-txt-link">ID찾기</a>
+                                    <a href="" class="is-txt-link">비밀번호 찾기</a>
                                 </div>
                             </form>
                         </div>
@@ -582,7 +582,7 @@
                     <li class=""><a href="#">이용약관</a></li>
                     <li class=""><a href="#">개인정보 처리방침</a></li>
                     <li class=""><a href="#">위치기반</a></li>
-                    <li class=""><a href="#">사이트 바로가기</a></li>
+                    <li class=""><a href="#">중개사 사이트 바로가기</a></li>
                 </ul>
             </div>
             <div class="is-area-mid">

@@ -12,7 +12,7 @@
 		<typeAlias type="com.min.mj.dtos.BoardVO" alias="BoardVO"/>
 		<typeAlias type="com.min.mj.dtos.Criteria" alias="Criteria"/>
 		<typeAlias type="com.min.mj.dtos.PageMaker" alias="PageMaker"/>
-
+		<typeAlias type="com.min.mj.dtos.fileDto" alias="FDto"/>
 	</typeAliases>
 
 	<mappers>
