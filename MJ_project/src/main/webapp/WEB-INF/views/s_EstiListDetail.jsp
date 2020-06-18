@@ -1,22 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의글 마이페이지</title>
-</head>
+<title>Insert title here</title>
 <link rel="stylesheet" href="css/uc.min.css">
 <link rel="stylesheet" href="css/basic.css">
 <link rel="stylesheet" href="css/slick.css">
 <link rel="stylesheet" href="css/slick-theme.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/layout.css">
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/uc.lib.min.js"></script>
-<script src="js/uc.plugin.min.js"></script>
-<script src="js/slick.min.js"></script>
-<script src="js/common.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <script src="js/jquery-3.3.1.min.js"></script> -->
+<!-- <script src="js/uc.lib.min.js"></script> -->
+<!-- <script src="js/uc.plugin.min.js"></script> -->
+<!-- <script src="js/slick.min.js"></script> -->
+<!-- <script src="js/common.js"></script> -->
+</head>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -36,7 +38,7 @@
 				<ul>
 					<li><a href="">소비자 문의 게시판</a></li>
 					<li><a href="./pBoardList.do">홍보게시판</a></li>
-					<li><a href="./iBoardList.do">문의글 마이페이지</a></li>
+					<li><a href="./s_EstiList.do">견적서 마이페이지</a></li>
 				</ul>
 <!-- ㄴㄴ -->
 			</nav>
@@ -52,40 +54,33 @@
 			</nav>
 		</div>
 	</header>
-	 
-	 
-	 
-	 
-	 
-	 
-	<div id="container">
-		<h1>문의글  리스트 </h1>
-		<form action="./writeView.do" method="post">
+<body>
+<div id="container">
+	
+		<h1>견적서 리스트 상세보기</h1>
+		
 			<table class="table table-bordered">
 				<tr>
-					<th>번호</th>
-					<th>닉네임</th>
+					<th>ID</th>
 					<th>제목</th>
-					<th>날짜</th>				
+					<th>내용</th>
+					<th>파일</th>
+					<th>날짜</th>
 				</tr>
-				<c:forEach items="${lists}" var="dto">
+			
 					<tr>
-						<td>${dto.seq}</td>
-						<td>${dto.nicname}</td>
-						<td><a href="./iBoardListDetail.do?seq=${dto.seq}">${dto.title}</a></td>
-						<td>${dto.regdate}</td>					
+						<td>${lists.id}</td>
+						<td>${lists.title}</td>
+						<td>${lists.content}</td>
+						<td>${lists.realfile}</td>
+						<td>${lists.regdate}</td>				
 					</tr>
-				</c:forEach>				
 			</table>
-			<ul>
-			<li><a href="./board/list.do">문의글 임시 페이지로 가기</a></li>
-			</ul>
-		</form>
-		
+			<div>
+			</div>			
 	</div>
-	
-	
-	
-	
+
+
+
 </body>
 </html>

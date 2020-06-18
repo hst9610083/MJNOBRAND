@@ -26,29 +26,7 @@ public class MJ_Inquiry_ServiceImpl implements IMj_Inquiry_Service {
 	
 	
 	
-	@Override
-	public List<INQUIRYBoardDto> Mimsi_All() {
-		log.info("Mimsi_All 성공");
-		return dao.Mimsi_All();
-	}
-
-	@Override
-	public INQUIRYBoardDto Mimsi_Detail(String seq) {
-		log.info("Mimsi_Detail 성공");
-		return dao.Mimsi_Detail(seq);
-	}
-
-	@Override
-	public boolean Mimsi_modify(INQUIRYBoardDto dto) {
-		log.info("Mimsi_modify 성공");
-		return dao.Mimsi_modify(dto);
-	}
-
-	@Override
-	public boolean MiImsi_Delete(String seq) {
-		log.info("MiImsi_Delete 성공");
-		return dao.MiImsi_Delete(seq);
-	}
+	
 
 	@Override
 	public List<INQUIRYBoardDto> Mstore_All() {
@@ -62,11 +40,6 @@ public class MJ_Inquiry_ServiceImpl implements IMj_Inquiry_Service {
 		return dao.Mstore_Detail(seq);
 	}
 
-	@Override
-	public boolean Mstore_modify(INQUIRYBoardDto dto) {
-		log.info("Mstore_modify 성공");
-		return dao.Mstore_modify(dto);
-	}
 
 	@Override
 	public boolean Mstore_Delete(String seq) {
