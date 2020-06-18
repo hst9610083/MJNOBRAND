@@ -1,12 +1,14 @@
 package com.min.mj.dtos;
 
+import java.util.Date;
+
 public class INQUIRYBoardDto {
 
 	//문의 게시판
 private int seq		;
 private String id       ;
 private String nicname  ;
-private String regdate  ;
+private Date regdate  ;
 private String title    ;
 private String content  ;
 private String auth     ;
@@ -19,7 +21,7 @@ public INQUIRYBoardDto() {
 }
 
 
-public INQUIRYBoardDto(int seq, String id, String nicname, String regdate, String title, String content, String auth,
+public INQUIRYBoardDto(int seq, String id, String nicname, Date regdate, String title, String content, String auth,
 		String realfile, String imsi) {
 	this.seq = seq;
 	this.id = id;
@@ -63,12 +65,12 @@ public void setNicname(String nicname) {
 }
 
 
-public String getRegdate() {
+public Date getRegdate() {
 	return regdate;
 }
 
 
-public void setRegdate(String regdate) {
+public void setRegdate(Date regdate) {
 	this.regdate = regdate;
 }
 

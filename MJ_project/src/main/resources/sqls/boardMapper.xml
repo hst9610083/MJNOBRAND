@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="boardMapper">
+    <!-- 임시 게시판 글 작성 -->
+<!--    <insert id="insert"> -->
+<!-- 	   INSERT INTO MP_BOARD(    BNO  -->
+<!-- 	   					      , TITLE  -->
+<!-- 	   					      , CONTENT  -->
+<!-- 	   					      , WRITER  ) -->
+<!-- 	                 VALUES(    MP_BOARD_SEQ.NEXTVAL  -->
+<!-- 	                 		  , #{title} -->
+<!-- 	                 		  , #{content} -->
+<!-- 	                 		  , #{writer}  ) -->
+   
+<!--    </insert> -->
+   
+   <!-- 요거는 페이징할때 필요한거 -->
+   <select id="listPage" resultType="IDto" parameterType="com.min.mj.dtos.Criteria">
+   SELECT  SEQ, 
+		        TITLE, 
+		        CONTENT,
+		        NICNAME , 
+		        REGDATE
+		 FROM ( 
+		        SELECT SEQ, 
+		               TITLE, 
+		               CONTENT, 
+		               NICNAME , 
+		               REGDATE, 
+		               ROW_NUMBER() OVER(ORDER BY SEQ DESC) AS RNUM
+		         FROM C_INQUIRY WHERE IMSI='Y'
+		                       ) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY SEQ DESC
+	</select>
+
+<!-- 게시물 총갯수 -->	
+	<select id="listCount" resultType="int">
+	<![CDATA[
+ 		SELECT COUNT(SEQ ) 
+ 		  FROM C_INQUIRY 
+ 		 WHERE SEQ > 0 	
+ 	]]> 
+	</select>
+	
+	<!-- 임시문의게시판 보기 -->
+	<select id="read" parameterType="int" resultType="IDto">
+	SELECT	SEQ 
+			  , TITLE
+			  , CONTENT
+			  , NICNAME 
+			  , REGDATE
+		 FROM C_INQUIRY 
+		 WHERE SEQ = #{seq} AND IMSI='Y' 	
+	</select>
+	
+	<!-- 임시 게시판수정 -->
+	<update id="update" parameterType="IDto">
+		UPDATE C_INQUIRY 
+		   SET TITLE    =   #{title},
+		   	   CONTENT  =   #{content}
+		 WHERE SEQ = #{seq} AND IMSI='Y' 	
+	</update>
+	
+	<!-- 임시 게시판삭제 -->
+	<delete id="delete" parameterType="int">
+		DELETE 
+		  FROM C_INQUIRY  
+		 WHERE SEQ = #{seq} AND IMSI='Y'		
+	</delete>
+	
+	<!-- 임시 게시판에서 저장을 누르면 문의게시판으로 간다 -->
+	<update id="conversion" parameterType="IDto" >
+	<![CDATA[
+	UPDATE C_INQUIRY 
+ 		SET IMSI ='N'
+  			WHERE SEQ=#{seq} AND IMSI ='Y'
+  	]]> 		
+	</update>
+	
+	
+</mapper>
