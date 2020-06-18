@@ -69,12 +69,6 @@ public class Mj_Member_ServiceImpl implements IMj_Member_Service {
 		return dao.idDuplicateCheck(id);
 	}
 
-	@Override
-	public MJ_MemberDTO findid(MJ_MemberDTO dto) {
-		System.out.println("ServiceImpl>>"+dto+">>findid");
-		return dao.findid(dto);
-	}
-
 //	@Override
 //	public List<MJ_MemberDTO> infoListRow(RowNumDto dto) {
 //		System.out.println("infoListRow 페이징처리, {}"+dto);

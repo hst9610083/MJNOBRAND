@@ -45,7 +45,7 @@ input[type=text].type1:-ms-input-placeholder,input[type=password].type1:-ms-inpu
 #gnb{position: absolute; left: 35%; top: 50%; transform: translate(-50%,-50%)}
 #gnb li{float: left;}
 #gnb li a{font-size: 17px; color: #726c5c; font-family: "NanumSquare"; font-weight: bold; padding: 0 15px;}
-.util{float: right; margin-top: 16px; }
+.util{float: right; margin-top: 16px;}
 .util li{float: left; padding: 0 20px;}
 .util li img{vertical-align: bottom;}
 

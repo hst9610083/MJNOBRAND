@@ -24,7 +24,7 @@
 				</tr>
 				<c:forEach items="${lists}" var="dto">
 					<tr>
-						<td>${lists.seq}</td>
+						<td>${dto.seq}</td>
 						<td>${lists.id}</td>
 						<td>${lists.regdate}</td>
 						<td>${lists.title}</td>
