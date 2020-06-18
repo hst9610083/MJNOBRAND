@@ -29,7 +29,7 @@ public class AjaxController {
 	private IMj_Board_Service service;
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/modifyForm.do", method= RequestMethod.POST, produces = "application/text; charset=UTF-8;")
+	@RequestMapping(value="/modifyForm.do", method= RequestMethod.GET, produces = "application/text; charset=UTF-8;")
 	@ResponseBody
 	public String modifyForm(String seq) {
 		log.info("Welcome modifyForm,{}",seq);

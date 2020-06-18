@@ -9,8 +9,10 @@
 		<typeAlias type="com.min.mj.dtos.RowNumDto" alias="RowNum"/>
 		<typeAlias type="com.min.mj.dtos.INQUIRYBoardDto" alias="IDto"/>	
 		<typeAlias type="com.min.mj.dtos.MJ_MemberDTO" alias="MemberDto"/>
-		
-
+		<typeAlias type="com.min.mj.dtos.BoardVO" alias="BoardVO"/>
+		<typeAlias type="com.min.mj.dtos.Criteria" alias="Criteria"/>
+		<typeAlias type="com.min.mj.dtos.PageMaker" alias="PageMaker"/>
+		<typeAlias type="com.min.mj.dtos.fileDto" alias="FDto"/>
 	</typeAliases>
 
 	<mappers>
@@ -20,7 +22,7 @@
 		<mapper resource="/sqls/Statement_Chat.xml" />
 		<mapper resource="/sqls/Inquiry.xml"/>
 		<mapper resource="/sqls/login.xml"/>
-		<mapper resource="/sqls/boardMapper.xml"/>
+		<mapper resource="/sqls/boardMapper2.xml"/>
 	</mappers>
 
 </configuration>

@@ -6,17 +6,18 @@
    <select id="pplSelectBoard" resultType="BDto">
       SELECT ID, SEQ, NICNAME, TITLE, CONTENT, READCOUNT, REGDATE
        FROM SELLER_PPL_BOARD
+       WHERE DELFLAG = 'N'
    </select>
    
    <!-- 글쓰기  -->
    <insert id="pplWriteBoard" parameterType="BDto">
-      INSERT INTO SELLER_PPL_BOARD(SEQ, ID, NICNAME, TITLE, CONTENT, READCOUNT, REGDATE, DELFLAG) 
-                        VALUES(SELLER_PPL_BOARD_SEQ.NEXTVAL,#{id}, #{nicname}, #{title}, #{content}, 0, SYSDATE, 'N')
+      INSERT INTO SELLER_PPL_BOARD(SEQ, ID, TITLE, CONTENT, READCOUNT, REGDATE, DELFLAG, REALFILE) 
+                        VALUES(SELLER_PPL_BOARD_SEQ.NEXTVAL,#{id}, #{title}, #{content}, 0, SYSDATE, 'N', #{realfile})
    </insert>
 
    <!-- 상세글 보기 -->
    <select id="pplgetOnBoard" parameterType="java.lang.String" resultType="BDto">
-   SELECT SEQ, ID, NICNAME,  TITLE, NVL(CONTENT,' ') CONTENT, READCOUNT, REGDATE 
+   SELECT SEQ, ID, TITLE, CONTENT, REGDATE 
          FROM SELLER_PPL_BOARD
               WHERE SEQ = #{seq}
    </select>
@@ -38,17 +39,18 @@
    UPDATE SELLER_PPL_BOARD SET DELFLAG = 'Y' WHERE SEQ= #{seq}
    </update>
    
+   <!-- 다중삭제 -->
    <update id="pplMultiDel" parameterType="java.util.Map">
-   UPDATE SELLER_PPL_BOARD SET DELFLAG = 'N' 
-   WHERE DELFLAG = 'Y'
+   UPDATE SELLER_PPL_BOARD SET DELFLAG = 'Y' 
+   WHERE DELFLAG = 'N' AND
    SEQ IN 
    <foreach collection="seq_" item="seq" open="(" separator="," close=")">
-   #{seq_}
+   #{seq}
    </foreach>
    </update>
    
    <select id="BoardListRow" parameterType="RowNum" resultType="BDto">
-   SELECT SEQ, ID, TITLE,CONTENT
+   SELECT SEQ, ID, TITLE,CONTENT,
                 READCOUNT, DELFLAG, REGDATE
         FROM
         (
@@ -60,14 +62,31 @@
                 READCOUNT, DELFLAG, REGDATE
                 FROM SELLER_PPL_BOARD
                 WHERE DELFLAG ='N'
-                ORDER BY READCOUNT DESC, REGDATE
+                ORDER BY SEQ DESC, SEQ 
                 )
                 )
                 WHERE RNUM BETWEEN #{start} AND #{last}
    </select>
-   
+
    <!-- 홍보게시판 전체글 갯수 -->
    <select id="BoardListTotal" resultType="java.lang.Integer">
-   SELECT COUNT(*) FROM SELLER_PPL_BOARD WHERE DELFLAG='N'
+   SELECT COUNT(*) FROM SELLER_PPL_BOARD WHERE DELFLAG = 'N'
    </select>
+   
+   <!-- file Upload -->
+   <insert id="insertFile" parameterType="java.util.Map">
+		INSERT INTO FILE(
+			FILE_NO,
+			BNO,
+			ORG_FILE_NAME,
+			STORED_FILE_NAME,
+			FILE_SIZE
+		)VALUES(
+			FILE_FILE_NO.NEXTVAL,
+			#{BNO},
+			#{ORG_FILE_NAME},
+			#{STORED_FILE_NAME},
+			#{FILE_SIZE}
+		)
+    </insert>
 </mapper>
