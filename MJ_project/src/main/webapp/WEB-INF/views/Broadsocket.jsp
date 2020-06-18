@@ -21,7 +21,7 @@
 		// 「broadsocket」는 호스트 명
 		
 		// WebSocket 오브젝트 생성 (자동으로 접속 시작한다. - onopen 함수 호출)
-		var webSocket = new WebSocket("ws://localhost:8095/Chatting/broadsocket");
+		var webSocket = new WebSocket("ws://192.168.0.14:8091/Chatting/broadsocket");
 		
 		
 		// 콘솔 텍스트 에리어 오브젝트

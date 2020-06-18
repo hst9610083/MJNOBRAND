@@ -167,6 +167,10 @@ public class InquiryController {
       return "SellInquiryBoardDetail";
    }
    
+   //소비자 문의 게시판(견적서 리스트 조회)(소비자)
+   
+   
+   
    
 
    
