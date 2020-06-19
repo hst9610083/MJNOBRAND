@@ -43,5 +43,4 @@ public interface IMj_Board_Service {
 	//리스트 토탈 갯수
 	public int BoardListTotal();
 	
-	public boolean insertFile(Map<String, Object>map);
 }

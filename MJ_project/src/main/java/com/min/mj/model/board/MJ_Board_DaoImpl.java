@@ -92,12 +92,4 @@ public class MJ_Board_DaoImpl implements IMj_Board_Dao {
 		log.info("홍보게시판 전체글 갯수 : BoardListTotal");
 		return sqlSession.selectOne(NS+"BoardListTotal");
 	}
-
-	@Override
-	public boolean insertFile(Map<String, Object> map) {
-		log.info("홍보게시판 파일업로드");
-		int n = sqlSession.insert(NS+"insertFile", map);
-		return (n>0)?true:false;
-	}
-
 }

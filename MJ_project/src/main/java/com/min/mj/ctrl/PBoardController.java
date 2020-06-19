@@ -2,6 +2,7 @@ package com.min.mj.ctrl;
 
 
 import java.io.File;
+
 import java.io.IOException;
 import java.security.Principal;
 import java.util.Arrays;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -40,6 +42,7 @@ public class PBoardController {
    
    @Autowired
    IMj_Board_Service service;
+ 
    
    
    // 홍보게시판 전체글 리스트
@@ -88,23 +91,22 @@ public class PBoardController {
    
    //글 작성
    @RequestMapping(value="/pBoardWrite.do", method = RequestMethod.POST)
-   public String pboardWrite(HttpSession session, MJ_BoardDTO dto, Model model, fileDto fDto,@RequestParam("uploadFile") MultipartFile uploadFile) throws IOException {
+   public String pboardWrite(HttpSession session, MJ_BoardDTO dto, Model model, fileDto fDto, List<MultipartFile>  uploadFile) throws IOException {
       log.info("Welcome boardWrite: \t {}",dto);
       MJ_MemberDTO mDto =  (MJ_MemberDTO) session.getAttribute("mem");
-      dto.setId(mDto.getId());
-      String fileName = null;
-      MultipartFile uploadfile = fDto.getUploadFile();
-      if(!uploadFile.isEmpty()) {
-    	  String originalFileName = uploadFile.getOriginalFilename();
-			String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기
-			UUID uuid = UUID.randomUUID();	//UUID 구하기
-			fileName=uuid+"."+ext;
-			uploadFile.transferTo(new File("D:\\upload\\" + fileName));
-      }
-      boolean isc = service.pplWriteBoard(dto);
-      return isc?"redirect:/pBoardList.do":"redirect:/logout.do";
+      String fileName=null;
+//		MultipartFile uploadFile = dto.getUploadFile();
+//		if (!uploadFile.isEmpty()) {
+//			String originalFileName = uploadFile.getOriginalFilename();
+//			String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기
+//			UUID uuid = UUID.randomUUID();	//UUID 구하기
+//			fileName=uuid+"."+ext;
+//			uploadFile.transferTo(new File("c:\\nobrand\\" + fileName));
+//		}
+//		dto.setRealfile(fileName);
+		boolean isc = service.pplWriteBoard(dto);
+		return "pBoardList";
    }
-   
    //글 수정 이동
    @RequestMapping(value="/pModifyForm.do", method = RequestMethod.GET)
    public String ModifypBoard(MJ_BoardDTO dto, String seq, Model model,HttpSession session){

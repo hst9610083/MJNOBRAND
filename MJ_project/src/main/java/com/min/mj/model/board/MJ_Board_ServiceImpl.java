@@ -1,6 +1,7 @@
 package com.min.mj.model.board;
 
 import java.util.List;
+
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -9,18 +10,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.min.mj.bean.FileUtils;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.min.mj.dtos.MJ_BoardDTO;
 import com.min.mj.dtos.RowNumDto;
+import com.min.mj.dtos.fileDto;
 
 @Service
 public class MJ_Board_ServiceImpl implements IMj_Board_Service {
 
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
-	@Resource(name="fileUtils")
-	private FileUtils fileUtils;
+	
 	
 	@Autowired
 	private IMj_Board_Dao dao;
@@ -40,6 +40,7 @@ public class MJ_Board_ServiceImpl implements IMj_Board_Service {
 	@Override
 	public boolean pplWriteBoard(MJ_BoardDTO dto) {
 		log.info("pplWriteBoard 글쓰기{}",dto);
+		
 		return dao.pplWriteBoard(dto);
 	}
 
@@ -87,11 +88,4 @@ public class MJ_Board_ServiceImpl implements IMj_Board_Service {
 		log.info("BoardListTotal 게시판 글 총 갯수{}");
 		return dao.BoardListTotal();
 	}
-
-	@Override
-	public boolean insertFile(Map<String, Object> map) {
-		log.info("insertFile 파일업로드");
-		return dao.insertFile(map);
-	}
-
 }
