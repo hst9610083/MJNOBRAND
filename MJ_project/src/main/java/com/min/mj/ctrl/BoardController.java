@@ -195,7 +195,7 @@ public class BoardController {
 		}
 		
 		//임시변환
-		@RequestMapping(value="/conversion.do", method=RequestMethod.GET)
+		@RequestMapping(value="/iBoardList.do", method=RequestMethod.GET)
 		public String conversion(INQUIRYBoardDto boardVO,Model model, Authentication user, Principal principal,HttpSession session) throws Exception{
 			logger.info("conversion 성공");
 			

@@ -32,21 +32,7 @@ public class EstiController {
 	
 	//견적서 게시판 전체 리스트(소비자)
 	@RequestMapping(value="/c_EstiList.do",method = RequestMethod.GET)
-	public String c_EstiList(Model model,EstiDto dto) {
-		
-		List<EstiDto> lists=service2.Cesti_All();
-		model.addAttribute("lists",lists);
-		return "c_EstiList";
-	};
-	
-	//견적서 게시판 상세보기(소비자)
-	
-	
-	
-	//견적서 게시판 전체 리스트(업체)
-	@RequestMapping(value="/s_EstiList.do",method = RequestMethod.GET)
-	public String s_EstiList(Model model,EstiDto dto, Authentication user, Principal principal,HttpSession session) {
-		
+	public String c_EstiList(Model model,EstiDto dto,Authentication user, Principal principal,HttpSession session) {
 		
 		 String id = principal.getName();
 	      MJ_MemberDTO mDto = service.userlogin(id);
@@ -61,8 +47,67 @@ public class EstiController {
 	    	  System.out.println(mDto.getAuth()+"C");
 	    	  
 	      }
+		List<EstiDto> lists=service2.Cesti_All();
+		model.addAttribute("lists",lists);
+		return "c_EstiList";
+	};
+	
+	//견적서 게시판 상세보기(소비자)
+	@RequestMapping(value="/c_EstiListDetail.do",method = RequestMethod.GET)
+	public String c_EstiListDetail(Model model,String seq,Authentication user, Principal principal,HttpSession session) {
 		
-		List<EstiDto> lists=service2.Sesti_All();
+		 String id = principal.getName();
+	      MJ_MemberDTO mDto = service.userlogin(id);
+	      System.out.println();
+	      mDto.getAuth();
+	      System.out.println(mDto.getAuth());
+	      mDto.getId();
+	      model.addAttribute("mDto",mDto);
+	      session.setAttribute("mem", mDto);
+	      if( mDto.getAuth().trim().equalsIgnoreCase("ROLE_C")) {
+	    	  mDto.getAuth();
+	    	  System.out.println(mDto.getAuth()+"C");
+	    	  
+	      }	
+		EstiDto lists=service2.Cesti_Detail(seq);
+		model.addAttribute("lists", lists);
+		return "c_EstiListDetail";
+	}
+	
+	//견적서 게시판 삭제(소비자)
+	@RequestMapping(value="/c_EstiListDelete.do", method=RequestMethod.POST)
+	public String c_EstiListDelete(EstiDto dto) {
+		
+		System.out.println(dto+"######################");
+		
+		boolean isc = service2.Cesti_Delete(String.valueOf(dto.getSeq()));
+		System.out.println(isc+"######################");
+		return  isc?"redirect:/c_EstiList.do":"redirect:/logout.do";
+		
+	}
+	
+
+	
+	//견적서 게시판 전체 리스트(업체)
+	@RequestMapping(value="/s_EstiList.do",method = RequestMethod.GET)
+	public String s_EstiList(Model model,EstiDto dto, Authentication user, Principal principal,HttpSession session) {
+		
+		
+		 String id = principal.getName();
+	      MJ_MemberDTO mDto = service.userlogin(id);
+	      
+	            
+	      System.out.println(mDto+"-----------------------------------");
+	      
+	      model.addAttribute("mDto",mDto);
+	      session.setAttribute("mem", mDto);
+	      if( mDto.getAuth().trim().equalsIgnoreCase("ROLE_C")) {
+	    	  mDto.getAuth();
+	    	  System.out.println(mDto.getAuth()+"C");
+	    	  
+	      }
+		
+		List<EstiDto> lists=service2.Cesti_All();
 		model.addAttribute("lists",lists);
 		return "s_EstiList";
 		
@@ -88,13 +133,21 @@ public class EstiController {
 	      return "s_EstiListDetail";
 	}
 	
-	// 견적서 쓰기
-	@RequestMapping(value="/s_EstiInput.do",method = RequestMethod.GET)
-	public String s_EstiInput(Model model,EstiDto dto) {
-		
-		boolean lists=service2.EstiInput(dto);
-		model.addAttribute("lists",lists);
-		return "s_EstiInput";
-
-};
+	   // 견적서 쓰기
+//	   @RequestMapping(value="/s_EstiInputm.do",method = RequestMethod.GET)
+//	   public String s_EstiInputm(String id) {
+//	      System.out.println("㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾mm");
+//	      System.out.println("id는     :    "+id);
+//	      return "s_EstiInput";
+//	}
+//	   @RequestMapping(value="/s_EstiInput.do", method = RequestMethod.GET)
+//	   public String s_EstiInput(HttpSession session, EstiDto dto, Model model) {
+//	      log.info("Welcome s_EstiInput: \t {}",dto);
+//	      MJ_MemberDTO mDto =  (MJ_MemberDTO) session.getAttribute("mem");
+//	      System.out.println("㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾");
+//	      dto.setId(mDto.getId());
+//	      model.addAttribute("mDto", mDto);
+//	      boolean isc = service.EstiInput(dto);
+//	      return isc?"redirect:/c_EstiList.do":"redirect:/logout.do";
+//	   }
 }

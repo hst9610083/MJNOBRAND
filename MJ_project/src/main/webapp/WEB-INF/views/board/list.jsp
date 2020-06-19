@@ -32,11 +32,12 @@
 	<header id="header">
 		<div class="header_wrap">
 			<h1>
-				<a href="./index.html"><img src="images/main/logo.png" alt=""></a>
+				<a href="./index.html"><img src="/images/main/logo.png" alt=""></a>
 			</h1>
 			
 			<nav id="gnb">
 				<ul>
+					<li><a href="../c_EstiList.do">견적서 리스트</a></li>
 					<li><a href="">소비자 문의 게시판</a></li>
 					<li><a href="../pBoardList.do">홍보게시판</a></li>
 					<li><a href="../iBoardList.do">문의글 마이페이지</a></li>
