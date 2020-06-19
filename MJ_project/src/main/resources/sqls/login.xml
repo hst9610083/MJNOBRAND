@@ -67,11 +67,19 @@
 		#{pw}, ADDRESS=#{address} WHERE ID=#{id}
 	</update>
 
-	<!-- 아이디 찾기 -->
+	<!-- 업체 아이디 찾기 -->
 	<select id="findid" parameterType="MemberDto"
 		resultType="MemberDto">
-		SELECT ID
+		SELECT NVL(ID,'0') ID
 		FROM REGISTER
 		WHERE NAME=#{name} AND EMAIL=#{email}
+	</select>
+	
+	<!-- 소비자 아이디 찾기 -->
+	<select id="findid_C" parameterType="MemberDto"
+		resultType="MemberDto">
+		SELECT NVL(ID,'0') ID
+		FROM REGISTER
+		WHERE NAME=#{name} AND PHONNUM=#{phonnum}
 	</select>
 </mapper>

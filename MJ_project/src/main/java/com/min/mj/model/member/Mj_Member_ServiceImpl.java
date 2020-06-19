@@ -75,6 +75,12 @@ public class Mj_Member_ServiceImpl implements IMj_Member_Service {
 		return dao.findid(dto);
 	}
 
+	@Override
+	public MJ_MemberDTO findid_C(MJ_MemberDTO dto) {
+		System.out.println("ServiceImpl>>"+dto+">>findid_C");
+		return dao.findid_C(dto);
+	}
+
 //	@Override
 //	public List<MJ_MemberDTO> infoListRow(RowNumDto dto) {
 //		System.out.println("infoListRow 페이징처리, {}"+dto);
