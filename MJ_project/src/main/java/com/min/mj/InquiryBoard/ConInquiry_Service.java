@@ -18,7 +18,7 @@ public class ConInquiry_Service implements IConInquiry_Service {
 	private Logger log = LoggerFactory.getLogger(getClass());
 
 	@Override
-	public List<INQUIRYBoardDto> c_insertBoard(INQUIRYBoardDto dto) {
+	public boolean c_insertBoard(INQUIRYBoardDto dto) {
 		log.info("c_insertBoard 성공");
 		return dao.c_insertBoard(dto);
 	}

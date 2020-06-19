@@ -11,13 +11,13 @@
    
    <!-- 글쓰기  -->
    <insert id="pplWriteBoard" parameterType="BDto">
-      INSERT INTO SELLER_PPL_BOARD(SEQ, ID, TITLE, CONTENT, READCOUNT, REGDATE, DELFLAG) 
-                        VALUES(SELLER_PPL_BOARD_SEQ.NEXTVAL,#{id}, #{title}, #{content}, 0, SYSDATE, 'N')
+      INSERT INTO SELLER_PPL_BOARD(SEQ, ID, TITLE, CONTENT, READCOUNT, REGDATE, DELFLAG, REALFILE) 
+                        VALUES(SELLER_PPL_BOARD_SEQ.NEXTVAL,#{id}, #{title}, #{content}, 0, SYSDATE, 'N', #{realfile})
    </insert>
 
    <!-- 상세글 보기 -->
    <select id="pplgetOnBoard" parameterType="java.lang.String" resultType="BDto">
-   SELECT SEQ, ID, NICNAME,  TITLE, NVL(CONTENT,' ') CONTENT, READCOUNT, REGDATE 
+   SELECT SEQ, ID, TITLE, CONTENT, REGDATE 
          FROM SELLER_PPL_BOARD
               WHERE SEQ = #{seq}
    </select>
@@ -67,20 +67,26 @@
                 )
                 WHERE RNUM BETWEEN #{start} AND #{last}
    </select>
-<!--    <select id="BoardListRow" resultType="BDto" parameterType="RowNum"> -->
-<!-- 		SELECT  SEQ, ID, TITLE,CONTENT -->
-<!--                 READCOUNT, DELFLAG, REGDATE -->
-<!-- 		 FROM (  -->
-<!-- 		        SELECT SEQ, ID, TITLE,CONTENT, -->
-<!--                 READCOUNT, DELFLAG, REGDATE  -->
-<!-- 		               ROW_NUMBER() OVER(ORDER BY SEQ DESC) AS RNUM -->
-<!-- 		         FROM SELLER_PPL_BOARD  -->
-<!-- 		                       ) SELLER -->
-<!-- 		WHERE RNUM BETWEEN #{start} AND #{last} -->
-<!-- 		ORDER BY SEQ DESC -->
-<!-- 	</select> -->
+
    <!-- 홍보게시판 전체글 갯수 -->
    <select id="BoardListTotal" resultType="java.lang.Integer">
    SELECT COUNT(*) FROM SELLER_PPL_BOARD WHERE DELFLAG = 'N'
    </select>
+   
+   <!-- file Upload -->
+   <insert id="insertFile" parameterType="java.util.Map">
+		INSERT INTO FILE(
+			FILE_NO,
+			BNO,
+			ORG_FILE_NAME,
+			STORED_FILE_NAME,
+			FILE_SIZE
+		)VALUES(
+			FILE_FILE_NO.NEXTVAL,
+			#{BNO},
+			#{ORG_FILE_NAME},
+			#{STORED_FILE_NAME},
+			#{FILE_SIZE}
+		)
+    </insert>
 </mapper>

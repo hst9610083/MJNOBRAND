@@ -69,6 +69,7 @@ public class Mj_Member_ServiceImpl implements IMj_Member_Service {
 		return dao.idDuplicateCheck(id);
 	}
 
+
 	@Override
 	public MJ_MemberDTO findid(MJ_MemberDTO dto) {
 		System.out.println("ServiceImpl>>"+dto+">>findid");
@@ -80,6 +81,7 @@ public class Mj_Member_ServiceImpl implements IMj_Member_Service {
 		System.out.println("ServiceImpl>>"+dto+">>findid_C");
 		return dao.findid_C(dto);
 	}
+
 
 //	@Override
 //	public List<MJ_MemberDTO> infoListRow(RowNumDto dto) {

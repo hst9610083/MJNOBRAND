@@ -36,43 +36,16 @@ public class InputList {
 		sb.append("	<tr>                                                                                                       ");
 		sb.append("	<td><input type='checkbox' name='chkval' value='"+dto.getSeq()+"'></td>                                                   ");
 		sb.append("	<td>"+dto.getSeq()+"</td>                                                                                                ");
-		sb.append("	<td>                                                                                                       ");
-		sb.append("		<div class='panel-heading'>                                                                            ");
-		sb.append("		<a data-toggle='collapse' data-parent='#accordion' href='#collapse"+dto.getSeq()+"' onclick='collapse(\""+dto.getSeq()+"\")'>"+dto.getTitle()+"</a>"	);
-		sb.append("		</div>                                                                                                 ");
-		sb.append("	</td>                                                                                                      ");
-		sb.append("	<td>"+dto.getId()+"</td>                                                                                            "	);
+		sb.append("	<td>"+dto.getId()+"</td>	"	);
+		sb.append("	 <td><a href='./pBoardDetail.do?seq="+dto.getSeq()+"'>"+dto.getTitle()+"</a></td>                                                                                           "	);
 		sb.append("	<td>"+dto.getReadcount()+"</td>                                                                                            "	);
-		if(mem.getAuth().equalsIgnoreCase("A")) {
+		if(mem.getAuth().equalsIgnoreCase("ROLE_A")) {
 			n = 7;
 			sb.append("<td>"+dto.getDelflag()+"</td>>");
 		}
 		sb.append("	<td>"+dateFormat(dto.getRegdate())+"</td>                                                                                          ");
 		sb.append("	</tr>                                                                                                       ");
-		sb.append("                                                                                                            ");
-		sb.append("	<tr>                                                                                                        ");
-		sb.append("	<td colspan='"+n+"'>                                                                                           ");
-		sb.append("		<div id='collapse"+dto.getSeq()+"' class='panel-collapse collapse'>                                                ");
-		sb.append("			<div class='form-group'>                                                                           ");
-		sb.append("				<label>내용</label> <br>                                                                           	");
-		sb.append("				<textarea rows='7' class='form-control' readonly='readonly'>"+dto.getContent()+"</textarea>            		 ");
-		sb.append("			</div>                                                                                             ");
-		sb.append("<div>");
-		sb.append("<div class=''form-group'>");
-		if(mem.getId().equalsIgnoreCase(dto.getId())||mem.getAuth().equals("ROLE_S")) {
-			sb.append("<input type='button' class='btn btn-primary btn-sm btn-center' value='글 수정' onclick='modify(\""+dto.getSeq()+"\")'>");
-			
-		}
-		if(mem.getId().equalsIgnoreCase(dto.getId())||mem.getAuth().equalsIgnoreCase("ROLE_S")) {
-			sb.append("<input type='button' class='btn btn-primary btn-sm btn-center' value='글 삭제' onclick='del(\""+dto.getSeq()+"\")'>");
-			
-		}
-		sb.append("</div>");
-		sb.append("</div>");
-		sb.append("		</div>                                                                                                 ");
-		sb.append("	</td>                                                                                                      ");
-		sb.append("	</tr>                                                                                                       ");
-		
+		sb.append("                                                                                                            "); 
 		return sb.toString();
 	}
 

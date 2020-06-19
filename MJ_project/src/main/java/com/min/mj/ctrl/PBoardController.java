@@ -1,30 +1,34 @@
 package com.min.mj.ctrl;
 
 
+import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.security.Principal;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.min.mj.dtos.MJ_BoardDTO;
 import com.min.mj.dtos.MJ_MemberDTO;
 import com.min.mj.dtos.RowNumDto;
+import com.min.mj.dtos.fileDto;
 import com.min.mj.model.board.IMj_Board_Service;
 
 
@@ -74,31 +78,51 @@ public class PBoardController {
       return "pBoardList";
    }
    
-   //글쓰기
+   //글쓰기 이동
    @RequestMapping(value="/writeForm.do", method = RequestMethod.GET)
    public String writeForm() {
       log.info("Welcome writeForm.do :\t {}", new Date());
       return "pBoardWriteForm";
    }
    
+   //글 작성
    @RequestMapping(value="/pBoardWrite.do", method = RequestMethod.POST)
-   public String pboardWrite(HttpSession session, MJ_BoardDTO dto, Model model) {
+   public String pboardWrite(HttpSession session, MJ_BoardDTO dto, Model model, fileDto fDto) throws IOException {
       log.info("Welcome boardWrite: \t {}",dto);
       MJ_MemberDTO mDto =  (MJ_MemberDTO) session.getAttribute("mem");
       dto.setId(mDto.getId());
+      String fileName = null;
+      MultipartFile uploadFile = fDto.getUploadFile();
+      if(!uploadFile.isEmpty()) {
+    	  String originalFileName = uploadFile.getOriginalFilename();
+			String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기
+			UUID uuid = UUID.randomUUID();	//UUID 구하기
+			fileName=uuid+"."+ext;
+			uploadFile.transferTo(new File("D:\\upload\\" + fileName));
+      }
       boolean isc = service.pplWriteBoard(dto);
       return isc?"redirect:/pBoardList.do":"redirect:/logout.do";
    }
    
-   @RequestMapping(value="/pModify.do", method = RequestMethod.POST)
-   public String ModifypBoard(MJ_BoardDTO dto){
+   //글 수정 이동
+   @RequestMapping(value="/pModifyForm.do", method = RequestMethod.GET)
+   public String ModifypBoard(MJ_BoardDTO dto, String seq, Model model,HttpSession session){
       log.info("Welcome Modify.do : \t{}",dto);
-      boolean isc = service.pplModifyBoard(dto);
-      return "redirect:/pBoardList.do";
+      MJ_BoardDTO lists = service.pplgetOnBoard(seq);
+      model.addAttribute("lists", lists);
+      return "pModifyForm";
+   }
+   
+   //글수정
+   @RequestMapping(value="/pModify.do", method = RequestMethod.POST)
+   public String Modify(MJ_BoardDTO dto,String seq, Model model,HttpSession session,MultipartFile filename){
+	   log.info("Welcome Modify.do : \t{}",dto);
+	   boolean isc = service.pplModifyBoard(dto);
+	   return isc?"redirect:/pBoardList.do":"redirect:/logout.do";
    }
    
    
-
+   //다중삭제
    @RequestMapping(value = "/pMultiDel.do", method = RequestMethod.POST)
    public String DelpBoard(HttpSession session,String[] chkval, HttpServletResponse response)throws IOException{
 	  response.setContentType("UTF-8");
@@ -111,7 +135,7 @@ public class PBoardController {
       return isc?"redirect:/pBoardList.do":"redirect:/pBoardList.do";
   }
    
-   
+   //단일삭제
    @RequestMapping(value = "/pdel.do", method = RequestMethod.GET)
    public String del(String seq) {
       log.info("Welcome pdel.do : \t {}",seq);
@@ -119,14 +143,13 @@ public class PBoardController {
       return isc?"redirect:/pBoardList.do":"redirect:/logout.do";
 
    }
-   
+   //상세보기
    @RequestMapping(value="/pBoardDetail.do", method = RequestMethod.GET)
-   public String DetailpBoard(Model model,String seq) {
+   public String DetailpBoard(Model model,String seq, HttpSession session,Principal principal) {
       log.info("Welcome Detail.do : \t {}", seq);
-      MJ_BoardDTO bDto = service.pplgetOnBoard(seq);
-      model.addAttribute("bDto", bDto);
+      MJ_MemberDTO mDto = (MJ_MemberDTO) session.getAttribute("mem");
+      MJ_BoardDTO lists = service.pplgetOnBoard(seq);
+      model.addAttribute("lists", lists);
       return "pBoardDetail";
-
    }
-   
 }

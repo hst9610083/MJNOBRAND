@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.security.Principal;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.min.mj.dtos.MJ_BoardDTO;
 import com.min.mj.dtos.MJ_MemberDTO;
 import com.min.mj.model.member.IMj_Member_Service;
 
@@ -66,17 +64,17 @@ public class LoginController {
       session.setAttribute("mem", mDto);
       if( mDto.getAuth().trim().equalsIgnoreCase("ROLE_C")) {
     	  mDto.getAuth();
-    	  System.out.println(mDto.getAuth()+"@@C");
+    	  System.out.println(mDto.getAuth()+"C");
           return "logincon";
       }else if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_S")) {
     	  mDto.getAuth();
-          System.out.println(mDto.getAuth()+"@@S");
+          System.out.println(mDto.getAuth()+"S");
           return "loginseller";
       }else if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_A")) {
     	  mDto.getAuth();
-          System.out.println(mDto.getAuth()+"@@A");
-          return "addmin_main";
-//          return "redirect:/loginaddmin.do";
+          System.out.println(mDto.getAuth()+"A");
+          return "redirect:/loginaddmin.do";
+          
       }
       return "";
    }
@@ -96,7 +94,7 @@ public class LoginController {
       service.c_register(dto);
       return "login";
    }
-   
+
    
    
    
@@ -172,6 +170,19 @@ public class LoginController {
    
       return "AuthError";
    }
+
+//   관리자페이지
+//   @RequestMapping(value = "/admin/userInfo.do", method= RequestMethod.GET)
+//   public String adminPage() {
+//      return "userInfo";
+//   }
+   @RequestMapping(value = "/AuthError.do", method = RequestMethod .GET)
+   public String AuthError() {
+   
+      return "AuthError";
+   }
+   
+
    
    @RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
    @ResponseBody

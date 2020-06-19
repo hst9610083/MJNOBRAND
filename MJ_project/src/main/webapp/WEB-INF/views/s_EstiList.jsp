@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의글 마이페이지</title>
+<title>Insert title here</title>
 </head>
 <link rel="stylesheet" href="css/uc.min.css">
 <link rel="stylesheet" href="css/basic.css">
@@ -36,7 +36,7 @@
 				<ul>
 					<li><a href="">소비자 문의 게시판</a></li>
 					<li><a href="./pBoardList.do">홍보게시판</a></li>
-					<li><a href="./iBoardList.do">문의글 마이페이지</a></li>
+					<li><a href="./s_EstiList.do">견적서 마이페이지</a></li>
 				</ul>
 <!-- ㄴㄴ -->
 			</nav>
@@ -52,40 +52,33 @@
 			</nav>
 		</div>
 	</header>
-	 
-	 
-	 
-	 
-	 
-	 
+	
 	<div id="container">
-		<h1>문의글  리스트 </h1>
-		<form action="./writeView.do" method="post">
+		<h1>견적서  리스트 </h1>
+		<form action="./s_EstiList.do" method="post">
 			<table class="table table-bordered">
 				<tr>
 					<th>번호</th>
-					<th>닉네임</th>
+					<th>아이디</th>
 					<th>제목</th>
 					<th>날짜</th>				
 				</tr>
 				<c:forEach items="${lists}" var="dto">
 					<tr>
 						<td>${dto.seq}</td>
-						<td>${dto.nicname}</td>
-						<td><a href="./iBoardListDetail.do?seq=${dto.seq}">${dto.title}</a></td>
+						<td>${dto.id}</td>
+						<td><a href="./s_EstiListDetail.do?seq=${dto.seq}">${dto.title}</a></td>
 						<td>${dto.regdate}</td>					
 					</tr>
 				</c:forEach>				
 			</table>
 			<ul>
-			<li><a href="./board/list.do">문의글 임시 페이지로 가기</a></li>
+			
 			</ul>
 		</form>
 		
 	</div>
-	
-	
-	
-	
+
+
 </body>
 </html>
