@@ -42,8 +42,8 @@ $(document).ready(function() {
          $("#chkval").val("0");
       } else if (inputLength > 4) { // 공백이 없고 5자리 이상이라면 ajax를 통해 유효성 검증할 것
          jQuery.ajax({ // $.ajax도 가능함
+        	 url : "./idCheck.do",
             type : "post",
-            url : "./idCheck.do",
             data : "id=" + $(this).val(),
             async : true, // true(비동기) = 요청을 보낸 후 응답결과와는 상관없이 다음방식이 동작하는
             // 방식

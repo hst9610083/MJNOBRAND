@@ -1,3 +1,4 @@
+
 package com.min.mj.model.member;
 
 import java.util.List;
@@ -77,3 +78,4 @@ public interface IMj_Member_Service {
 //	아이디찾기
 	public  MJ_MemberDTO findid(MJ_MemberDTO dto);
 }
+
