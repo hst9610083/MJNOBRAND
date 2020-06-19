@@ -1,3 +1,4 @@
+
 package com.min.mj.model.member;
 
 import java.util.List;
@@ -69,19 +70,11 @@ public class Mj_Member_ServiceImpl implements IMj_Member_Service {
 		return dao.idDuplicateCheck(id);
 	}
 
-
 	@Override
 	public MJ_MemberDTO findid(MJ_MemberDTO dto) {
 		System.out.println("ServiceImpl>>"+dto+">>findid");
 		return dao.findid(dto);
 	}
-
-	@Override
-	public MJ_MemberDTO findid_C(MJ_MemberDTO dto) {
-		System.out.println("ServiceImpl>>"+dto+">>findid_C");
-		return dao.findid_C(dto);
-	}
-
 
 //	@Override
 //	public List<MJ_MemberDTO> infoListRow(RowNumDto dto) {
@@ -98,3 +91,4 @@ public class Mj_Member_ServiceImpl implements IMj_Member_Service {
 	
 
 }
+

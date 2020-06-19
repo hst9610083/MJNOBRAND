@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>소비자 로그인 후 페이지</title>
+<title>관리자 로그인 후 페이지</title>
 </head>
 <link rel="stylesheet" href="css/uc.min.css">
 <link rel="stylesheet" href="css/basic.css">
@@ -31,16 +31,15 @@
 			
 			<nav id="gnb">
 				<ul>
-					<li><a href="./c_EstiList.do">견적서 리스트</a></li>
-					<li><a href="./Contemplatem.do">소비자 문의 게시판</a></li>
+					<li><a href="">소비자 문의 게시판</a></li>
 					<li><a href="./pBoardList.do">홍보게시판</a></li>
-					<li><a href="./iBoardList.do">문의글 마이페이지</a></li>
+					<li><a href="./loginaddmin.do">회원 관리 페이지</a></li>
 				</ul>
 			</nav>
 			<nav >
 				<div class="util">
 					<ul>
-						<li><a href="./userInfo.do">
+						<li><a href="">
 							<img src="images/main/mypage_icon.png" alt=""> ${mDto.id}님</a></li>
 						<li><a href="./logout.do"> <span class="glyphicon glyphicon-log-out"></span> Logout	</a></li>
 
@@ -112,6 +111,9 @@
             </ul>
         </div>
     </div>
+
+
+
 
 	<!-- 신규 업데이트. 인기방 -->
 	<div class="con con3">
@@ -336,7 +338,7 @@
 					<li class=""><a href="#">이용약관</a></li>
 					<li class=""><a href="#">개인정보 처리방침</a></li>
 					<li class=""><a href="#">위치기반</a></li>
-					<li class=""><a href="#">사이트 바로가기</a></li>
+					<li class=""><a href="#">중개사 사이트 바로가기</a></li>
 				</ul>
 			</div>
 			<div class="is-area-mid">

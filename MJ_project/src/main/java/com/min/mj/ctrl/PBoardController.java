@@ -22,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -87,12 +88,12 @@ public class PBoardController {
    
    //글 작성
    @RequestMapping(value="/pBoardWrite.do", method = RequestMethod.POST)
-   public String pboardWrite(HttpSession session, MJ_BoardDTO dto, Model model, fileDto fDto) throws IOException {
+   public String pboardWrite(HttpSession session, MJ_BoardDTO dto, Model model, fileDto fDto,@RequestParam("uploadFile") MultipartFile uploadFile) throws IOException {
       log.info("Welcome boardWrite: \t {}",dto);
       MJ_MemberDTO mDto =  (MJ_MemberDTO) session.getAttribute("mem");
       dto.setId(mDto.getId());
       String fileName = null;
-      MultipartFile uploadFile = fDto.getUploadFile();
+      MultipartFile uploadfile = fDto.getUploadFile();
       if(!uploadFile.isEmpty()) {
     	  String originalFileName = uploadFile.getOriginalFilename();
 			String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기

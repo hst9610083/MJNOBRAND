@@ -2,6 +2,80 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.min.login">
 
+
+   <!-- 로그인 -->
+   <select id="userlogin" parameterType="java.lang.String"
+      resultType="MemberDto">
+      SELECT ID, PW, AUTH
+      FROM REGISTER
+      WHERE ID = #{id}
+   </select>
+
+   <!-- 업체 회원가입 -->
+   <insert id="s_register" parameterType="MemberDto">
+      INSERT INTO REGISTER
+      (SEQ,
+      ID, PW, NAME, ADDRESS, NICNAME, SELLERNUM,SELPICK, EMAIL,AUTH )
+      VALUES(REGISTER_SEQ.NEXTVAL,#{id},#{pw},#{name},#{address},#{nicname},#{sellernum},#{selpick},#{email},'ROLE_S')
+   </insert>
+
+   <!-- 소비자 회원가입 -->
+   <insert id="c_register" parameterType="MemberDto">
+      INSERT INTO REGISTER
+      (SEQ,
+      ID, PW, NAME, ADDRESS, NICNAME, BIRTH, PHONNUM, AUTH )
+      VALUES(REGISTER_SEQ.NEXTVAL,#{id},#{pw},#{name},#{address},#{nicname},#{birth},#{phonnum},'ROLE_C')
+   </insert>
+   <!-- 회원 정보 조회 -->
+   <select id="info" resultType="MemberDto">
+      SELECT ID, SEQ, NAME, ADDRESS,
+      NICNAME, SELLERNUM,SELPICK,AUTH
+      FROM REGISTER
+   </select>
+
+   <!-- 업체 정보 조회 -->
+   <select id="s_info" resultType="MemberDto">
+      SELECT ID, SEQ, NAME, ADDRESS,
+      NICNAME, SELLERNUM,SELPICK,AUTH
+      FROM REGISTER
+      WHERE AUTH='S'
+   </select>
+
+   <!-- 소비자 정보 조회 -->
+   <select id="c_info" resultType="MemberDto">
+      SELECT ID, NAME, ADDRESS,
+      NICNAME, BIRTH,PHONNUM,AUTH
+      FROM REGISTER
+      WHERE AUTH='C'
+   </select>
+
+   <!-- 회원탈퇴 -->
+   <delete id="s_getout" parameterType="java.lang.String">
+      DELETE FROM REGISTER WHERE
+      ID = #{id}
+   </delete>
+
+   <!-- 아이디 중복검사 = idDuplicateCheck -->
+   <select id="idDuplicateCheck" parameterType="java.lang.String"
+      resultType="java.lang.Integer">
+      SELECT COUNT(ID)
+      FROM REGISTER
+      WHERE ID=#{id}
+   </select>
+   <!-- 회원정보 수정 -->
+   <update id="s_modify" parameterType="java.lang.String">
+      UPDATE REGISTER SET PW =
+      #{pw}, ADDRESS=#{address} WHERE ID=#{id}
+   </update>
+
+   <!-- 아이디 찾기 -->
+   <select id="findid" parameterType="MemberDto"
+      resultType="MemberDto">
+      SELECT ID
+      FROM REGISTER
+      WHERE NAME=#{name} AND EMAIL=#{email}
+   </select>
+=======
 	<!-- 로그인 -->
 	<select id="userlogin" parameterType="java.lang.String"
 		resultType="MemberDto">

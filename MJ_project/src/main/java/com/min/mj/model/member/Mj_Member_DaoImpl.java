@@ -95,11 +95,15 @@ public class Mj_Member_DaoImpl implements IMj_Member_Dao {
 //		// TODO Auto-generated method stub
 //		return session.selectOne(NS+"infoListTotal");
 
+
 //	}
 	@Override
 	public MJ_MemberDTO findid(MJ_MemberDTO dto) {
 		System.out.println("DaoImpl>>"+dto+">>findid");
 		return session.selectOne(NS+"findid", dto);
+
+	}
+
 	}
 	@Override
 	public MJ_MemberDTO findid_C(MJ_MemberDTO dto) {
