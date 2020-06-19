@@ -75,4 +75,10 @@ public interface IMj_Member_Service {
 //
 //	public int infoListTotal();
 
+//	아이디찾기
+	public  MJ_MemberDTO findid(MJ_MemberDTO dto);
+	
+	public  MJ_MemberDTO findid_C(MJ_MemberDTO dto);
+
+
 }
