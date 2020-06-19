@@ -103,8 +103,7 @@ public class Mj_Member_DaoImpl implements IMj_Member_Dao {
 		return session.selectOne(NS+"findid", dto);
 
 	}
-
-	}
+	
 	@Override
 	public MJ_MemberDTO findid_C(MJ_MemberDTO dto) {
 		System.out.println("DaoImpl>>"+dto+">>findid_C");

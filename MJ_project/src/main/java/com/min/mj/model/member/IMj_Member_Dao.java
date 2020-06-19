@@ -66,11 +66,6 @@ public interface IMj_Member_Dao {
 
 //	아이디 찾기
 	public  MJ_MemberDTO findid(MJ_MemberDTO dto);
-
-
-//	업체 아이디 찾기
-	public  MJ_MemberDTO findid(MJ_MemberDTO dto);
-
 	
 //	소비자 아이디 찾기
 	public  MJ_MemberDTO findid_C(MJ_MemberDTO dto);

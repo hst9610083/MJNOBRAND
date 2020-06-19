@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.security.Principal;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.min.mj.dtos.MJ_BoardDTO;
 import com.min.mj.dtos.MJ_MemberDTO;
 import com.min.mj.model.member.IMj_Member_Service;
 
@@ -32,11 +34,11 @@ public class LoginController {
    // 로그인 페이지로 가는 매핑
    @RequestMapping(value= "/loginPage.do", method = RequestMethod.GET)
    public String login(
-		   @RequestParam(value = "error", required = false)String error,
+         @RequestParam(value = "error", required = false)String error,
    @RequestParam(value = "logout",required = false)String logout, Model model, Authentication user) {
 
-	   
-	  if (user != null) {
+      
+     if (user != null) {
          UserDetails userD = (UserDetails)user.getPrincipal();
 
       }
@@ -63,18 +65,18 @@ public class LoginController {
       model.addAttribute("mDto",mDto);
       session.setAttribute("mem", mDto);
       if( mDto.getAuth().trim().equalsIgnoreCase("ROLE_C")) {
-    	  mDto.getAuth();
-    	  System.out.println(mDto.getAuth()+"C");
+         mDto.getAuth();
+         System.out.println(mDto.getAuth()+"@@C");
           return "logincon";
       }else if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_S")) {
-    	  mDto.getAuth();
-          System.out.println(mDto.getAuth()+"S");
+         mDto.getAuth();
+          System.out.println(mDto.getAuth()+"@@S");
           return "loginseller";
       }else if(mDto.getAuth().trim().equalsIgnoreCase("ROLE_A")) {
-    	  mDto.getAuth();
-          System.out.println(mDto.getAuth()+"A");
-          return "redirect:/loginaddmin.do";
-          
+         mDto.getAuth();
+          System.out.println(mDto.getAuth()+"@@A");
+          return "addmin_main";
+//          return "redirect:/loginaddmin.do";
       }
       return "";
    }
@@ -94,7 +96,7 @@ public class LoginController {
       service.c_register(dto);
       return "login";
    }
-
+   
    
    
    
@@ -130,8 +132,8 @@ public class LoginController {
       Mdto.setName(name);
       if(id==null) {
       System.out.println(id+"@@@@");
-    	  System.out.println("id가 없어@@@@@@@@@@");
-    	  return "findId";
+         System.out.println("id가 없어@@@@@@@@@@");
+         return "findId";
       }else {
       System.out.println(id.getId()+"id.getid");
       System.out.println(model.addAttribute("id", id));
@@ -150,8 +152,8 @@ public class LoginController {
       System.out.println(id+"@@@@");
       if(id==null) {
       System.out.println(id+"kkkkkkkkkkk");
-    	  System.out.println("id가 없어kkkkkkkkkkkkk");
-    	  return "findId_C";
+         System.out.println("id가 없어kkkkkkkkkkkkk");
+         return "findId_C";
       }else {
       System.out.println(id.getId()+"id.getid");
       System.out.println(model.addAttribute("id", id));
@@ -170,19 +172,6 @@ public class LoginController {
    
       return "AuthError";
    }
-
-//   관리자페이지
-//   @RequestMapping(value = "/admin/userInfo.do", method= RequestMethod.GET)
-//   public String adminPage() {
-//      return "userInfo";
-//   }
-   @RequestMapping(value = "/AuthError.do", method = RequestMethod .GET)
-   public String AuthError() {
-   
-      return "AuthError";
-   }
-   
-
    
    @RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
    @ResponseBody
@@ -197,16 +186,15 @@ public class LoginController {
 //      resp.setCharacterEncoding("utf-8");
 //      resp.setContentType("text/html; charset=UTF-8");
 //      if(isc) {
-//    	  System.out.println(isc+"true");
-//    	  PrintWriter p =  resp.getWriter();
+//         System.out.println(isc+"true");
+//         PrintWriter p =  resp.getWriter();
 //          p.print("<script> alert('아이디가 중복됩니다.');</script>");
 //          p.flush();
 //      }
       if(isc) {
-    	  System.out.println(isc+"true");
+         System.out.println(isc+"true");
       }
       return map;
    }
-
 
 }
