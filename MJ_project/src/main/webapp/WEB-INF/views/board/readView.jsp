@@ -35,6 +35,7 @@
 			
 			<nav id="gnb">
 				<ul>
+					<li><a href="../c_EstiList.do">견적서 리스트</a></li>
 					<li><a href="">소비자 문의 게시판</a></li>
 					<li><a href="../pBoardList.do">홍보게시판</a></li>
 					<li><a href="../iBoardList.do">문의글 마이페이지</a></li>
@@ -90,7 +91,7 @@
 				var deleteYN2 = confirm("저장하시겠나요? 문의게시판에서는 수정을 절대 할 수 없어요★");
 				if(deleteYN2 == true){
 					
-				formObj.attr("action", "/board/list.do");
+				formObj.attr("action", "./iBoardList.do");
 				formObj.attr("method", "get");
 				formObj.submit();
 				

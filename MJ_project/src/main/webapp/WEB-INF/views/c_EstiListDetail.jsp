@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>견적서 리스트</title>
+<title>Insert title here</title>
 </head>
 <link rel="stylesheet" href="css/uc.min.css">
 <link rel="stylesheet" href="css/basic.css">
@@ -20,7 +20,35 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	var formObj = $("form[name='readForm']");
+//삭제
+$(".delete_btn").on("click", function(){	
+	var deleteYN = confirm("삭제하시겠습니까?");
+	if(deleteYN == true){			
+	formObj.attr("action", "./c_EstiListDelete.do");
+	formObj.attr("method", "post");
+	formObj.submit();
+	
+	}
+})
+// 취소
+$(".list_btn").on("click", function(){
+	location.href = "./c_EstiList.do";
+	})
+})
+
+
+</script>
+
 <body>
+	
+	
 	
 	<header id="header">
 		<div class="header_wrap">
@@ -49,39 +77,51 @@
 			</nav>
 		</div>
 	</header>
+	
+	
+<div id="container">
 
-	<div id="container">
-		<h1>견적서 리스트</h1>
-<!-- 		<input id="lists"> -->
-		<form action="./c_EstiList.do" method="get">
+
+	
+		<h1>견적서 리스트 상세보기</h1>
+		
 			<table class="table table-bordered">
 				<tr>
-<!-- 					<th><input type="checkbox" onclick="checkAll(this.checked)"></th> -->
-					<th>번호</th>
 					<th>ID</th>
-<!-- 					<th>닉네임</th> -->
-<!-- 					<th>제목</th> -->
+					<th>제목</th>
+					<th>내용</th>
+					<th>파일</th>
 					<th>날짜</th>
 				</tr>
-				<c:forEach items="${lists}" var="dto">
+			
 					<tr>
-						<td>${dto.seq}</td>
-						<td><a href="./c_EstiListDetail.do?seq=${dto.seq}">${dto.id}</a></td>
-<%-- 						<td>${dto.id}</td> --%>
-						<td>${dto.regdate}</td>
-
-<%-- 						<td>${dto.title}</td> --%>
-<%-- 						<td>${dto.content}</td> --%>
-<%-- 						<td>${dto.realfile}</td> --%>
+						<td>${lists.id}</td>
+						<td>${lists.title}</td>
+						<td>${lists.content}</td>
+						<td>${lists.realfile}</td>
+						<td>${lists.regdate}</td>				
 					</tr>
-					</c:forEach>
 			</table>
-		</form>
+			
+			<section id="container">
+				<form name="readForm" role="form" method="post">
+					<input type="hidden" id="seq" name="seq" value="${lists.seq}" />
+					<input type="hidden" id="id" name="id" value="${lists.id}" />
+					<input type="hidden" id="title" name="title" value="${lists.title}" />
+<%-- 					<input type="hidden" id="content" name="content" value="${lists.regdate}" /> --%>
+<%-- 					<input type="hidden" id="content" name="content" value="${lists.imsi}" /> --%>
+<%-- 					<input type="hidden" id="content" name="content" value="${lists.realfile}" /> --%>
+				</form>
+			</section>
+			<div>
+			<div>
+			
+<!-- 				<button type="submit" class="update_btn">수정</button> -->
+					<button type="submit" class="delete_btn">삭제</button>
+					<button type="submit" class="list_btn">목록으로 돌아가기</button>	
+				</div>
+			</div>			
 	</div>
-
-
-
-
 
 </body>
 </html>
