@@ -38,9 +38,9 @@
 						<th>작성자</th>
 						<th>제목</th>
 						<th>조회수</th>
-						<c:if test="${mem.auth eq 'ROLE_A'}">
-							<th>삭제여부</th>
-						</c:if>
+						<sec:authorize access="hasRole('ROLE_A')">
+							<th>삭제여부</th>						
+						</sec:authorize>
 						<th>작성일</th>
 					</tr>
 					<jsp:useBean id="format" class="com.min.mj.bean.InputList" scope="page" />
@@ -72,9 +72,9 @@
 			</div>
 
 			<div>
-				<c:if test="${mem.auth eq 'ROLE_A'}">
+				<sec:authorize access="hasRole('ROLE_A')">
 					<input class="btn btn-danger" type="submit" value="다중 or삭제">
-				</c:if>
+				</sec:authorize>
 			</div>
 		</form>
 	</div>

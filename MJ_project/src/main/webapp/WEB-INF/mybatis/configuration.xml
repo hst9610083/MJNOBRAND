@@ -22,7 +22,7 @@
 		<mapper resource="/sqls/Statement_Chat.xml" />
 		<mapper resource="/sqls/Inquiry.xml"/>
 		<mapper resource="/sqls/login.xml"/>
-		<mapper resource="/sqls/boardMapper2.xml"/>
+		<mapper resource="/sqls/boardMapper.xml"/>
 	</mappers>
 
 </configuration>
