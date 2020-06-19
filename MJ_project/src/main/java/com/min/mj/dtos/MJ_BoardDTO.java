@@ -1,5 +1,7 @@
 package com.min.mj.dtos;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MJ_BoardDTO {
 
 	
@@ -16,11 +18,24 @@ public class MJ_BoardDTO {
 	private String jjim         ;
 	private String delflag      ;
 	private String realfile     ;	
+	private MultipartFile uploadFile;
 	
 	
 	
 	public MJ_BoardDTO() {
 		
+	}
+
+
+
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+
+
+
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 
 

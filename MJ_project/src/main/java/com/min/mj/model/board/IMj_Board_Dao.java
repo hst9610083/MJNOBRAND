@@ -3,8 +3,11 @@ package com.min.mj.model.board;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import com.min.mj.dtos.MJ_BoardDTO;
 import com.min.mj.dtos.RowNumDto;
+import com.min.mj.dtos.fileDto;
 
 public interface IMj_Board_Dao {
 
@@ -39,5 +42,5 @@ public interface IMj_Board_Dao {
 	//리스트 토탈 갯수
 	public int BoardListTotal();
 	
-	public boolean insertFile(Map<String, Object>map);
+	
 }
