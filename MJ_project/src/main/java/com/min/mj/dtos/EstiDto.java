@@ -28,6 +28,15 @@ public EstiDto(int seq, String id, String regdate, String title, String content,
 	this.auth = auth;
 }
 
+
+public EstiDto(String id, String title, String content, String realfile) {
+	super();
+	this.id = id;
+	this.title = title;
+	this.content = content;
+	this.realfile = realfile;
+}
+
 public int getSeq() {
 	return seq;
 }

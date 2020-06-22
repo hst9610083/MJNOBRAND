@@ -1,6 +1,5 @@
 package com.min.mj.ctrl;
 
-import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -8,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +16,6 @@ import com.min.mj.dtos.EstiDto;
 import com.min.mj.dtos.INQUIRYBoardDto;
 import com.min.mj.dtos.MJ_MemberDTO;
 import com.min.mj.model.Esti.IMj_Esti_Service;
-import com.min.mj.model.member.IMj_Member_Service;
 
 
 @Controller
@@ -26,128 +23,60 @@ public class EstiController {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	   IMj_Member_Service service;
-	@Autowired
-	private IMj_Esti_Service service2;
+	private IMj_Esti_Service service;
 	
 	//견적서 게시판 전체 리스트(소비자)
 	@RequestMapping(value="/c_EstiList.do",method = RequestMethod.GET)
-	public String c_EstiList(Model model,EstiDto dto,Authentication user, Principal principal,HttpSession session) {
+	public String c_EstiList(Model model,EstiDto dto) {
 		
-		 String id = principal.getName();
-	      MJ_MemberDTO mDto = service.userlogin(id);
-	      System.out.println();
-	      mDto.getAuth();
-	      System.out.println(mDto.getAuth());
-	      mDto.getId();
-	      model.addAttribute("mDto",mDto);
-	      session.setAttribute("mem", mDto);
-	      if( mDto.getAuth().trim().equalsIgnoreCase("ROLE_C")) {
-	    	  mDto.getAuth();
-	    	  System.out.println(mDto.getAuth()+"C");
-	    	  
-	      }
-		List<EstiDto> lists=service2.Cesti_All();
+		List<EstiDto> lists=service.Cesti_All();
 		model.addAttribute("lists",lists);
 		return "c_EstiList";
 	};
 	
-	//견적서 게시판 상세보기(소비자)
-	@RequestMapping(value="/c_EstiListDetail.do",method = RequestMethod.GET)
-	public String c_EstiListDetail(Model model,String seq,Authentication user, Principal principal,HttpSession session) {
-		
-		 String id = principal.getName();
-	      MJ_MemberDTO mDto = service.userlogin(id);
-	      System.out.println();
-	      mDto.getAuth();
-	      System.out.println(mDto.getAuth());
-	      mDto.getId();
-	      model.addAttribute("mDto",mDto);
-	      session.setAttribute("mem", mDto);
-	      if( mDto.getAuth().trim().equalsIgnoreCase("ROLE_C")) {
-	    	  mDto.getAuth();
-	    	  System.out.println(mDto.getAuth()+"C");
-	    	  
-	      }	
-		EstiDto lists=service2.Cesti_Detail(seq);
-		model.addAttribute("lists", lists);
-		return "c_EstiListDetail";
-	}
-	
-	//견적서 게시판 삭제(소비자)
-	@RequestMapping(value="/c_EstiListDelete.do", method=RequestMethod.POST)
-	public String c_EstiListDelete(EstiDto dto) {
-		
-		System.out.println(dto+"######################");
-		
-		boolean isc = service2.Cesti_Delete(String.valueOf(dto.getSeq()));
-		System.out.println(isc+"######################");
-		return  isc?"redirect:/c_EstiList.do":"redirect:/logout.do";
-		
-	}
-	
-
-	
 	//견적서 게시판 전체 리스트(업체)
 	@RequestMapping(value="/s_EstiList.do",method = RequestMethod.GET)
-	public String s_EstiList(Model model,EstiDto dto, Authentication user, Principal principal,HttpSession session) {
-		
-		
-		 String id = principal.getName();
-	      MJ_MemberDTO mDto = service.userlogin(id);
-	      
-	            
-	      System.out.println(mDto+"-----------------------------------");
-	      
-	      model.addAttribute("mDto",mDto);
-	      session.setAttribute("mem", mDto);
-	      if( mDto.getAuth().trim().equalsIgnoreCase("ROLE_C")) {
-	    	  mDto.getAuth();
-	    	  System.out.println(mDto.getAuth()+"C");
-	    	  
-	      }
-		
-		List<EstiDto> lists=service2.Cesti_All();
+	public String s_EstiList(Model model) {
+		List<EstiDto> lists=service.Sesti_All();
 		model.addAttribute("lists",lists);
 		return "s_EstiList";
-		
 	};
 	
-	//견적서  게시판 상세보기(업체)
-	@RequestMapping(value="/s_EstiListDetail.do",method = RequestMethod.GET)
-	public String s_EstiListDetail(Model model,String seq, Authentication user, Principal principal,HttpSession session) {
-		String id = principal.getName();
-	      MJ_MemberDTO mDto = service.userlogin(id);
-	      System.out.println();
-	      mDto.getAuth();
-	      System.out.println(mDto.getAuth());
-	      mDto.getId();
-	      model.addAttribute("mDto",mDto);
-	      session.setAttribute("mem", mDto);
-	      if( mDto.getAuth().trim().equalsIgnoreCase("ROLE_C")) {
-	    	  mDto.getAuth();
-	    	  System.out.println(mDto.getAuth()+"C");
-	      }
-	      EstiDto lists=service2.Sesti_Detail(seq);
-	      model.addAttribute("lists",lists);
-	      return "s_EstiListDetail";
+	// 견적서 쓰기
+		@RequestMapping(value="/s_EstiInputm.do",method = RequestMethod.GET)
+		public String s_EstiInputm(String id) {
+			System.out.println("㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾mm");
+			System.out.println("id는     :    "+id);
+			return "s_EstiInput";
 	}
+		@RequestMapping(value="/s_EstiInput.do", method = RequestMethod.GET)
+		public String s_EstiInput(HttpSession session, EstiDto dto, Model model) {
+			log.info("Welcome s_EstiInput: \t {}",dto);
+			MJ_MemberDTO mDto =  (MJ_MemberDTO) session.getAttribute("mem");
+			System.out.println("㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾");
+//			dto.setId(mDto.getId());
+			String id = dto.getId();
+			System.out.println(id+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11");
+			String title = dto.getTitle();
+			String content = dto.getContent();
+			String realfile = "파일입니다.";
+
+			System.out.println(id+" : "+title+" : "+content);
+			
+			EstiDto estiDto = new EstiDto(id, title, content, realfile);
+			
+			model.addAttribute("mDto", mDto);
+			boolean isc = service.EstiInput(estiDto);
+			System.out.println("fdasdfsdagsafasgabd");
+			return isc?"redirect:/s_EstiList.do":"redirect:/logout.do";
+		}
+		
 	
-	   // 견적서 쓰기
-//	   @RequestMapping(value="/s_EstiInputm.do",method = RequestMethod.GET)
-//	   public String s_EstiInputm(String id) {
-//	      System.out.println("㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾mm");
-//	      System.out.println("id는     :    "+id);
-//	      return "s_EstiInput";
-//	}
-//	   @RequestMapping(value="/s_EstiInput.do", method = RequestMethod.GET)
-//	   public String s_EstiInput(HttpSession session, EstiDto dto, Model model) {
-//	      log.info("Welcome s_EstiInput: \t {}",dto);
-//	      MJ_MemberDTO mDto =  (MJ_MemberDTO) session.getAttribute("mem");
-//	      System.out.println("㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾㉾");
-//	      dto.setId(mDto.getId());
-//	      model.addAttribute("mDto", mDto);
-//	      boolean isc = service.EstiInput(dto);
-//	      return isc?"redirect:/c_EstiList.do":"redirect:/logout.do";
-//	   }
+	
+	
+	
+	
+	
+	
+	
 }

@@ -22,3 +22,5 @@ public interface IConInquiry_Service {
 	public INQUIRYBoardDto S_SelectBoardDetail(String seq);
 	
 }
+
+// 1

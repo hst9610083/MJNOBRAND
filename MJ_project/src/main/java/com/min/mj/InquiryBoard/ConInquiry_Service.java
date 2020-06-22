@@ -19,7 +19,7 @@ public class ConInquiry_Service implements IConInquiry_Service {
 
 	@Override
 	public boolean c_insertBoard(INQUIRYBoardDto dto) {
-		log.info("c_insertBoard 성공");
+		log.info("c_insertBoard 성공",dto);
 		return dao.c_insertBoard(dto);
 	}
 
@@ -49,3 +49,4 @@ public class ConInquiry_Service implements IConInquiry_Service {
 
 
 }
+//1

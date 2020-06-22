@@ -18,12 +18,12 @@ public class ConInquiry_Dao implements IConInquiry_Dao {
 	private Logger log = LoggerFactory.getLogger(getClass());
 	private final String NS="com.min.inquiry.";
 
-	   @Override
-	   public boolean c_insertBoard(INQUIRYBoardDto dto) {
-	      log.info("c_insertBoard 성공");
-	      int n = session.update(NS+"c_insertBoard",dto);
-	      return (n>0)?true:false;
-	   }
+	@Override
+	public boolean c_insertBoard(INQUIRYBoardDto dto) {
+		log.info("c_insertBoard 성공");
+		int n = session.update(NS+"c_insertBoard",dto);
+		return (n>0)?true:false;
+	}
 
 	@Override
 	public List<INQUIRYBoardDto> C_allSelectBoard() {

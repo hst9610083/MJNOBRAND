@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>견적서 쓰기</title>
+<title>소비자 문의 게시판</title>
 </head>
 <link rel="stylesheet" href="css/uc.min.css">
 <link rel="stylesheet" href="css/basic.css">
@@ -56,7 +56,7 @@
 
 		<div style="background-image: url(images/sub_2_2/2.jpg); background-position: center center; height: 170px;">
 			<div class="is-frame-md is-relative" style="height: 100%;">
-				<b class="title"><h3>견적서 쓰기</h3></b>
+				<b class="title"><h3>방 올리기</h3></b>
 
 				<ul class="is-tab-nav columns-xs3" style="position: absolute; bottom: 0; left: 0; width: 100%;">
 					<li class="is-col is-align-mid is-txt-left is-active">
@@ -66,7 +66,7 @@
 		</div>
 		<div class="is-frame-md">
 
-			<form name="" method="GET" action="./s_EstiInput.do">
+			<form name="" method="post" action="./Contemplate.do">
 				
 				<script>
 					$(document).on('click', '.form-added-btn', function () {
@@ -132,6 +132,12 @@
 							<th>아이디</th>
 							<td class="is-input-field">
 								<input type="text" id="id" name="id" value='${mem.id}' maxlength="50">
+							</td>
+						</tr>
+								<tr>
+							<th>닉네임</th>
+							<td class="is-input-field">
+								<input type="text" id="nicname" name="nicname" value='${mem.nicname}' maxlength="50">
 							</td>
 						</tr>
 						<tr>

@@ -38,8 +38,8 @@ WHERE AUTH='ROLE_S' AND A.SEQ=#{seq}
  <!-- 견적서 작성 -->
  <insert id="EstiInput" parameterType="EDto">
 INSERT INTO ESTIMATE_MAKE
-(SEQ, ID, REGDATE, TITLE, CONTENT, REALFILE,AUTH)
-VALUES(ESTIMATE_MAKE_SEQ.NEXTVAL,#{id}, SYSDATE, #{title}, #{content}, #{realfile},'ROLE_S')
+(SEQ, ID, REGDATE, TITLE, CONTENT, IMSI, REALFILE, AUTH)
+VALUES(ESTIMATE_MAKE_SEQ.NEXTVAL, #{id}, SYSDATE, #{title}, #{content}, 'N', #{realfile}, 'ROLE_S')
  </insert>
   
 </mapper>

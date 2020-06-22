@@ -2,23 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.min.inquiry">
  
- 
- 
- <!--문의글 보관함 리스트 전체보기 !!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+<!--문의글 보관함 리스트 전체보기 !!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <select id="Mstore_All" resultType="IDto">
 SELECT SEQ ,ID ,NICNAME ,TITLE ,REGDATE 
  FROM C_INQUIRY WHERE IMSI='N'
 </select>
 
-
-<!--  문의글  상세보기-->
+<!--문의글 보관함 상세보기            -->
 <select id="Mstore_Detail" parameterType="java.lang.String" resultType="IDto">
-SELECT A.SEQ,A.ID,A.NICNAME ,A.TITLE,A.CONTENT ,B.REALFILE , A.REGDATE 
- FROM C_INQUIRY A LEFT JOIN "FILE" B
-	ON(A.REALFILE =B.REALFILE )
- 		WHERE A.SEQ=#{seq} AND IMSI='N'
-</select>
 
+SELECT A.SEQ,A.ID,A.NICNAME ,A.TITLE,A.CONTENT ,B.REALFILE ,A.REGDATE 
+ FROM C_INQUIRY A LEFT JOIN "FILE" B
+ON(A.REALFILE =B.REALFILE )
+ WHERE A.SEQ=#{seq} AND A.IMSI='N'
+</select>
 
 
 <!--문의글  보관함 삭제하기-->
@@ -27,43 +25,28 @@ DELETE FROM C_INQUIRY WHERE SEQ=#{seq} AND IMSI='N'
 </delete>
 
 
-
 <!--소비자 문의 게시판 (글 입력)(소비자)-->
 <insert id="c_insertBoard" parameterType="IDto">
 INSERT INTO C_INQUIRY
-(SEQ, ID, NICNAME, REGDATE, TITLE, CONTENT,AUTH)
-VALUES(C_INQUIRY_SEQ.NEXTVAL,#{id},#{nicname},SYSDATE,#{title},#{content},'C')
+(SEQ, ID, NICNAME, REGDATE, TITLE, CONTENT,AUTH, IMSI)
+VALUES(C_INQUIRY_SEQ.NEXTVAL,#{id},#{nicname},SYSDATE,#{title},#{content},'ROLE_C','N')
 </insert>
-  
-<!-- 소비자문의게시판 (글 템플릿)(소비자) (join문 쓴거)-->
-<!-- <select id="C_allSelectBoard" resultType="IDto">
- SELECT A.SEQ,A.ID,A.NICNAME,A.REGDATE,A.TITLE,A.CONTENT,A.AUTH,A.REALFILE,A.IMSI
- FROM C_INQUIRY A JOIN REGISTER B ON A.ID=B.ID
-</select> -->
 
-<!-- 소비자문의게시판 (글 상세 조회)(소비자) --> <!-- 존나 쓸데없음 -->
- <!-- <select id="C_SelectBoardDetail" resultType="IDto">
- SELECT A.SEQ,A.ID,TITLE,CONTENT ,B.REALFILE ,REGDATE
-  FROM C_INQUIRY A LEFT JOIN "FILE" B
-   ON (A.REALFILE =B.REALFILE )
-   WHERE AUTH='C' AND IMSI='N'
- </select> -->
  
   
 <!-- 소비자문의게시판 (글 전체 조회)(업체)1-->
 <select id="S_allSelectBoard" resultType="IDto">
-SELECT A.SEQ, A.NICNAME, A.TITLE, A.REGDATE
-FROM C_INQUIRY A JOIN REGISTER B ON A.ID=B.ID WHERE A.AUTH='ROLE_S'
+SELECT A.SEQ, A.NICNAME, A.TITLE, A.REGDATE,A.ID
+FROM C_INQUIRY A JOIN REGISTER B ON A.ID=B.ID WHERE A.AUTH='ROLE_C' AND IMSI='N'
 </select>
 
 <!-- 소비자문의게시판 (글 상세 조회)(업체) -->
  <select id="S_SelectBoardDetail" resultType="IDto">
 SELECT A.SEQ,A.ID,TITLE,CONTENT ,B.REALFILE ,REGDATE
   FROM C_INQUIRY A LEFT JOIN "FILE" B
-   ON (A.REALFILE =B.REALFILE) WHERE AUTH='S' AND IMSI='N'
+   ON (A.REALFILE =B.REALFILE) WHERE AUTH='ROLE_C' AND IMSI='N'
  </select>
  
-
 
 
   
